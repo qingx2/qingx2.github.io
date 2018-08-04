@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Homebrew 安装 PHP、Nginx、MySql</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="参考 全新安装 Mac OS Sierra (10.12) 并使用 HomeBrew 安装 ZSH &#43; MNMP (Mac &#43; Nginx &#43; MySQL &#43; PHP) 开发环境
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Homebrew 安装 PHP、Nginx、MySql" />
+    <meta name="twitter:description" content="参考 全新安装 Mac OS Sierra (10.12) 并使用 HomeBrew 安装 ZSH &#43; MNMP (Mac &#43; Nginx &#43; MySQL &#43; PHP) 开发环境
+
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Homebrew 安装 PHP、Nginx、MySql" />
+  <meta property="og:description" content="参考 全新安装 Mac OS Sierra (10.12) 并使用 HomeBrew 安装 ZSH &#43; MNMP (Mac &#43; Nginx &#43; MySQL &#43; PHP) 开发环境
+
+" />
+  <meta property="og:url" content="http://localhost:1313/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Homebrew 安装 PHP、Nginx、MySql</h1>
+      <p class="post-meta">@郭扑克 · Apr 19, 2017 · 3 min read</p>
+    </header>
+    <article class="post-content"><p>参考 <a href="https://laravel-china.org/topics/3129/new-installation-mac-os-sierra-1012-and-use-homebrew-to-install-zsh-mnmp-mac-nginx-mysql-php-development-environment">全新安装 Mac OS Sierra (10.12) 并使用 HomeBrew 安装 ZSH + MNMP (Mac + Nginx + MySQL + PHP) 开发环境</a></p>
+
+<p></p>
+
+<h4 id="安装-mysql">安装 Mysql</h4>
+
+<p>查找 mysql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew search mysql
+automysqlbackup                      mysql-connector-c
+homebrew/php/php53-mysqlnd_ms        mysql-connector-c++
+homebrew/php/php54-mysqlnd_ms        mysql-sandbox
+homebrew/php/php55-mysqlnd_ms        mysql-search<span style="color:#f92672">-replace</span>
+homebrew/php/php56-mysqlnd_ms        mysql-utilities
+mysql                                mysql@5.5
+mysql++                              mysql@5.6
+mysql-cluster                        mysqltuner
+Caskroom/cask/mysql-connector-python
+Caskroom/cask/mysql-shell
+Caskroom/cask/mysql-utilities
+Caskroom/cask/mysqlworkbench
+Caskroom/cask/navicat-for-mysql
+Caskroom/cask/sqlpro-for-mysql</code></pre></div>
+<p>查看版本信息</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew info mysql
+mysql<span style="color:#960050;background-color:#1e0010">:</span> stable 5.7.17 (bottled)</code></pre></div>
+<p>执行安装</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew install mysql
+<span style="color:#75715e"># 略...</span>
+<span style="color:#75715e"># 安装完成后, 倒数第三行:</span>
+<span style="color:#75715e"># We&#39;ve installed your MySQL database without a root password. To secure it run:</span>
+<span style="color:#75715e">#    mysql_secure_installation</span>
+
+<span style="color:#75715e"># To connect run:</span>
+<span style="color:#75715e">#    mysql -uroot</span></code></pre></div>
+<p>上面安装成功后提示的意思是说, 你安装的 MySql 没有密码, 执行<code>mysql_secure_installation</code> 进行设置密码, 其中会提示很多信息让你设置, 根据提示自己设置就行了。</p>
+
+<p>进入 MySql，看看是否已经成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ mysql -uroot -p</code></pre></div>
+<p>查看数据库</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> <span style="color:#66d9ef">databases</span>;
+<span style="color:#f92672">+--------------------+</span>
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">Database</span>           <span style="color:#f92672">|</span>
+<span style="color:#f92672">+--------------------+</span>
+<span style="color:#f92672">|</span> information_schema <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> mysql              <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> performance_schema <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> sys                <span style="color:#f92672">|</span>
+<span style="color:#f92672">+--------------------+</span>
+<span style="color:#ae81ff">4</span> rows <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)</code></pre></div>
+<p>OK! MySql已经安装成功了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mysql" data-lang="Mysql"><span style="color:#75715e"># 执行 exit 退出 MySql
+</span><span style="color:#75715e"></span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">exit</span></code></pre></div>
+<h4 id="安装-php">安装 PHP</h4>
+
+<p>搜索PHP70版本<code>brew search php</code> 如果有提示信息，那就需要按照提示来添加PHP 扩展：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew tap homebrew/dupes
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew tap josegonzalez/homebrew-php</code></pre></div>
+<p>此时就可以正常搜索安装 PHP 了，以下参数可以使用 <code>brew options php70</code> 来根据自己需求添加安装</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew install php70 --with-debug --with-gmp --with-homebrew-curl --with-homebrew-libressl --with-homebrew-libxml2 --with-homebrew-libxslt --with-imap --with-libmysql --with-mssql --with-pear</code></pre></div>
+<p>安装完成后，覆盖 macOS 自带的 PATH 路径，执行以下命令将路径添加<code>~/.bash_profile</code>文件:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ echo <span style="color:#e6db74">&#39;export PATH=&#34;$(brew --prefix php70)/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bash_profile
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ echo <span style="color:#e6db74">&#39;export PATH=&#34;$(brew --prefix php70)/sbin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bash_profile
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ echo <span style="color:#e6db74">&#39;export PATH=&#34;/usr/local/bin:/usr/local/sbib:$PATH&#34;&#39;</span> &gt;&gt; ~/.bash_profile</code></pre></div>
+<p>添加完成后查看版本信息, 出现以下提示说明已正常工作:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ php -v
+PHP 7.0.18 (cli) (built<span style="color:#960050;background-color:#1e0010">:</span> Apr 28 2017 10<span style="color:#960050;background-color:#1e0010">:</span>34<span style="color:#960050;background-color:#1e0010">:</span>29) ( NTS DEBUG )
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ php-fpm -v
+PHP 7.0.18 (fpm-fcgi) (built<span style="color:#960050;background-color:#1e0010">:</span> Apr 28 2017 10<span style="color:#960050;background-color:#1e0010">:</span>34<span style="color:#960050;background-color:#1e0010">:</span>35) (DEBUG)
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies</code></pre></div>
+<p>启动 PHP-FPM:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># 先将系统自带 php-fpm 杀死</span>
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ killall php-fpm
+<span style="color:#75715e"># 启动7.0版本的 php-fpm</span>
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ sudo php-fpm -D</code></pre></div>
+<h4 id="安装-nginx">安装 Nginx</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ brew install nginx
+Updating Homebrew...
+==&gt; Downloading https<span style="color:#960050;background-color:#1e0010">:</span>//homebrew.bintray.com/bottles/nginx-1.10.3.sierra.bottle.tar.gz
+Already downloaded<span style="color:#960050;background-color:#1e0010">:</span> /Users/surprisepeas/Library/Caches/Homebrew/nginx-1.10.3.sierra.bottle.tar.gz
+==&gt; Pouring nginx-1.10.3.sierra.bottle.tar.gz
+==&gt; Using the sandbox
+==&gt; Caveats
+Docroot is<span style="color:#960050;background-color:#1e0010">:</span> /usr/local/var/www
+
+The <span style="color:#66d9ef">default</span> port has been set <span style="color:#66d9ef">in</span> /usr/local/etc/nginx/nginx.conf to 8080 so that
+nginx can run without sudo.
+
+nginx will load all files <span style="color:#66d9ef">in</span> /usr/local/etc/nginx/servers/.
+
+To have launchd start nginx now and restart at login<span style="color:#960050;background-color:#1e0010">:</span>
+  brew services start nginx
+Or, <span style="color:#66d9ef">if</span> you don<span style="color:#960050;background-color:#1e0010">&#39;</span>t want/need a background service you can just run<span style="color:#960050;background-color:#1e0010">:</span>
+  nginx
+==&gt; Summary
+<span style="color:#960050;background-color:#1e0010">🍺</span>  /usr/local/Cellar/nginx/1.10.3<span style="color:#960050;background-color:#1e0010">:</span> 8 files, 980.9KB
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ nginx -v
+nginx version<span style="color:#960050;background-color:#1e0010">:</span> nginx/1.10.3</code></pre></div>
+<p>启动 Nginx:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ sudo nginx
+<span style="color:#75715e">#      	  重新加载配置|重启  |停止|退出</span>
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ nginx -s reload|reopen|stop|quit
+<span style="color:#960050;background-color:#1e0010">➜</span>  ~ nginx -s stop</code></pre></div>
+<p>重置nginx.conf文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">nginx -c /usr/local/etc/nginx/nginx.conf</code></pre></div>
+<p>配置 <code>/usr/local/etc/nginx/nginx.conf</code> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">worker_processes  1;
+
+error_log   /usr/local/var/log/nginx/error.log debug;
+pid        /usr/local/var/run/nginx.pid;
+
+events {
+    worker_connections  256;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  <span style="color:#e6db74">&#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;</span>
+                      <span style="color:#e6db74">&#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;</span>;
+
+    access_log  /usr/local/var/log/nginx/access.log  main;
+
+    sendfile        on;
+    keepalive_timeout  65;
+    port_in_redirect off;
+
+    include /usr/local/etc/nginx/servers/*;
+}</code></pre></div>
+<p>添加 <code>php-fpm</code> 文件,</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ vi /usr/local/etc/nginx/php-fpm</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">location ~ \.php$ {
+  try_files                   $uri = 404;
+  fastcgi_pass                127.0.0.1<span style="color:#960050;background-color:#1e0010">:</span>9000;
+  fastcgi_index               index.php;
+  fastcgi_intercept_errors    on;
+  include /usr/local/etc/nginx/fastcgi.conf;
+}</code></pre></div>
+<p>在 <code>/usr/local/var/www</code> 目录下创建项目文件,</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ vi /usr/local/var/www/info.php
+<span style="color:#75715e"># 在 info.php 文件写入</span>
+&lt;<span style="color:#66d9ef">?</span>php info(); ?&gt;</code></pre></div>
+<p>创建配置站点目录的配置文件:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ vi /usr/local/etc/nginx/servers/<span style="color:#66d9ef">default</span>.conf</code></pre></div>
+<p>在 <code>default.conf</code> 文件中写入:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">server <span style="color:#f92672">{</span>
+    listen       <span style="color:#ae81ff">80</span>;
+    server_name  localhost;
+    root         /usr/local/var/www/default;
+
+    access_log  /usr/local/var/log/nginx/default.access.log  main;
+
+    location / <span style="color:#f92672">{</span>
+        index  index.html index.htm index.php;
+        autoindex   on;
+        include     /usr/local/etc/nginx/php-fpm;
+    <span style="color:#f92672">}</span>
+
+    error_page  <span style="color:#ae81ff">404</span>     /404.html;
+    error_page  <span style="color:#ae81ff">403</span>     /403.html;
+<span style="color:#f92672">}</span></code></pre></div>
+<p>重启 nginx服务:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#960050;background-color:#1e0010">➜</span>  ~ sudo nginx -s reload</code></pre></div>
+<p>打开浏览器键入地址 <a href="http://localhost/info.php">http://localhost/info.php</a> <img src="http://omixc2ggv.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-28%2014.44.33.png" alt="web" /></p></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>471</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

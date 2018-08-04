@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>微信小程序支付功能</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="大致流程 实现微信支付主要分为以下两步：
+​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+大致流程图：
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="微信小程序支付功能" />
+    <meta name="twitter:description" content="大致流程 实现微信支付主要分为以下两步：
+​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+大致流程图：
+
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="微信小程序支付功能" />
+  <meta property="og:description" content="大致流程 实现微信支付主要分为以下两步：
+​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+大致流程图：
+
+" />
+  <meta property="og:url" content="http://localhost:1313/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">微信小程序支付功能</h1>
+      <p class="post-meta">@郭扑克 · Aug 17, 2017 · 4 min read</p>
+    </header>
+    <article class="post-content"><h3 id="大致流程">大致流程</h3>
+
+<p>实现微信支付主要分为以下两步：</p>
+
+<p>​   一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。</p>
+
+<p>​   二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 <code>wx.requestPayment(OBJECT)</code></p>
+
+<p>大致流程图：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fjko1nsls5j31kw16hgr1.jpg" alt="" /></p>
+
+<p></p>
+
+<h3 id="配置前提">配置前提</h3>
+
+<ul>
+<li>在小程序管理界面，点击 <strong>微信支付</strong> 菜单栏进行申请开通相关操作，获取权限及商户ID（已进行微信认证的账号才会显示）。进行申请时需要缴纳费用并会受到一份包含商户信息、证书的邮件（创建、查询订单不需要用到证书，本文不做介绍）。</li>
+<li>在 <strong>设置 - 开发设置</strong> 里获取AppID、小程序密钥</li>
+</ul>
+
+<blockquote>
+<p>Code Params</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">&#39;open.pay&#39;       =&gt; [
+        // 小程序支付
+        &#39;lite&#39; =&gt; [
+            &#39;appid&#39;      =&gt; &#39;*************&#39;, // 小程序ID
+            &#39;mch_id&#39;     =&gt; &#39;*************&#39;, // 商户ID
+            &#39;key&#39;        =&gt; &#39;*************&#39;, // 密钥
+            &#39;notify_url&#39; =&gt; &#39;*************&#39;, // 回调地址
+        ],
+    ],</code></pre></div>
+<h3 id="业务代码流程-yii2框架">业务代码流程 (Yii2框架)</h3>
+
+<blockquote>
+<p>客户端请求服务端生成订单，服务端请求微信生成统一下单参数返给前端，代码如下：</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$mch_id = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;mch_id&#39; ];
+$app_id = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;appid&#39; ] = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;appid&#39; ];
+$key = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;key&#39; ];
+$notify_url = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;notify_url&#39; ];
+$timestamp = time();
+// 微信统一下单打包获取调起微信支付参数 (SDK在文章最下方)
+$wx_pay = new WeChatPay($mch_id, $app_id, $key);
+$package = $wx_pay-&gt;createJsBizPackage($open_id, $money_paid, $order_sn, $order_name, $notify_url, $timestamp);
+/**
+&#34;appId&#34;     =&gt; &#39;appid&#39;,
+&#34;timeStamp&#34; =&gt; (string)$unix_timestamp,
+&#34;nonceStr&#34;  =&gt; createNonceStr(),
+&#34;package&#34;   =&gt; &#34;prepay_id=&#34; . $unifiedOrder-&gt;prepay_id,
+&#34;signType&#34;  =&gt; &#39;MD5&#39;,
+&#34;paySign&#34;   =&gt; getSign($arr, $config[ &#39;key&#39; ]),
+**/
+
+return $package;</code></pre></div>
+<blockquote>
+<p>小程序内调用 wx.requestPayment(OBJECT)   API</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">wx</span>.<span style="color:#a6e22e">requestPayment</span>({
+   <span style="color:#e6db74">&#39;timeStamp&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">timeStamp</span>,
+   <span style="color:#e6db74">&#39;nonceStr&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">nonceStr</span>,
+   <span style="color:#e6db74">&#39;package&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#66d9ef">package</span>,
+   <span style="color:#e6db74">&#39;signType&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">signType</span>,
+   <span style="color:#e6db74">&#39;paySign&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">paySign</span>,
+   <span style="color:#e6db74">&#39;success&#39;</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>){
+   },
+   <span style="color:#e6db74">&#39;fail&#39;</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>){
+   }
+})
+</code></pre></div>
+<blockquote>
+<p>支付成功后，微信后台开始回调服务端地址（外网可访问的URL）</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
+     * 小程序支付回调地址
+     * @return string
+     */
+public function actionLiteNotify()
+{
+  // 获取微信回调的xml的数据
+  $postStr = file_get_contents(&#39;php://input&#39;);
+  // xml数据转换为Object
+  $postObj = simplexml_load_string($postStr, &#39;SimpleXMLElement&#39;, LIBXML_NOCDATA);
+  Yii::trace($postObj);
+  if ($postObj === false) {
+    Yii::error(&#39;parse xml error&#39;);
+    die(&#39;parse xml error&#39;);
+  }
+  if ($postObj-&gt;return_code != &#39;SUCCESS&#39;) {
+    Yii::error($postObj-&gt;return_msg);
+    die($postObj-&gt;return_msg);
+  }
+  if ($postObj-&gt;result_code != &#39;SUCCESS&#39;) {
+    Yii::error($postObj-&gt;err_code);
+    die($postObj-&gt;err_code);
+  }
+
+  //微信支付参数
+  $appid = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;appid&#39; ];
+  $mch_id = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;mch_id&#39; ];
+  $key = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;key&#39; ];
+  $wx_pay = new WeChatPay($mch_id, $appid, $key);
+
+  //验证签名
+  $arr = (array)$postObj;
+  unset($arr[ &#39;sign&#39; ]);
+  if ($wx_pay-&gt;getSign($arr, $key) != $postObj-&gt;sign) {
+    Yii::error(&#34;签名错误&#34;);
+    die(&#34;签名错误&#34;);
+  }
+
+  /**
+    * 根据自己的产品业务进行相应的支付成功处理...
+  **/
+  $orders_result = OrdersService::getOrderInfoByOrderSN($postObj-&gt;out_trade_no);
+  Yii::trace($orders_result);
+  if ($orders_result-&gt;getCode() == ErrorCode::ERROR_NO) {
+    /** @var Orders $order_model */
+    $order_model = $orders_result-&gt;getData();
+    //支付处理正确-判断是否已处理过支付状态
+    if ($order_model-&gt;pay_status == PayStatusEnum::STATUS_NOT_PAID) {
+      $order_model-&gt;pay_time = Carbon::now()-&gt;format(&#39;Y-m-d H:i:s&#39;);
+      $order_model-&gt;pay_status = PayStatusEnum::STATUS_HAS_PAID;
+      $order_model-&gt;pay_type = PayTypeEnum::STATUS_WEIXIN;
+      $order_model-&gt;pay_trade_sn = $postObj-&gt;transaction_id;
+      $order_model-&gt;update(false);
+
+      OrdersActionService::addOrderAction($order_model, &#39;微信支付回调：订单支付状态更改&#39;);
+    }
+  } else {
+    Yii::error($orders_result);
+  }
+
+  // 返回给微信服务端，不然微信会一直回调此地址（8次）。
+  return &#39;&lt;<span style="color:#f92672">xml</span>&gt;&lt;<span style="color:#f92672">return_code</span>&gt;<span style="color:#75715e">&lt;![CDATA[SUCCESS]]&gt;</span>&lt;/<span style="color:#f92672">return_code</span>&gt;&lt;<span style="color:#f92672">return_msg</span>&gt;<span style="color:#75715e">&lt;![CDATA[OK]]&gt;</span>&lt;/<span style="color:#f92672">return_msg</span>&gt;&lt;/<span style="color:#f92672">xml</span>&gt;&#39;;
+}</code></pre></div>
+<blockquote>
+<p>封装的微信支付SDK类</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * User: Zachary
+</span><span style="color:#e6db74"> */</span>
+
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">common\sdk</span>;
+
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Carbon\Carbon</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WeChatPay</span>
+{
+    <span style="color:#66d9ef">protected</span> $mchid;
+    <span style="color:#66d9ef">protected</span> $appid;
+    <span style="color:#66d9ef">protected</span> $key;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($mchid, $appid, $key)
+    {
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mchid</span> <span style="color:#f92672">=</span> $mchid;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">appid</span> <span style="color:#f92672">=</span> $appid;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> $key;
+    }
+
+
+    <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">     * 微信统一下单
+</span><span style="color:#e6db74">     *
+</span><span style="color:#e6db74">     * @param $openid
+</span><span style="color:#e6db74">     * @param $money_paid
+</span><span style="color:#e6db74">     * @param $out_trade_no
+</span><span style="color:#e6db74">     * @param $order_name
+</span><span style="color:#e6db74">     * @param $notify_url
+</span><span style="color:#e6db74">     * @param $unix_timestamp
+</span><span style="color:#e6db74">     * @return array
+</span><span style="color:#e6db74">     * @internal param $timestamp
+</span><span style="color:#e6db74">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createJsBizPackage</span>($openid, $money_paid, $out_trade_no, $order_name, $notify_url, $unix_timestamp)
+    {
+        $timestamp <span style="color:#f92672">=</span> (<span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#34;YmdHis&#34;</span>, $unix_timestamp));
+        $config <span style="color:#f92672">=</span> [
+            <span style="color:#e6db74">&#39;mch_id&#39;</span> <span style="color:#f92672">=&gt;</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mchid</span>,
+            <span style="color:#e6db74">&#39;appid&#39;</span>  <span style="color:#f92672">=&gt;</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">appid</span>,
+            <span style="color:#e6db74">&#39;key&#39;</span>    <span style="color:#f92672">=&gt;</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">key</span>,
+        ];
+        $unified <span style="color:#f92672">=</span> [
+            <span style="color:#e6db74">&#39;appid&#39;</span>            <span style="color:#f92672">=&gt;</span> $config[ <span style="color:#e6db74">&#39;appid&#39;</span> ],
+            <span style="color:#e6db74">&#39;attach&#39;</span>           <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;上海凯旋路店-ifish智能鱼缸-微信支付&#39;</span>,
+            <span style="color:#e6db74">&#39;body&#39;</span>             <span style="color:#f92672">=&gt;</span> $order_name,
+            <span style="color:#e6db74">&#39;mch_id&#39;</span>           <span style="color:#f92672">=&gt;</span> $config[ <span style="color:#e6db74">&#39;mch_id&#39;</span> ],
+            <span style="color:#e6db74">&#39;nonce_str&#39;</span>        <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">createNonceStr</span>(),
+            <span style="color:#e6db74">&#39;notify_url&#39;</span>       <span style="color:#f92672">=&gt;</span> $notify_url,
+            <span style="color:#e6db74">&#39;openid&#39;</span>           <span style="color:#f92672">=&gt;</span> $openid,
+            <span style="color:#e6db74">&#39;out_trade_no&#39;</span>     <span style="color:#f92672">=&gt;</span> $out_trade_no,
+            <span style="color:#e6db74">&#39;spbill_create_ip&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,
+            <span style="color:#e6db74">&#39;total_fee&#39;</span>        <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">intval</span>($money_paid <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>), <span style="color:#75715e">// 微信以 [分] 为单位
+</span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#39;trade_type&#39;</span>       <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;JSAPI&#39;</span>,
+            <span style="color:#e6db74">&#39;time_start&#39;</span>       <span style="color:#f92672">=&gt;</span> $timestamp,
+            <span style="color:#e6db74">&#39;time_expire&#39;</span>      <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#34;YmdHis&#34;</span>, <span style="color:#a6e22e">strtotime</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$timestamp</span><span style="color:#e6db74"> + 30 minutes&#34;</span>)),
+        ];
+
+        $unified[ <span style="color:#e6db74">&#39;sign&#39;</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">getSign</span>($unified, $config[ <span style="color:#e6db74">&#39;key&#39;</span> ]);
+        $responseXml <span style="color:#f92672">=</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">curlPost</span>(<span style="color:#e6db74">&#39;https://api.mch.weixin.qq.com/pay/unifiedorder&#39;</span>, <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">arrayToXml</span>($unified));
+        $unifiedOrder <span style="color:#f92672">=</span> <span style="color:#a6e22e">simplexml_load_string</span>($responseXml, <span style="color:#e6db74">&#39;SimpleXMLElement&#39;</span>, <span style="color:#a6e22e">LIBXML_NOCDATA</span>);
+        <span style="color:#66d9ef">if</span> ($unifiedOrder <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>) {
+            <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;parse xml error&#39;</span>);
+        }
+        <span style="color:#66d9ef">if</span> ($unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">return_code</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;SUCCESS&#39;</span>) {
+            <span style="color:#a6e22e">\Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>($unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">return_msg</span>);
+            <span style="color:#66d9ef">die</span>($unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">return_msg</span>);
+        }
+        <span style="color:#66d9ef">if</span> ($unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">result_code</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;SUCCESS&#39;</span>) {
+            <span style="color:#a6e22e">\Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>($unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">err_code</span>);
+            <span style="color:#66d9ef">die</span>($unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">err_code</span>);
+        }
+        $arr <span style="color:#f92672">=</span> [
+            <span style="color:#e6db74">&#34;appId&#34;</span>     <span style="color:#f92672">=&gt;</span> $config[ <span style="color:#e6db74">&#39;appid&#39;</span> ],
+            <span style="color:#e6db74">&#34;timeStamp&#34;</span> <span style="color:#f92672">=&gt;</span> (<span style="color:#a6e22e">string</span>)$unix_timestamp,
+            <span style="color:#e6db74">&#34;nonceStr&#34;</span>  <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">createNonceStr</span>(),
+            <span style="color:#e6db74">&#34;package&#34;</span>   <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;prepay_id=&#34;</span> <span style="color:#f92672">.</span> $unifiedOrder<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepay_id</span>,
+            <span style="color:#e6db74">&#34;signType&#34;</span>  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;MD5&#39;</span>,
+        ];
+        $arr[ <span style="color:#e6db74">&#39;paySign&#39;</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">getSign</span>($arr, $config[ <span style="color:#e6db74">&#39;key&#39;</span> ]);
+
+        <span style="color:#66d9ef">return</span> $arr;
+    }
+
+
+    <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">     * 生成签名
+</span><span style="color:#e6db74">     * @param $params
+</span><span style="color:#e6db74">     * @param $key
+</span><span style="color:#e6db74">     * @return string
+</span><span style="color:#e6db74">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getSign</span>($params, $key)
+    {
+        <span style="color:#a6e22e">ksort</span>($params, <span style="color:#a6e22e">SORT_STRING</span>);
+        $unSignParaString <span style="color:#f92672">=</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">formatQueryParaMap</span>($params, <span style="color:#66d9ef">false</span>);
+        $signStr <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtoupper</span>(<span style="color:#a6e22e">md5</span>($unSignParaString <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&amp;key=&#34;</span> <span style="color:#f92672">.</span> $key));
+        <span style="color:#66d9ef">return</span> $signStr;
+    }
+
+
+    <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">     * 随机字符串
+</span><span style="color:#e6db74">     * @param int $length
+</span><span style="color:#e6db74">     * @return string
+</span><span style="color:#e6db74">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createNonceStr</span>($length <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>)
+    {
+        $chars <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#39;</span>;
+        $str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        <span style="color:#66d9ef">for</span> ($i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; $i <span style="color:#f92672">&lt;</span> $length; $i<span style="color:#f92672">++</span>) {
+            $str <span style="color:#f92672">.=</span> <span style="color:#a6e22e">substr</span>($chars, <span style="color:#a6e22e">mt_rand</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">strlen</span>($chars) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>), <span style="color:#ae81ff">1</span>);
+        }
+        <span style="color:#66d9ef">return</span> $str;
+    }
+
+
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">formatQueryParaMap</span>($paraMap, $urlEncode <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>)
+    {
+        $buff <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+        <span style="color:#a6e22e">ksort</span>($paraMap);
+        <span style="color:#66d9ef">foreach</span> ($paraMap <span style="color:#66d9ef">as</span> $k <span style="color:#f92672">=&gt;</span> $v) {
+            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">null</span> <span style="color:#f92672">!=</span> $v <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;null&#34;</span> <span style="color:#f92672">!=</span> $v) {
+                <span style="color:#66d9ef">if</span> ($urlEncode) {
+                    $v <span style="color:#f92672">=</span> <span style="color:#a6e22e">urlencode</span>($v);
+                }
+                $buff <span style="color:#f92672">.=</span> $k <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">.</span> $v <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&amp;&#34;</span>;
+            }
+        }
+        $reqPar <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">strlen</span>($buff) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+            $reqPar <span style="color:#f92672">=</span> <span style="color:#a6e22e">substr</span>($buff, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">strlen</span>($buff) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+        }
+        <span style="color:#66d9ef">return</span> $reqPar;
+    }
+
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">arrayToXml</span>($arr)
+    {
+        $xml <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;xml&gt;&#34;</span>;
+        <span style="color:#66d9ef">foreach</span> ($arr <span style="color:#66d9ef">as</span> $key <span style="color:#f92672">=&gt;</span> $val) {
+            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">is_numeric</span>($val)) {
+                $xml <span style="color:#f92672">.=</span> <span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#f92672">.</span> $key <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&gt;&#34;</span> <span style="color:#f92672">.</span> $val <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&lt;/&#34;</span> <span style="color:#f92672">.</span> $key <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&gt;&#34;</span>;
+            } <span style="color:#66d9ef">else</span> {
+                $xml <span style="color:#f92672">.=</span> <span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#f92672">.</span> $key <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&gt;&lt;![CDATA[&#34;</span> <span style="color:#f92672">.</span> $val <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;]]&gt;&lt;/&#34;</span> <span style="color:#f92672">.</span> $key <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&gt;&#34;</span>;
+            }
+        }
+        $xml <span style="color:#f92672">.=</span> <span style="color:#e6db74">&#34;&lt;/xml&gt;&#34;</span>;
+        <span style="color:#66d9ef">return</span> $xml;
+    }
+
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">curlPost</span>($url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>, $postData <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>, $options <span style="color:#f92672">=</span> [])
+    {
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">is_array</span>($postData)) { <span style="color:#75715e">/// 直接发送数组会增加请求时间,重新将数组build成 URL-encode 字符串
+</span><span style="color:#75715e"></span>            $postData <span style="color:#f92672">=</span> <span style="color:#a6e22e">http_build_query</span>($postData);
+        }
+        $ch <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_init</span>();
+        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_URL</span>, $url);
+        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_RETURNTRANSFER</span>, <span style="color:#ae81ff">1</span>);
+        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_POST</span>, <span style="color:#ae81ff">1</span>);
+        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_POSTFIELDS</span>, $postData);
+        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_TIMEOUT</span>, <span style="color:#ae81ff">30</span>); <span style="color:#75715e">//设置cURL允许执行的最长秒数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($options)) {
+            <span style="color:#a6e22e">curl_setopt_array</span>($ch, $options);
+        }
+        <span style="color:#75715e">//https请求 不验证证书和host
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_SSL_VERIFYPEER</span>, <span style="color:#66d9ef">false</span>);
+        <span style="color:#a6e22e">curl_setopt</span>($ch, <span style="color:#a6e22e">CURLOPT_SSL_VERIFYHOST</span>, <span style="color:#66d9ef">false</span>);
+        $data <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_exec</span>($ch);
+        <span style="color:#a6e22e">curl_close</span>($ch);
+
+        <span style="color:#66d9ef">return</span> $data;
+    }
+}
+</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>351</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

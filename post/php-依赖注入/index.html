@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>PHP 依赖注入</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="PHP 依赖注入" />
+    <meta name="twitter:description" content="
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PHP 依赖注入" />
+  <meta property="og:description" content="
+" />
+  <meta property="og:url" content="http://localhost:1313/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">PHP 依赖注入</h1>
+      <p class="post-meta">@郭扑克 · Apr 6, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p></p>
+
+<h4 id="依赖注入简单说就是通过构造注入-函数调用或者属性的设置来提供组件的赖关系">依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。</h4>
+
+<p>下面是一个简单的实例化类：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">Databases</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Databases</span>
+{
+    <span style="color:#66d9ef">protected</span> $adapter;
+	
+  	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct()
+    {
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adapter</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MysqlAdapter</span>;
+    }
+}
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlAdapter</span> {<span style="color:#a6e22e">code</span><span style="color:#f92672">...</span>}
+</code></pre></div>
+<p>使用依赖注入重构，实现解耦：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">Database</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Database</span>
+{
+    <span style="color:#66d9ef">protected</span> $adapter;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct(<span style="color:#a6e22e">MySqlAdapter</span> $adapter)
+    {
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adapter</span> <span style="color:#f92672">=</span> $adapter;
+    }
+}
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlAdapter</span> {<span style="color:#a6e22e">code</span><span style="color:#f92672">...</span>}
+</code></pre></div>
+<p>这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。</p>
+
+<h4 id="控制反转">控制反转</h4>
+
+<p>顾名思义，一个系统通过组织控制和对象的完全分离来实现”控制反转”。对于依赖注入，这就意味着通过在系统的其他地方控制和实例化依赖对象，从而实现了解耦。</p>
+
+<h4 id="依赖反转准则">依赖反转准则</h4>
+
+<p>依赖反转准则是面向对象设计准则 S.O.L.I.D 中的 “D” ，倡导 &ldquo;依赖于抽象而不是具体&rdquo;，依赖应该是接口或着抽象类，不是固定具体的实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">Database</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Database</span>
+{
+    <span style="color:#66d9ef">protected</span> $adapter;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct(<span style="color:#a6e22e">AdapterInterface</span> $adapter)
+    {
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adapter</span> <span style="color:#f92672">=</span> $adapter;
+    }
+}
+
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AdapterInterface</span> {}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlAdapter</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">AdapterInterface</span> {<span style="color:#a6e22e">code</span><span style="color:#f92672">...</span>}
+</code></pre></div>
+<p>这样方法的一个最大的好处是代码扩展性会变得更高。如果项目中决定要迁移一种不同的数据库，只需要写一个实现相应接口的适配器注入进 Database 这个类，根本不需要重构代码。</p></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>484</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

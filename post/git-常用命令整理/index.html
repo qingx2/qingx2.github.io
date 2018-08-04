@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Git 常用命令整理</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Git 常用命令整理" />
+    <meta name="twitter:description" content="
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Git 常用命令整理" />
+  <meta property="og:description" content="
+" />
+  <meta property="og:url" content="http://localhost:1313/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Git 常用命令整理</h1>
+      <p class="post-meta">@郭扑克 · Apr 11, 2017 · 2 min read</p>
+    </header>
+    <article class="post-content"><p></p>
+
+<blockquote>
+<h5 id="git-config-配置文件的三种级别">git config 配置文件的三种级别</h5>
+</blockquote>
+
+<pre><code># 版本库级别:
+git config -e
+# 全局(用户主目录下):
+git config -e --global
+# 系统级:
+git config -e --system
+</code></pre>
+
+<blockquote>
+<h5 id="添加修改配置文件参数">添加修改配置文件参数</h5>
+</blockquote>
+
+<pre><code>git config a.b something
+</code></pre>
+
+<blockquote>
+<h5 id="不删除工作目录文件-仅删除暂存区的文件">不删除工作目录文件，仅删除暂存区的文件</h5>
+</blockquote>
+
+<pre><code>git rm --cached cached.txt
+</code></pre>
+
+<blockquote>
+<h5 id="跳过使用暂存区域直接提交">跳过使用暂存区域直接提交</h5>
+</blockquote>
+
+<pre><code>git commit -a -m &quot;不使用git add 直接提交&quot;
+</code></pre>
+
+<blockquote>
+<h5 id="查找当前工作区的git版本库位置">查找当前工作区的Git版本库位置</h5>
+</blockquote>
+
+<pre><code>$ pwd
+/Applications/www/My blog/source
+$ git rev-parse --git-dir
+/Applications/www/My blog/.git
+</code></pre>
+
+<blockquote>
+<h5 id="显示工作区根目录">显示工作区根目录</h5>
+</blockquote>
+
+<pre><code>git rev-parse --
+
+/Applications/www/My blog
+</code></pre>
+
+<blockquote>
+<h5 id="显示工作区根目录的相对目录">显示工作区根目录的相对目录</h5>
+</blockquote>
+
+<pre><code>$ cd source/_posts
+git rev-parse --show-prefix
+source/_posts/
+</code></pre>
+
+<blockquote>
+<h5 id="重新修改最新的提交-改正作者和提交者的错误信息">重新修改最新的提交, 改正作者和提交者的错误信息</h5>
+</blockquote>
+
+<pre><code>$ git commit --amend --allow-empty --reset-author
+## 参数说明:
+    # --amend 对刚刚的提交进行修补,不产生新的提交
+    # --allow-empty 使空白提交被允许
+    # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息
+</code></pre>
+
+<blockquote>
+<h5 id="精简查看日志">精简查看日志</h5>
+</blockquote>
+
+<pre><code>git log --pretty=oneline
+</code></pre>
+
+<blockquote>
+<h5 id="精简格式的状态">精简格式的状态</h5>
+</blockquote>
+
+<pre><code>git status -s
+</code></pre>
+
+<blockquote>
+<h5 id="比较差异">比较差异</h5>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 工作区与提交暂存区(stage)对比:
+</span><span style="color:#75715e"></span>git diff
+<span style="color:#75715e"># 工作区与HEAD(当前工作分支)对比:
+</span><span style="color:#75715e"></span>git diff HEAD
+<span style="color:#75715e"># 提交暂存区与版本库文件比较:
+</span><span style="color:#75715e"></span>git diff --cached
+<span style="color:#75715e"># 比较里程碑 A 和里程碑 B
+</span><span style="color:#75715e"></span>git diff A B
+<span style="color:#75715e"># 比较工作区和里程碑 A
+</span><span style="color:#75715e"></span>git diff A</code></pre></div>
+<blockquote>
+<h5 id="逐词比较">逐词比较</h5>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git diff --word-diff</code></pre></div>
+<blockquote>
+<h5 id="文件追溯-找出谁修改过文件-由谁引入">文件追溯，找出谁修改过文件，由谁引入</h5>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git blame README
+<span style="color:#75715e"># 只查看第2行后面的3行
+</span><span style="color:#75715e"></span>git blame -L <span style="color:#ae81ff">2</span>,+3 README</code></pre></div>
+<blockquote>
+<h5 id="显示暂存区的目录树">显示暂存区的目录树</h5>
+</blockquote>
+
+<pre><code>git ls-file -s
+</code></pre>
+
+<blockquote>
+<h5 id="通过git日志重置master">通过Git日志重置master</h5>
+</blockquote>
+
+<pre><code>$ git reflog show master| head -5
+9cb12d3 master@{0}: reset: moving to 9cb12d3
+f1fbdca master@{1}: reset: moving to HEAD^
+cba158e master@{2}: commit: does master follow this new commit?
+f1fbdca master@{3}: commit: which version checked in?
+9f47925 master@{4}: commit: welcaome Push
+
+# 重置master为两次改变之前的值
+$ git reset --hard master@{2}
+</code></pre>
+
+<blockquote>
+<h5 id="撤回上一次commit提交-工作区内容不改变">撤回上一次commit提交, 工作区内容不改变</h5>
+</blockquote>
+
+<pre><code>git reset --soft HEAD^
+
+# 参数解释:
+--soft  
+不删除工作空间改动代码，撤销commit，不撤销git add . 
+--mixed 
+意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的
+--hard
+删除工作空间改动代码，撤销commit，撤销git add . 
+</code></pre>
+
+<blockquote>
+<h5 id="查看当前-head-的指向">查看当前 HEAD 的指向</h5>
+</blockquote>
+
+<pre><code>$ cat .git/HEAD
+ref: refs/heads/master
+</code></pre>
+
+<blockquote>
+<h5 id="挽救分离头指针">挽救分离头指针</h5>
+</blockquote>
+
+<pre><code># 1.在分离头指针的分支上查看并记录下提交 ID
+git:(04f430b) $ cat .git/HEAD
+04f430b1ff24534b9fd8a8ccf0e96b6df1f4179f
+
+# 2.切换回 master 分支进行 merge 将分离的修改内容与 master 进行合并
+$ git checkout master
+$ git merge 04f430b1ff24534b9fd8a8ccf0e96b6df1f4179f
+</code></pre>
+
+<blockquote>
+<h5 id="commit-后-想回到之前的状态-放弃最新的提交">commit 后，想回到之前的状态，放弃最新的提交</h5>
+</blockquote>
+
+<pre><code>git reset --soft HEAD^
+# 提交日志也被抛弃...
+</code></pre>
+
+<blockquote>
+<h5 id="将暂存区的文件撤出-add-后的文件">将暂存区的文件撤出(add 后的文件)</h5>
+</blockquote>
+
+<pre><code># 撤出所有暂存区文件
+$ git reset
+# 撤出指定文件
+$ git reset HEAD path/to/workspace/welcome.txt
+</code></pre>
+
+<blockquote>
+<h5 id="清除本地修改">清除本地修改</h5>
+</blockquote>
+
+<pre><code>$ git st -s
+M README.md
+?? abc.html
+
+$ git checkout -- README.md
+</code></pre>
+
+<blockquote>
+<h5 id="删除本地多余文件或目录">删除本地多余文件或目录</h5>
+</blockquote>
+
+<pre><code># 确保万一，先查询会删除哪些文件
+git clean -nd
+# 开始强制删除文件或目录
+git clean -fd
+</code></pre>
+
+<blockquote>
+<h5 id="创建里程碑">创建里程碑</h5>
+</blockquote>
+
+<pre><code>git tag -m &quot;Say bye-bye to all previous practice.&quot; old_pratice
+</code></pre>
+
+<blockquote>
+<h5 id="查看暂存区文件目录">查看暂存区文件目录</h5>
+</blockquote>
+
+<pre><code>git ls-files
+</code></pre>
+
+<blockquote>
+<h5 id="查看历史版本的文件列表">查看历史版本的文件列表</h5>
+</blockquote>
+
+<pre><code>$ git ls-files --with-tree=HEAD^
+README.md
+detacaed-commit.txt
+new-welcome.txt
+welcome.txt
+</code></pre>
+
+<blockquote>
+<h5 id="查看历史版本中尚存的删除文件的内容">查看历史版本中尚存的删除文件的内容</h5>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git cat-file -p HEAD^:welcome.txt
+hello. git
+Nice to meet you
+hello echo</code></pre></div>
+<blockquote>
+<h5 id="将-版本库追踪的-本地文件的变更全部记录到暂存区中">将(版本库追踪的)本地文件的变更全部记录到暂存区中</h5>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add -u</code></pre></div>
+<blockquote>
+<h5 id="从历史-head-前一次提交-恢复指定文件">从历史( HEAD^ 前一次提交)恢复指定文件</h5>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell"><span style="color:#75715e"># 以下3种命令均可实现
+</span><span style="color:#75715e"></span>$ git cat-file -p HEAD~1:welcome.txt &gt; welcome.txt
+$ git show HEAD~1:welcome.txt &gt; welcome.txt
+$ git checkout HEAD~1 --welcome.txt</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>479</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

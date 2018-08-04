@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>php7新特性学习</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="参考PHP官网个人记录学习
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="php7新特性学习" />
+    <meta name="twitter:description" content="参考PHP官网个人记录学习
+
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="php7新特性学习" />
+  <meta property="og:description" content="参考PHP官网个人记录学习
+
+" />
+  <meta property="og:url" content="http://localhost:1313/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">php7新特性学习</h1>
+      <p class="post-meta">@郭扑克 · Jul 1, 2017 · 2 min read</p>
+    </header>
+    <article class="post-content"><p><em>参考<a href="http://php.net/manual/zh/migration70.new-features.php">PHP官网</a>个人记录学习</em></p>
+
+<p></p>
+
+<h4 id="null合并运算符">null合并运算符</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// 支持链式语法操作,会返回第一个有值的数据
+$username = $_GET[&#39;user&#39;] ?? $_POST[&#39;user&#39;] ?? &#39;nobody&#39;;</code></pre></div>
+<p><br/></p>
+
+<h4 id="返回值类型声明">返回值类型声明</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// 返回类型声明指明了函数返回值的类型
+function arraysSum(array ...$arrays): array
+{
+    return array_map(function(array $array): int {
+        return array_sum($array);
+    }, $arrays);
+}
+
+print_r(arraysSum([1,2,3], [4,5,6], [7,8,9]));
+
+// 输出结果
+Array
+(
+    [0] =&gt; 6
+    [1] =&gt; 15
+    [2] =&gt; 24
+)</code></pre></div>
+<h4 id="太空船操作符-组合比较符">太空船操作符（组合比较符）</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">echo &#34;a&#34; <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; &#34;a&#34;; // 0
+echo &#34;a&#34; <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; &#34;b&#34;; // -1
+echo &#34;b&#34; <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; &#34;a&#34;; // 1
+
+echo 1 <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; 1; // 0
+echo 1 <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; 2; // -1
+echo 2 <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; 1; // 1</code></pre></div>
+<h4 id="匿名类">匿名类</h4>
+
+<p>通过<em>new class</em> 来实例化一个匿名类，传递参数到匿名类的构造器，也可以扩展（extend）其他类、实现接口（implement interface），这可以用来替代一些“用后即焚”的完整类定义。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Logger</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">string</span> $msg);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> {
+    <span style="color:#66d9ef">private</span> $logger;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getLogger</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Logger</span> {
+         <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">logger</span>;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setLogger</span>(<span style="color:#a6e22e">Logger</span> $logger) {
+         $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">logger</span> <span style="color:#f92672">=</span> $logger;
+    }
+}
+
+
+$app <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>;
+$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogger</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">implements</span> <span style="color:#a6e22e">Logger</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">string</span> $msg) {
+        <span style="color:#66d9ef">echo</span> $msg;
+    }
+});
+
+<span style="color:#a6e22e">var_dump</span>($app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getLogger</span>());
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div>
+<h4 id="同一-namespace-可使用-use-一次性引进">同一 <code>namespace</code> 可使用 <code>use</code> 一次性引进</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#75715e">// PHP 7 之前的代码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">some\namespace\ClassA</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">some\namespace\ClassB</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">some\namespace\ClassC</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">C</span>;
+
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">some\namespace\fn_a</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">some\namespace\fn_b</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">some\namespace\fn_c</span>;
+
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">some\namespace\ConstA</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">some\namespace\ConstB</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">some\namespace\ConstC</span>;
+
+<span style="color:#75715e">// PHP 7+ 及更高版本的代码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">some\namespace\</span>{<span style="color:#a6e22e">ClassA</span>, <span style="color:#a6e22e">ClassB</span>, <span style="color:#a6e22e">ClassC</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">C</span>};
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">some\namespace\</span>{<span style="color:#a6e22e">fn_a</span>, <span style="color:#a6e22e">fn_b</span>, <span style="color:#a6e22e">fn_c</span>};
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">some\namespace\</span>{<span style="color:#a6e22e">ConstA</span>, <span style="color:#a6e22e">ConstB</span>, <span style="color:#a6e22e">ConstC</span>};
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div>
+<h4 id="新增整数除法函数-intdiv">新增整数除法函数 <code>intdiv()</code></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">intdiv</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">3</span>));
+
+<span style="color:#75715e">// 输出
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">int</span>(<span style="color:#ae81ff">3</span>)
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div>
+<h4 id="新增-preg-replace-callback-array">新增 <code>preg_replace_callback_array</code></h4>
+
+<p>可在次函数体内使用数组形式执行多个 正则表达式搜索并且使用回调进行替换的功能</p>
+
+<p>类似<a href="http://php.net/manual/zh/function.preg-replace-callback.php">函数</a> <code>preg_replace_callback</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$subject <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Aaaaaa Bbb&#39;</span>;
+
+<span style="color:#a6e22e">preg_replace_callback_array</span>(
+    [
+        <span style="color:#e6db74">&#39;~[a]+~i&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">function</span> ($match) {
+            <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strlen</span>($match[<span style="color:#ae81ff">0</span>]), <span style="color:#e6db74">&#39; matches for &#34;a&#34; found&#39;</span>, <span style="color:#a6e22e">PHP_EOL</span>;
+        },
+        <span style="color:#e6db74">&#39;~[b]+~i&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">function</span> ($match) {
+            <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strlen</span>($match[<span style="color:#ae81ff">0</span>]), <span style="color:#e6db74">&#39; matches for &#34;b&#34; found&#39;</span>, <span style="color:#a6e22e">PHP_EOL</span>;
+        }
+    ],
+    $subject
+);
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div>
+<h4 id="新增2个高安全级别的生成随机数函数">新增2个高安全级别的生成随机数函数</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">// 生成适合加密使用的加密随机字节的任意长度字符串，如生成盐、密钥或初始化向量时的字符串。 random_bytes()
+</span><span style="color:#75715e"></span>$bytes <span style="color:#f92672">=</span> <span style="color:#a6e22e">random_bytes</span>(<span style="color:#ae81ff">5</span>);
+<span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">bin2hex</span>($bytes)); <span style="color:#75715e">// string(10) &#34;385e33f741&#34;
+</span><span style="color:#75715e"></span>  
+
+<span style="color:#75715e">// 生成随机整数 random_int()
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">random_int</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">999</span>)); <span style="color:#75715e">// int(248)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">random_int</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// int(-898)
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>399</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

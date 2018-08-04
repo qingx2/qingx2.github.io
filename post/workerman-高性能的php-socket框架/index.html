@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Workerman - 高性能的PHP socket框架</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="介绍 ​ WorkerMan是一款纯PHP开发的开源的高性能的PHP socket服务器框架，基于WorkerMan开发者可以开发出各种网络服务器，即时IM通讯，游戏服务器通讯，与硬件传感器通讯等等，开发这些应用程序我们无法直接使用Nginx/Apache &#43; PHP来实现，几乎任何基于TCP/UDP通讯的服务端都可以用WorkerMan来开发。WorkerMan使得开发者摆脱PHP只能用于Web开发的束缚，向更广阔的前景发展。
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Workerman - 高性能的PHP socket框架" />
+    <meta name="twitter:description" content="介绍 ​ WorkerMan是一款纯PHP开发的开源的高性能的PHP socket服务器框架，基于WorkerMan开发者可以开发出各种网络服务器，即时IM通讯，游戏服务器通讯，与硬件传感器通讯等等，开发这些应用程序我们无法直接使用Nginx/Apache &#43; PHP来实现，几乎任何基于TCP/UDP通讯的服务端都可以用WorkerMan来开发。WorkerMan使得开发者摆脱PHP只能用于Web开发的束缚，向更广阔的前景发展。
+
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Workerman - 高性能的PHP socket框架" />
+  <meta property="og:description" content="介绍 ​ WorkerMan是一款纯PHP开发的开源的高性能的PHP socket服务器框架，基于WorkerMan开发者可以开发出各种网络服务器，即时IM通讯，游戏服务器通讯，与硬件传感器通讯等等，开发这些应用程序我们无法直接使用Nginx/Apache &#43; PHP来实现，几乎任何基于TCP/UDP通讯的服务端都可以用WorkerMan来开发。WorkerMan使得开发者摆脱PHP只能用于Web开发的束缚，向更广阔的前景发展。
+
+" />
+  <meta property="og:url" content="http://localhost:1313/post/workerman-%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84php-socket%E6%A1%86%E6%9E%B6/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/workerman-%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84php-socket%E6%A1%86%E6%9E%B6/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Workerman - 高性能的PHP socket框架</h1>
+      <p class="post-meta">@郭扑克 · Apr 20, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><h4 id="介绍">介绍</h4>
+
+<p>​   <a href="http://doc3.workerman.net/">WorkerMan</a>是一款纯PHP开发的开源的高性能的PHP socket服务器框架，基于WorkerMan开发者可以开发出各种网络服务器，即时IM通讯，游戏服务器通讯，与硬件传感器通讯等等，开发这些应用程序我们无法直接使用Nginx/Apache + PHP来实现，几乎任何基于TCP/UDP通讯的服务端都可以用WorkerMan来开发。WorkerMan使得开发者摆脱PHP只能用于Web开发的束缚，向更广阔的前景发展。</p>
+
+<p></p>
+
+<h4 id="特性">特性</h4>
+
+<ol>
+<li><p>纯 PHP 开发</p></li>
+
+<li><p>支持PHP多进程</p></li>
+
+<li><p>支持TCP、UDP</p></li>
+
+<li><p>支持长连接</p></li>
+
+<li><p>支持各种应用层协议</p></li>
+
+<li><p>支持高并发</p></li>
+
+<li><p>支持服务平滑重启</p></li>
+
+<li><p>支持文件更新检测及自动加载</p></li>
+
+<li><p>支持以指定用户运行子进程</p></li>
+
+<li><p>支持对象或者资源永久保持</p></li>
+
+<li><p>高性能</p></li>
+
+<li><p>支持HHVM</p></li>
+
+<li><p>支持分布式部署</p></li>
+
+<li><p>支持守护进程化</p></li>
+
+<li><p>支持多端口监听</p></li>
+
+<li><p>支持标准输入输出重定向</p></li>
+</ol>
+
+<h4 id="安装配置">安装配置</h4>
+
+<ol>
+<li><a href="http://cn2.php.net/manual/zh/book.pcntl.php">pcntl扩展</a></li>
+</ol>
+
+<p>pcntl 扩展是 PHP 在 Linux 环境下进程控制的扩展</p>
+
+<ol>
+<li><a href="http://cn2.php.net/manual/zh/book.posix.php">posix扩展</a></li>
+</ol>
+
+<p>posix扩展使得PHP在Linux环境可以调用系统通过<a href="http://baike.baidu.com/view/209573.htm">POSIX标准</a>提供的接口</p>
+
+<ol>
+<li><a href="http://cn2.php.net/manual/en/book.libevent.php">libevent扩展</a> 或者 <a href="http://php.net/manual/zh/book.event.php">Event扩展</a></li>
+</ol>
+
+<p>libevent扩展(或者event扩展)使得PHP可以使用系统<a href="http://baike.baidu.com/view/1385104.htm">Epoll</a>、Kqueue等高级事件处理机制，能够显著提高WorkerMan在高并发连接时CPU利用率。在高并发长连接相关应用中非常重要。（非必要安装，默认使用PHP 原生 Select 事件处理机制）</p>
+
+<h4 id="目录结构">目录结构</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">Workerman                      // workerman内核代码
+    ├── Connection                 // socket连接相关
+    │   ├── ConnectionInterface.php// socket连接接口
+    │   ├── TcpConnection.php      // Tcp连接类
+    │   ├── AsyncTcpConnection.php // 异步Tcp连接类
+    │   └── UdpConnection.php      // Udp连接类
+    ├── Events                     // 网络事件库
+    │   ├── EventInterface.php     // 网络事件库接口
+    │   ├── Libevent.php           // Libevent网络事件库
+    │   ├── Ev.php                 // Libev网络事件库
+    │   └── Select.php             // Select网络事件库
+    ├── Lib                        // 常用的类库
+    │   ├── Constants.php          // 常量定义
+    │   └── Timer.php              // 定时器
+    ├── Protocols                  // 协议相关
+    │   ├── ProtocolInterface.php  // 协议接口类
+    │   ├── Http                   // http协议相关
+    │   │   └── mime.types         // mime类型
+    │   ├── Http.php               // http协议实现
+    │   ├── Text.php               // Text协议实现
+    │   ├── Frame.php              // Frame协议实现
+    │   └── Websocket.php          // websocket协议的实现
+    ├── Worker.php                 // Worker
+    ├── WebServer.php              // WebServer
+    └── Autoloader.php             // 自动加载类</code></pre></div>
+<h4 id="可用协议">可用协议</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// http协议
+$worker1 = new Worker(&#39;http://0.0.0.0:1221&#39;);
+// websocket协议
+$worker2 = new Worker(&#39;websocket://0.0.0.0:1222&#39;);
+// text文本协议（telnet协议）
+$worker3 = new Worker(&#39;text://0.0.0.0:1223&#39;);
+// frame文本协议（可用于二进制数传输）
+$worker3 = new Worker(&#39;frame://0.0.0.0:1223&#39;);
+// 直接基于tcp传输
+$worker4 = new Worker(&#39;tcp://0.0.0.0:1224&#39;);
+// 直接基于udp传输
+$worker5 = new Worker(&#39;udp://0.0.0.0:1225&#39;);
+// 还可以自己定制协议
+// 使用测试</code></pre></div>
+<h4 id="gatewayworker">GatewayWorker</h4>
+
+<p><a href="http://www.workerman.net/gatewaydoc/">GatewayWorker</a>基于Workerman开发的一个项目框架，用于快速开发TCP长连接应用，GatewayWorker提供非常方便的API，可以全局广播数据、可以向某个群体广播数据、也可以向某个特定客户端推送数据。配合Workerman的定时器，也可以定时推送数据。</p></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>470</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

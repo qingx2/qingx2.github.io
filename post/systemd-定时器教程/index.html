@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Systemd 定时器教程</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="作者： 阮一峰 日期： 2018年3月30日
+Systemd 作为 Linux 的系统启动器，功能强大。
+本文通过一个简单例子，介绍 Systemd 如何设置定时任务。这不仅实用，而且可以作为 Systemd 的上手教程。
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Systemd 定时器教程" />
+    <meta name="twitter:description" content="作者： 阮一峰 日期： 2018年3月30日
+Systemd 作为 Linux 的系统启动器，功能强大。
+本文通过一个简单例子，介绍 Systemd 如何设置定时任务。这不仅实用，而且可以作为 Systemd 的上手教程。
+
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Systemd 定时器教程" />
+  <meta property="og:description" content="作者： 阮一峰 日期： 2018年3月30日
+Systemd 作为 Linux 的系统启动器，功能强大。
+本文通过一个简单例子，介绍 Systemd 如何设置定时任务。这不仅实用，而且可以作为 Systemd 的上手教程。
+
+" />
+  <meta property="og:url" content="http://localhost:1313/post/systemd-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%95%99%E7%A8%8B/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/systemd-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%95%99%E7%A8%8B/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Systemd 定时器教程</h1>
+      <p class="post-meta">@郭扑克 · Jun 9, 2018 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>作者： <a href="http://www.ruanyifeng.com/">阮一峰</a> 日期： <a href="http://www.ruanyifeng.com/blog/2018/03/">2018年3月30日</a></p>
+
+<p><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html">Systemd</a> 作为 Linux 的系统启动器，功能强大。</p>
+
+<p>本文通过一个简单例子，介绍 Systemd 如何设置定时任务。这不仅实用，而且可以作为 Systemd 的上手教程。</p>
+
+<p></p>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2018/bg2018033001.jpg" alt="img" /></p>
+
+<h2 id="一-定时任务">一、定时任务</h2>
+
+<p>所谓定时任务，就是未来的某个或多个时点，预定要执行的任务，比如每五分钟收一次邮件、每天半夜两点分析一下日志等等。</p>
+
+<p>Linux 系统通常都使用 <a href="https://wiki.archlinux.org/index.php/Cron_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">cron</a> 设置定时任务，但是 Systemd 也有这个功能，而且优点显著。</p>
+
+<blockquote>
+<ul>
+<li>自动生成日志，配合 Systemd 的日志工具，很方便除错</li>
+<li>可以设置内存和 CPU 的使用额度，比如最多使用50%的 CPU</li>
+<li>任务可以拆分，依赖其他 Systemd 单元，完成非常复杂的任务</li>
+</ul>
+</blockquote>
+
+<p>下面，我就来演示一个 Systemd 定时任务：每小时发送一封电子邮件。</p>
+
+<h2 id="二-邮件脚本">二、邮件脚本</h2>
+
+<p>先写一个发邮件的脚本<code>mail.sh</code>。</p>
+
+<blockquote>
+<pre><code>#!/usr/bin/env bash
+
+echo &quot;This is the body&quot; | /usr/bin/mail -s &quot;Subject&quot; someone@example.com
+</code></pre>
+</blockquote>
+
+<p>上面代码的<code>someone@example.com</code>，请替换成你的邮箱地址。</p>
+
+<p>然后，执行这个脚本。</p>
+
+<blockquote>
+<pre><code>$ bash mail.sh
+</code></pre>
+</blockquote>
+
+<p>执行后，你应该就会收到一封邮件，标题为<code>Subject</code>。</p>
+
+<p>如果你的 Linux 系统不能发邮件，建议安装 <a href="http://tombuntu.com/index.php/2008/10/21/sending-email-from-your-system-with-ssmtp/">ssmtp</a> 或者 <a href="https://wiki.archlinux.org/index.php/msmtp">msmtp</a>。另外，<code>mail</code>命令的用法，可以参考<a href="https://www.binarytides.com/linux-mail-command-examples/">这里</a>。</p>
+
+<h2 id="三-systemd-单元">三、Systemd 单元</h2>
+
+<p>学习 Systemd 的第一步，就是搞懂&rdquo;单元&rdquo;（unit）是什么。</p>
+
+<p>简单说，单元就是 Systemd 的最小功能单位，是单个进程的描述。一个个小的单元互相调用和依赖，组成一个庞大的任务管理系统，这就是 Systemd 的基本思想。</p>
+
+<p>由于 Systemd 要做的事情太多，导致单元有很多<a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">不同的种类</a>，大概一共有12种。举例来说，Service 单元负责后台服务，Timer 单元负责定时器，Slice 单元负责资源的分配。</p>
+
+<p>每个单元都有一个单元描述文件，它们分散在三个目录。</p>
+
+<blockquote>
+<ul>
+<li><code>/lib/systemd/system</code>：系统默认的单元文件</li>
+<li><code>/etc/systemd/system</code>：用户安装的软件的单元文件</li>
+<li><code>/usr/lib/systemd/system</code>：用户自己定义的单元文件</li>
+</ul>
+</blockquote>
+
+<p>下面的命令可以查看所有的单元文件。</p>
+
+<blockquote>
+<pre><code># 查看所有单元
+$ systemctl list-unit-files
+
+# 查看所有 Service 单元
+$ systemctl list-unit-files --type service
+
+# 查看所有 Timer 单元
+$ systemctl list-unit-files --type timer
+</code></pre>
+</blockquote>
+
+<h2 id="四-单元的管理命令">四、单元的管理命令</h2>
+
+<p>下面是常用的单元管理命令。</p>
+
+<blockquote>
+<pre><code># 启动单元
+$ systemctl start [UnitName]
+
+# 关闭单元
+$ systemctl stop [UnitName]
+
+# 重启单元
+$ systemctl restart [UnitName]
+
+# 杀死单元进程
+$ systemctl kill [UnitName]
+
+# 查看单元状态
+$ systemctl status [UnitName]
+
+# 开机自动执行该单元
+$ systemctl enable [UnitName]
+
+# 关闭开机自动执行
+$ systemctl disable [UnitName]
+</code></pre>
+</blockquote>
+
+<h2 id="五-service-单元">五、Service 单元</h2>
+
+<p>前面说过，Service 单元就是所要执行的任务，比如发送邮件就是一种 Service。</p>
+
+<p>新建 Service 非常简单，就是在<code>/usr/lib/systemd/system</code>目录里面新建一个文件，比如<code>mytimer.service</code>文件，你可以写入下面的内容。</p>
+
+<blockquote>
+<pre><code>[Unit]
+Description=MyTimer
+
+[Service]
+ExecStart=/bin/bash /path/to/mail.sh
+</code></pre>
+</blockquote>
+
+<p>可以看到，这个 Service 单元文件分成两个部分。</p>
+
+<p><code>[Unit]</code>部分介绍本单元的基本信息（即元数据），<code>Description</code>字段给出这个单元的简单介绍（名字叫做<code>MyTimer</code>）。</p>
+
+<p><code>[Service]</code>部分用来定制行为，Systemd 提供许多字段。</p>
+
+<blockquote>
+<ul>
+<li><code>ExecStart</code>：<code>systemctl start</code>所要执行的命令</li>
+<li><code>ExecStop</code>：<code>systemctl stop</code>所要执行的命令</li>
+<li><code>ExecReload</code>：<code>systemctl reload</code>所要执行的命令</li>
+<li><code>ExecStartPre</code>：<code>ExecStart</code>之前自动执行的命令</li>
+<li><code>ExecStartPost</code>：<code>ExecStart</code>之后自动执行的命令</li>
+<li><code>ExecStopPost</code>：<code>ExecStop</code>之后自动执行的命令</li>
+</ul>
+</blockquote>
+
+<p>注意，定义的时候，所有路径都要写成绝对路径，比如<code>bash</code>要写成<code>/bin/bash</code>，否则 Systemd 会找不到。</p>
+
+<p>现在，启动这个 Service。</p>
+
+<blockquote>
+<pre><code>$ sudo systemctl start mytimer.service
+</code></pre>
+</blockquote>
+
+<p>如果一切正常，你应该就会收到一封邮件。</p>
+
+<h2 id="六-timer-单元">六、Timer 单元</h2>
+
+<p>Service 单元只是定义了如何执行任务，要定时执行这个 Service，还必须定义 Timer 单元。</p>
+
+<p><code>/usr/lib/systemd/system</code>目录里面，新建一个<code>mytimer.timer</code>文件，写入下面的内容。</p>
+
+<blockquote>
+<pre><code>[Unit]
+Description=Runs mytimer every hour
+
+[Timer]
+OnUnitActiveSec=1h
+Unit=mytimer.service
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+</blockquote>
+
+<p>这个 Timer 单元文件分成几个部分。</p>
+
+<p><code>[Unit]</code>部分定义元数据。</p>
+
+<p><code>[Timer]</code>部分定制定时器。Systemd 提供以下一些字段。</p>
+
+<blockquote>
+<ul>
+<li><code>OnActiveSec</code>：定时器生效后，多少时间开始执行任务</li>
+<li><code>OnBootSec</code>：系统启动后，多少时间开始执行任务</li>
+<li><code>OnStartupSec</code>：Systemd 进程启动后，多少时间开始执行任务</li>
+<li><code>OnUnitActiveSec</code>：该单元上次执行后，等多少时间再次执行</li>
+<li><code>OnUnitInactiveSec</code>： 定时器上次关闭后多少时间，再次执行</li>
+<li><code>OnCalendar</code>：基于绝对时间，而不是相对时间执行</li>
+<li><code>AccuracySec</code>：如果因为各种原因，任务必须推迟执行，推迟的最大秒数，默认是60秒</li>
+<li><code>Unit</code>：真正要执行的任务，默认是同名的带有<code>.service</code>后缀的单元</li>
+<li><code>Persistent</code>：如果设置了该字段，即使定时器到时没有启动，也会自动执行相应的单元</li>
+<li><code>WakeSystem</code>：如果系统休眠，是否自动唤醒系统</li>
+</ul>
+</blockquote>
+
+<p>上面的脚本里面，<code>OnUnitActiveSec=1h</code>表示一小时执行一次任务。其他的写法还有<code>OnUnitActiveSec=*-*-* 02:00:00</code>表示每天凌晨两点执行，<code>OnUnitActiveSec=Mon *-*-* 02:00:00</code>表示每周一凌晨两点执行，具体请参考<a href="https://www.freedesktop.org/software/systemd/man/systemd.time.html">官方文档</a>。</p>
+
+<h2 id="七-install-和-target">七、[Install] 和 target</h2>
+
+<p><code>mytimer.timer</code>文件里面，还有一个<code>[Install]</code>部分，定义开机自启动（<code>systemctl enable</code>）和关闭开机自启动（<code>systemctl disable</code>）这个单元时，所要执行的命令。</p>
+
+<p>上面脚本中，<code>[Install]</code>部分只写了一个字段，即<code>WantedBy=multi-user.target</code>。它的意思是，如果执行了<code>systemctl enable mytimer.timer</code>（只要开机，定时器自动生效），那么该定时器归属于<code>multi-user.target</code>。</p>
+
+<p>所谓 Target 指的是一组相关进程，有点像 init 进程模式下面的启动级别。启动某个Target 的时候，属于这个 Target 的所有进程都会全部启动。</p>
+
+<p><code>multi-user.target</code>是一个最常用的 Target，意为多用户模式。也就是说，当系统以多用户模式启动时，就会一起启动<code>mytimer.timer</code>。它背后的操作其实很简单，执行<code>systemctl enable mytimer.timer</code>命令时，就会在<code>multi-user.target.wants</code>目录里面创建一个符号链接，指向<code>mytimer.timer</code>。</p>
+
+<h2 id="八-定时器的相关命令">八、定时器的相关命令</h2>
+
+<p>下面，启动刚刚新建的这个定时器。</p>
+
+<blockquote>
+<pre><code>$ sudo systemctl start mytimer.timer
+</code></pre>
+</blockquote>
+
+<p>你应该立刻就会收到邮件，然后每个小时都会收到同样邮件。</p>
+
+<p>查看这个定时器的状态。</p>
+
+<blockquote>
+<pre><code>$ systemctl status mytimer.timer
+</code></pre>
+</blockquote>
+
+<p>查看所有正在运行的定时器。</p>
+
+<blockquote>
+<pre><code>$ systemctl list-timers
+</code></pre>
+</blockquote>
+
+<p>关闭这个定时器。</p>
+
+<blockquote>
+<pre><code>$ sudo systemctl stop myscript.timer
+</code></pre>
+</blockquote>
+
+<p>下次开机，自动运行这个定时器。</p>
+
+<blockquote>
+<pre><code>$ sudo systemctl enable myscript.timer
+</code></pre>
+</blockquote>
+
+<p>关闭定时器的开机自启动。</p>
+
+<blockquote>
+<pre><code>$ sudo systemctl disable myscript.timer
+</code></pre>
+</blockquote>
+
+<h2 id="九-日志相关命令">九、日志相关命令</h2>
+
+<p>如果发生问题，就需要查看日志。Systemd 的日志功能很强，提供统一的命令。</p>
+
+<blockquote>
+<pre><code># 查看整个日志
+$ sudo journalctl
+
+# 查看 mytimer.timer 的日志
+$ sudo journalctl -u mytimer.timer
+
+# 查看 mytimer.timer 和 mytimer.service 的日志
+$ sudo journalctl -u mytimer
+
+# 从结尾开始查看最新日志
+$ sudo journalctl -f
+
+# 从结尾开始查看 mytimer.timer 的日志
+$ journalctl -f -u timer.timer
+</code></pre>
+</blockquote>
+
+<h2 id="十-参考链接">十、参考链接</h2>
+
+<ul>
+<li><a href="https://jason.the-graham.com/2013/03/06/how-to-use-systemd-timers/">How to Use Systemd Timers</a>, by Jason Graham</li>
+<li><a href="https://medium.com/horrible-hacks/using-systemd-as-a-better-cron-a4023eea996d">Using systemd as a better cron</a>, by luqmaan</li>
+<li><a href="https://coreos.com/os/docs/latest/getting-started-with-systemd.html">Getting started with systemd</a>, by CoreOS</li>
+<li><a href="https://wiki.archlinux.org/index.php/Systemd/Timers">systemd/Timers</a>, by ArchWiki</li>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">Understanding Systemd Units and Unit Files</a>, by Justin Ellingwood</li>
+</ul>
+
+<p>（完)</p></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

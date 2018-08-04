@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Yii-自动加载</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="入口脚本(web/index.php) Yii2的advanced版本默认是有2个入口的（frontend、backend），但其实只是在使用同一个框架及公共配置让2个server分离工作进行构建网站、API等。
+Web服务器每将一个请求转发过来的时候，始终只会进一个入口文件，那就是index.php了，这个文件会进行应用的初始化配置、解析路由、处理请求、连接SQL数据库。
+说了这么多，来看看入口文件内容:
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Yii-自动加载" />
+    <meta name="twitter:description" content="入口脚本(web/index.php) Yii2的advanced版本默认是有2个入口的（frontend、backend），但其实只是在使用同一个框架及公共配置让2个server分离工作进行构建网站、API等。
+Web服务器每将一个请求转发过来的时候，始终只会进一个入口文件，那就是index.php了，这个文件会进行应用的初始化配置、解析路由、处理请求、连接SQL数据库。
+说了这么多，来看看入口文件内容:
+
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Yii-自动加载" />
+  <meta property="og:description" content="入口脚本(web/index.php) Yii2的advanced版本默认是有2个入口的（frontend、backend），但其实只是在使用同一个框架及公共配置让2个server分离工作进行构建网站、API等。
+Web服务器每将一个请求转发过来的时候，始终只会进一个入口文件，那就是index.php了，这个文件会进行应用的初始化配置、解析路由、处理请求、连接SQL数据库。
+说了这么多，来看看入口文件内容:
+
+" />
+  <meta property="og:url" content="http://localhost:1313/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Yii-自动加载</h1>
+      <p class="post-meta">@郭扑克 · Sep 28, 2017 · 5 min read</p>
+    </header>
+    <article class="post-content"><h3 id="入口脚本-web-index-php">入口脚本(web/index.php)</h3>
+
+<p>Yii2的<strong>advanced版本</strong>默认是有2个入口的（frontend、backend），但其实只是在使用同一个框架及公共配置让2个server分离工作进行构建网站、API等。</p>
+
+<p>Web服务器每将一个请求转发过来的时候，始终只会进一个入口文件，那就是<code>index.php</code>了，这个文件会进行应用的初始化配置、解析路由、处理请求、连接SQL数据库。</p>
+
+<p>说了这么多，来看看入口文件内容:</p>
+
+<p></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+  <span style="color:#75715e">// 定义是否处于DEBUG模式(框架初始化时 ./init 选择运行环境会影响此处代码是否会产生)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">defined</span>(<span style="color:#e6db74">&#39;YII_DEBUG&#39;</span>) <span style="color:#66d9ef">or</span> <span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#39;YII_DEBUG&#39;</span>, <span style="color:#66d9ef">true</span>);
+<span style="color:#a6e22e">defined</span>(<span style="color:#e6db74">&#39;YII_ENV&#39;</span>) <span style="color:#66d9ef">or</span> <span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#39;YII_ENV&#39;</span>, <span style="color:#e6db74">&#39;dev&#39;</span>);
+
+<span style="color:#75715e">// 载入composer管理依赖包,此处实现了第三方的composer包可以直接调用(因为composer有个autoload.php文件,已经处理好载入类文件的问题)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../../vendor/autoload.php&#39;</span>);
+<span style="color:#75715e">// 载入基础类文件(核心,没有它就不能算是框架了)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../../vendor/yiisoft/yii2/Yii.php&#39;</span>);
+<span style="color:#75715e">// 载入公共的全局配置(各应用之间的目录别名就定义在此)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../../common/config/bootstrap.php&#39;</span>);
+<span style="color:#75715e">// 本server的相关全局配置
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../config/bootstrap.php&#39;</span>);
+
+<span style="color:#75715e">// 合并所有配置项参数,并调用 Application-&gt;run()
+</span><span style="color:#75715e"></span>$config <span style="color:#f92672">=</span> <span style="color:#a6e22e">yii\helpers\ArrayHelper</span><span style="color:#f92672">::</span><span style="color:#a6e22e">merge</span>(
+    <span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../../common/config/main.php&#39;</span>),
+    <span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../../common/config/main-local.php&#39;</span>),
+    <span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../config/main.php&#39;</span>),
+    <span style="color:#66d9ef">require</span>(<span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../config/main-local.php&#39;</span>)
+);
+(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">yii\web\Application</span>($config))<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>();
+</code></pre></div>
+<h3 id="核心基础类-yii-php">核心基础类(Yii.php)</h3>
+
+<p>说<code>vendor/yiisoft/yii2/Yii.php</code>这个类是核心类呢，也不大准确，因为它其实只是一个子类，真正厉害的是它所继承的<code>BaseYii.php</code>，先看一下文件内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// 此处还不能实现自动加载类,哈哈,所以只好简单粗暴require进来了,万变不离其宗
+require(__DIR__ . &#39;/BaseYii.php&#39;);
+
+class Yii extends \yii\BaseYii
+{
+}
+
+spl_autoload_register([&#39;Yii&#39;, &#39;autoload&#39;], true, true);
+Yii::$classMap = require(__DIR__ . &#39;/classes.php&#39;);
+Yii::$container = new yii\di\Container();</code></pre></div>
+<blockquote>
+<p>BaseYii.php</p>
+</blockquote>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjzp35gnakj30uy0ti7aq.jpg" alt="" /></p>
+
+<p>下面分析一下<code>Yii.php</code>的下面三行代码:</p>
+
+<h4 id="1-spl-autoload-register-yii-autoload-true-true">1. spl_autoload_register([&lsquo;Yii&rsquo;, &lsquo;autoload&rsquo;], true, true);</h4>
+
+<p>此处将<code>yii\BaseYii::autoload</code>方法注册为自动加载方法，当new一个找不到类的时候，此autoload方法会自动被调用， PHP5.3版本后增加<a href="http://php.net/manual/zh/function.spl-autoload-register.php">spl_autoload_register</a>函数，使现在的主流框架才有了这么一套自动加载的利器。</p>
+
+<p>来研究一下autoload方法实现了些什么</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">public static function autoload($className)
+    {
+  		// 如果 new 未找到的类是 yii2 内置的核心类，便可以快速根据类名找到其对应的路径
+        if (isset(static::$classMap[$className])) {
+            $classFile = static::$classMap[$className];
+            if ($classFile[0] === &#39;@&#39;) {
+                $classFile = static::getAlias($classFile);
+            }
+        } elseif (strpos($className, &#39;\\&#39;) !== false) { // 自定义类自动载入前替换动作
+          	// 将namespace规范的 \ 替换为 / 文件目录地址
+            $classFile = static::getAlias(&#39;@&#39; . str_replace(&#39;\\&#39;, &#39;/&#39;, $className) . &#39;.php&#39;, false);
+            if ($classFile === false || !is_file($classFile)) {
+                return;
+            }
+        } else {
+            return;
+        }
+
+        include($classFile);
+
+        if (YII_DEBUG <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> !class_exists($className, false) <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> !interface_exists($className, false) <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> !trait_exists($className, false)) {
+            throw new UnknownClassException(&#34;Unable to find &#39;$className&#39; in file: $classFile. Namespace missing?&#34;);
+        }
+    }</code></pre></div>
+<p>此处自定义类的自动载入涉及到一个别名的概念:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$classFile = static::getAlias(&#39;@&#39; . str_replace(&#39;\\&#39;, &#39;/&#39;, $className) . &#39;.php&#39;, false);</code></pre></div>
+<p><code>BaseYii</code>文件有个专门存储别名的属性<code>public static $aliases = ['@yii' =&gt; __DIR__];</code> 回过头看入口文件处引入的<code>require(__DIR__ . '/../../common/config/bootstrap.php');</code>，调用<code>BaseYii</code>内的<code>setAlias()</code>方法将server根目录存入<code>$aliases</code>属性:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">setAlias</span>(<span style="color:#e6db74">&#39;@common&#39;</span>, <span style="color:#a6e22e">dirname</span>(<span style="color:#66d9ef">__DIR__</span>));
+<span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">setAlias</span>(<span style="color:#e6db74">&#39;@frontend&#39;</span>, <span style="color:#a6e22e">dirname</span>(<span style="color:#a6e22e">dirname</span>(<span style="color:#66d9ef">__DIR__</span>)) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/frontend&#39;</span>);
+<span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">setAlias</span>(<span style="color:#e6db74">&#39;@backend&#39;</span>, <span style="color:#a6e22e">dirname</span>(<span style="color:#a6e22e">dirname</span>(<span style="color:#66d9ef">__DIR__</span>)) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/backend&#39;</span>);
+<span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">setAlias</span>(<span style="color:#e6db74">&#39;@console&#39;</span>, <span style="color:#a6e22e">dirname</span>(<span style="color:#a6e22e">dirname</span>(<span style="color:#66d9ef">__DIR__</span>)) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/console&#39;</span>);
+</code></pre></div>
+<p>那么<code>frontend\models\User</code>通过转换后就会去获得 <code>frontend</code>项目下的User文件文件路径，第二个参数决定如果没有找到这个文件是否抛出异常</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$classFile = static::getAlias(&#39;@frontend/models/User.php&#39;, false);</code></pre></div>
+<h4 id="2-yii-classmap-require-dir-classes-php">2. Yii::$classMap = require(<strong>DIR</strong> . &lsquo;/classes.php&rsquo;);</h4>
+
+<p>这个目录就很直接了，保存的是框架的核心基础类对应的类文件路径</p>
+
+<p>此处的常量<code>YII2_PATH</code>已在<code>BaseYii</code>中进行了定义<code>defined('YII2_PATH') or define('YII2_PATH', __DIR__);</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">return [
+  &#39;yii\base\Action&#39; =&gt; YII2_PATH . &#39;/base/Action.php&#39;,
+  &#39;yii\base\ActionEvent&#39; =&gt; YII2_PATH . &#39;/base/ActionEvent.php&#39;,
+  &#39;yii\base\ActionFilter&#39; =&gt; YII2_PATH . &#39;/base/ActionFilter.php&#39;,
+  &#39;yii\base\Application&#39; =&gt; YII2_PATH . &#39;/base/Application.php&#39;,
+  &#39;yii\base\ArrayAccessTrait&#39; =&gt; YII2_PATH . &#39;/base/ArrayAccessTrait.php&#39;,
+  &#39;yii\base\Arrayable&#39; =&gt; YII2_PATH . &#39;/base/Arrayable.php&#39;,
+  &#39;yii\base\ArrayableTrait&#39; =&gt; YII2_PATH . &#39;/base/ArrayableTrait.php&#39;,
+  &#39;yii\base\Behavior&#39; =&gt; YII2_PATH . &#39;/base/Behavior.php&#39;,
+  &#39;yii\base\BootstrapInterface&#39; =&gt; YII2_PATH . &#39;/base/BootstrapInterface.php&#39;,
+  &#39;yii\base\Component&#39; =&gt; YII2_PATH . &#39;/base/Component.php&#39;,
+  
+  // .......
+];</code></pre></div>
+<h4 id="3-yii-container-new-yii-di-container">3. Yii::$container = new yii\di\Container();</h4>
+
+<p>这一步的操作是将实例化依赖注入容器，并赋值给 <code>3. Yii::$container</code> ，Yii内部核心对此类使用非常普遍，占有很高的地位！由 <code>Yii</code> 继承 <code>BaseYii::createObject</code> 里对此类进行更强大更方便的封装，所以一般使用 <code>Yii::createObject()</code> 进行创建对象。</p>
+
+<blockquote>
+<p>For example</p>
+</blockquote>
+
+<ol>
+<li>T.php</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * User: surprisepeas
+</span><span style="color:#e6db74"> * Date: 2017/10/18 23:13
+</span><span style="color:#e6db74"> */</span>
+
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">backend\components</span>;
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>
+{
+    <span style="color:#66d9ef">public</span> $name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;This is T name&#39;</span>;
+}
+</code></pre></div>
+<ol>
+<li>Test.php</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * User: surprisepeas
+</span><span style="color:#e6db74"> * Date: 2017/10/18 23:14
+</span><span style="color:#e6db74"> */</span>
+
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">backend\components</span>;
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>
+{
+    <span style="color:#66d9ef">public</span> $name;
+    <span style="color:#66d9ef">private</span> $_age;
+    <span style="color:#66d9ef">private</span> $_t;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($age, <span style="color:#a6e22e">T</span> $t)
+    {
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_age</span> <span style="color:#f92672">=</span> $age;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_t</span> <span style="color:#f92672">=</span> $t;
+    }
+}
+</code></pre></div>
+<ol>
+<li>ExController</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * User: surprisepeas
+</span><span style="color:#e6db74"> * Date: 2017/10/18 23:16
+</span><span style="color:#e6db74"> */</span>
+
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">console\controllers</span>;
+
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">yii\console\Controller</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Yii</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExController</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Controller</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">actionI</span>()
+    {
+        $testObject <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">createObject</span>([
+            <span style="color:#e6db74">&#39;class&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;backend\components\Test&#39;</span>,
+            <span style="color:#e6db74">&#39;name&#39;</span>  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;new test name&#39;</span>,
+        ],[<span style="color:#ae81ff">20</span>]);
+        <span style="color:#a6e22e">print_r</span>($testObject);
+
+      	<span style="color:#75715e">// 现在来看 common\config\main.php的配置,有那么点明白了吧..
+</span><span style="color:#75715e"></span>        $object <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">createObject</span>([
+            <span style="color:#e6db74">&#39;class&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;yii\db\Connection&#39;</span>,
+            <span style="color:#e6db74">&#39;dsn&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;mysql:host=127.0.0.1;dbname=demo&#39;</span>,
+            <span style="color:#e6db74">&#39;username&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;root&#39;</span>,
+            <span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;&#39;</span>,
+            <span style="color:#e6db74">&#39;charset&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;utf8&#39;</span>,
+        ]);
+        <span style="color:#a6e22e">print_r</span>($object);
+    }
+}
+</code></pre></div>
+<p>console执行命令 <code>./yii ex/i</code> 输出结果如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">backend<span style="color:#ae81ff">\c</span>omponents<span style="color:#ae81ff">\T</span>est <span style="color:#f92672">{</span><span style="color:#75715e">#20
+</span><span style="color:#75715e"></span>  +name: <span style="color:#e6db74">&#34;new test name&#34;</span>
+  -_age: <span style="color:#ae81ff">20</span>
+  -_t: backend<span style="color:#ae81ff">\c</span>omponents<span style="color:#ae81ff">\T</span> <span style="color:#f92672">{</span><span style="color:#75715e">#26
+</span><span style="color:#75715e"></span>    +name: <span style="color:#e6db74">&#34;This is T name&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>具体来分析一下 <code>Yii::createObject()</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/*
+ * 关于$type参数,代码文档说的非常详细,大概翻译如下:
+ * - a string: 为字符串时,表示要创建的对象的类名。
+ * - a configuration array:为数组时,数组内必须包含一个&#39;class&#39;属性，将被视为对象的类名,其余的属性名的值对将用于初始化对象相应的对象属性。
+ * - a PHP callable: 要么是匿名函数,要么是表示类方法的数组,调用应该返		回正在创建的对象的一个新实例。(`[$class or $object, $method]`).
+ *
+ * $params参数是要创建的对象的构造函数
+ */
+public static function createObject($type, array $params = [])
+    {
+        if (is_string($type)) {
+            return static::$container-&gt;get($type, $params);
+        } elseif (is_array($type) <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> isset($type[&#39;class&#39;])) {
+            $class = $type[&#39;class&#39;];
+            unset($type[&#39;class&#39;]);
+            return static::$container-&gt;get($class, $params, $type);
+        } elseif (is_callable($type, true)) {
+            return static::$container-&gt;invoke($type, $params);
+        } elseif (is_array($type)) {
+            throw new InvalidConfigException(&#39;Object configuration must be an array containing a &#34;class&#34; element.&#39;);
+        }
+
+        throw new InvalidConfigException(&#39;Unsupported configuration type: &#39; . gettype($type));
+    }</code></pre></div>
+<p>从上面代码可以看出，字符串类型还是数组类型的 <code>$type</code> 最后其实都是调用 <code>Yii::$container-&gt;get($class)</code> 实例化类。</p>
+
+<p>再回到上面自己写的例子(T.php Test.php)，其实就是这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">Yii::$container-&gt;get(&#39;backend\components\Test&#39;, [20], [&#39;name&#39; =&gt; &#39;new test name&#39;]);</code></pre></div>
+<p>继续往下追踪，看下具体 <code>get</code> 到底做了什么 ：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// 判断是否已存在 $class 的定义(单例的实现)
+if (isset($this-&gt;_singletons[$class])) {
+  // singleton
+  return $this-&gt;_singletons[$class];
+  // 如果 Container::_definitions 属性不存在 $class 的定义，即是否定义过以何种形式实例化 $class，哈，这正符合我们的条件，下面我们走到 Container::build 方法
+} elseif (!isset($this-&gt;_definitions[$class])) {
+  return $this-&gt;build($class, $params, $config);
+}</code></pre></div>
+<p>这个时候我们的 <code>Test</code> 就成为了这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$this-&gt;build(&#39;backend\components\Test&#39;, [20], [&#39;name&#39; =&gt; &#39;new test name&#39;]);</code></pre></div>
+<p>Container::build 方法是实例化类的方法，对于容器，我们知道，build方法要做的核心应该包括下面3点</p>
+
+<ol>
+<li>获取Test的依赖</li>
+<li>解析依赖</li>
+<li>实例化对象</li>
+</ol>
+
+<p>我们粗略的看下build方法的实现，看下面代码的注解部分</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">protected function build($class, $params, $config)
+{
+    /* @var $reflection ReflectionClass */
+    // 获取 $class 的依赖，返回 $class 的反射信息和依赖信息
+    list ($reflection, $dependencies) = $this-&gt;getDependencies($class);
+
+    // 依赖信息是通过构造方法获取的，所以如果我们通过 get 方法有给构造函数传递参数，理应以我们传递的为准，即覆盖掉 getDependencies 获取的
+    foreach ($params as $index =&gt; $param) {
+        $dependencies[$index] = $param;
+    }
+
+    // 解析依赖
+    $dependencies = $this-&gt;resolveDependencies($dependencies, $reflection);
+    if (!$reflection-&gt;isInstantiable()) {
+        throw new NotInstantiableException($reflection-&gt;name);
+    }
+    // 如果$config为空，即不需要给 $class &#34;注入&#34; 属性和属性值，直接实例化
+    if (empty($config)) {
+        return $reflection-&gt;newInstanceArgs($dependencies);
+    }
+
+    // 检查 $class 是否实现了接口 yii\base\Configurable，我们的Test肯定是否了
+    if (!empty($dependencies) <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> $reflection-&gt;implementsInterface(&#39;yii\base\Configurable&#39;)) {
+        // set $config as the last parameter (existing one will be overwritten)
+        $dependencies[count($dependencies) - 1] = $config;
+        return $reflection-&gt;newInstanceArgs($dependencies);
+    } else {
+        // 实例化 $class，并&#34;注入&#34;属性，最后返回我们的对象 $object
+        $object = $reflection-&gt;newInstanceArgs($dependencies);
+        foreach ($config as $name =&gt; $value) {
+            $object-&gt;$name = $value;
+        }
+        return $object;
+    }
+}</code></pre></div>
+<p>整个过程我们明白了，但是 build方法内获取依赖以及解析依赖部分我们有必要看一下，因为这涉及到一个新的源码类 yii\di\Instance 。</p>
+
+<p>首先我们看获取类的依赖 Container::getDependencies方法，该方法的核心实现我们并不陌生。在 <a href="http://xn--zwtw53i.com/2017/09/15/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E3%80%81%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E3%80%81%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/">php之控制反转容器（Ioc Container）</a>一文中最后实现Container容器部分的操作非常雷同。</p>
+
+<p>跟我们手动实现的Container容器相比，注意下面标记的4个地方</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">protected function getDependencies($class)
+{
+    // ①、判断 Container::_reflections 属性是否有保存 $class 的反射信息，如果有就直接返回，不用再解析，毕竟获取类的反射信息也是要消耗时间
+    if (isset($this-&gt;_reflections[$class])) {
+        return [$this-&gt;_reflections[$class], $this-&gt;_dependencies[$class]];
+    }
+
+    $dependencies = [];
+    $reflection = new ReflectionClass($class);
+
+    $constructor = $reflection-&gt;getConstructor();
+    if ($constructor !== null) {
+        foreach ($constructor-&gt;getParameters() as $param) {
+            // ②、获取构造函数的参数时，通过 isDefaultValueAvailable 方法判断参数的默认值
+            if ($param-&gt;isDefaultValueAvailable()) {
+                $dependencies[] = $param-&gt;getDefaultValue();
+            } else {
+                $c = $param-&gt;getClass();
+                // ③、调用 yii\di\Instance::of 方法处理依赖的类名，Instance::of 方法返回 Instace 类的实例
+                $dependencies[] = Instance::of($c === null ? null : $c-&gt;getName());
+            }
+        }
+    }
+    // ④、将反射信息和依赖信息分别保存在 Container::_reflections和Container::_dependencies属性，防止重复实例化该类时重复解析反射信息和依赖信息
+    $this-&gt;_reflections[$class] = $reflection;
+    $this-&gt;_dependencies[$class] = $dependencies;
+
+    return [$reflection, $dependencies];
+}</code></pre></div>
+<p>第③点的 yii\di\Instance，这个类起什么作用呢？</p>
+
+<p>我们准备先说一说依赖解析方法 Container::resolveDependencies 再聊一聊这个事。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">protected function resolveDependencies($dependencies, $reflection = null)
+{
+    foreach ($dependencies as $index =&gt; $dependency) {
+        if ($dependency instanceof Instance) {
+            if ($dependency-&gt;id !== null) {
+                $dependencies[$index] = $this-&gt;get($dependency-&gt;id);
+            } elseif ($reflection !== null) {
+                $name = $reflection-&gt;getConstructor()-&gt;getParameters()[$index]-&gt;getName();
+                $class = $reflection-&gt;getName();
+                throw new InvalidConfigException(&#34;Missing required parameter \&#34;$name\&#34; when instantiating \&#34;$class\&#34;.&#34;);
+            }
+        }
+    }
+    return $dependencies;
+}</code></pre></div>
+<p>这个方法很简单，在该方法中，循环 $class 的依赖信息，判断每一个参数，如果是 yii\di\Instance的实例并且 yii\di\Instace::id属性非空时，再次通过 Container::get方法获取对象。</p>
+
+<p>这是什么意思？</p>
+
+<p>我们用 Test 这个例子来理一下头绪。</p>
+
+<p>首先看一下此时 Test 的依赖信息的数据结构，即 Container::resolveDependencies 方法的第一个参数， $dependencies</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">Array
+(
+    [0] =&gt; 20
+    [1] =&gt; yii\di\Instance Object
+        (
+            [id] =&gt; backend\components\T
+        )
+
+)</code></pre></div>
+<p>这样就清晰多了，如此我们便不难理解 resolveDependencies 方法中再次用 $this-&gt;get($dependency-&gt;id) 的作用，实例化依赖对象嘛。</p>
+
+<p>前前后后合计着 yii\di\Instance 只是临时保存依赖的类名或者接口名而已，这样一来，Container::getDependencies 方法的第③点我们也就明白了。</p>
+
+<p>通常，在配置依赖注入容器时，我们可以通过 Instance 来引用类名、接口名或者别名（并非是我们上文介绍的alias别名，这里只是一个名字而已，比如&rdquo;className&rdquo;），随后会再次被 Container容器解析为实际的对象。</p>
+
+<p>比如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$container = new \yii\di\Container;
+$container-&gt;set(&#39;cache&#39;, [
+    &#39;class&#39; =&gt; &#39;yii\caching\DbCache&#39;,
+    &#39;db&#39; =&gt; \yii\di\Instance::of(&#39;db&#39;)
+]);</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>309</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

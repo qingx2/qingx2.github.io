@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>PHP 面试题纪录</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="数据库 连接数据库 $DB = new PDO(&amp;#34;mysql:host=localhost;dbname=mydatabase&amp;#34;,&amp;#34;root&amp;#34;,&amp;#34;&amp;#34;); $DB-&amp;gt;query(&amp;#34;SET NAMES UTF8&amp;#34;); 
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="PHP 面试题纪录" />
+    <meta name="twitter:description" content="数据库 连接数据库 $DB = new PDO(&amp;#34;mysql:host=localhost;dbname=mydatabase&amp;#34;,&amp;#34;root&amp;#34;,&amp;#34;&amp;#34;); $DB-&amp;gt;query(&amp;#34;SET NAMES UTF8&amp;#34;); 
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PHP 面试题纪录" />
+  <meta property="og:description" content="数据库 连接数据库 $DB = new PDO(&amp;#34;mysql:host=localhost;dbname=mydatabase&amp;#34;,&amp;#34;root&amp;#34;,&amp;#34;&amp;#34;); $DB-&amp;gt;query(&amp;#34;SET NAMES UTF8&amp;#34;); 
+" />
+  <meta property="og:url" content="http://localhost:1313/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">PHP 面试题纪录</h1>
+      <p class="post-meta">@郭扑克 · May 21, 2017 · 3 min read</p>
+    </header>
+    <article class="post-content"><h4 id="数据库">数据库</h4>
+
+<h5 id="连接数据库">连接数据库</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$DB = new PDO(&#34;mysql:host=localhost;dbname=mydatabase&#34;,&#34;root&#34;,&#34;&#34;);
+$DB-&gt;query(&#34;SET NAMES UTF8&#34;);</code></pre></div>
+<p></p>
+
+<h5 id="myisam与innodb索引的区别-还有哪些索引方式">MyISAM与InnoDB索引的区别，还有哪些索引方式？</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#f92672">1</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">MyISAM引擎是一种非事务性的引擎</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">提供高速存储和检索</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">以及全文搜索能力</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">适合数据仓库等查询频繁的应用</span>
+<span style="color:#f92672">2</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">InnoDB则是一种支持事务的引擎</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#f92672">给MySQL提供了具有提交</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">回滚和崩溃恢复能力的事务安全</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">ACID兼容</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#f92672">存储引擎</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">3</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">hash索引</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#f92672">B-Tree索引</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#f92672">Full-text索引</span><span style="color:#960050;background-color:#1e0010">。。。</span></code></pre></div>
+<h5 id="优化查询的过程是怎么样的">优化查询的过程是怎么样的？</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#f92672">0</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">先运行看看是否真的很慢</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">注意设置SQL_NO_CACHE</span>
+<span style="color:#f92672">1</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">where条件单表查</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">锁定最小返回记录表</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#f92672">这句话的意思是把查询语句的where都应用到表中返回的记录数最小的表开始查起</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">单表每个字段分别查询</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">看哪个字段的区分度最高</span>
+<span style="color:#f92672">2</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">explain查看执行计划</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">是否与1预期一致</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">从锁定记录较少的表开始查询</span><span style="color:#960050;background-color:#1e0010">）</span>
+<span style="color:#f92672">3</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">order</span> <span style="color:#f92672">by</span> <span style="color:#f92672">limit</span> <span style="color:#f92672">形式的sql语句让排序的表优先查</span>
+<span style="color:#f92672">4</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">了解业务方使用场景</span>
+<span style="color:#f92672">5</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">加索引时参照建索引的几大原则</span>
+<span style="color:#f92672">6</span><span style="color:#a6e22e">.</span> <span style="color:#f92672">观察结果</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">不符合预期继续从0分析</span></code></pre></div>
+<h5 id="两张表-city表和province表-分别为城市与省份的关系表">两张表 city表和province表。分别为城市与省份的关系表。</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">city:
+        id City provinceid
+
+        <span style="color:#ae81ff">1</span>  <span style="color:#960050;background-color:#1e0010">广州</span> <span style="color:#ae81ff">1</span>
+
+        <span style="color:#ae81ff">2</span>  <span style="color:#960050;background-color:#1e0010">深圳</span> <span style="color:#ae81ff">1</span>
+
+        <span style="color:#ae81ff">3</span>  <span style="color:#960050;background-color:#1e0010">惠州</span> <span style="color:#ae81ff">1</span>
+
+        <span style="color:#ae81ff">4</span>  <span style="color:#960050;background-color:#1e0010">长沙</span> <span style="color:#ae81ff">2</span>
+
+        <span style="color:#ae81ff">5</span>  <span style="color:#960050;background-color:#1e0010">武汉</span> <span style="color:#ae81ff">3</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">province:
+        id province
+
+        <span style="color:#ae81ff">1</span>  <span style="color:#960050;background-color:#1e0010">广东</span>
+
+        <span style="color:#ae81ff">2</span>  <span style="color:#960050;background-color:#1e0010">湖南</span>
+
+        <span style="color:#ae81ff">3</span>  <span style="color:#960050;background-color:#1e0010">湖北</span></code></pre></div>
+<p>（1） 写一条sql语句关系两个表，显示字段：城市id ，城市名， 所属省份 。如：</p>
+
+<p>​           <code>Id（城市id） Cityname(城市名) privence(所属省份)</code></p>
+
+<p>（2）如果要统计每个省份有多少个城市，请用group by 查询出来, 显示字段：省份id ，省份名，包含多少个城市。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ae81ff">1</span>.<span style="color:#66d9ef">select</span> A.id,A.Cityname,B.province <span style="color:#66d9ef">from</span> city A,province B <span style="color:#66d9ef">where</span> A.provinceid<span style="color:#f92672">=</span>B.id
+
+<span style="color:#ae81ff">2</span>.<span style="color:#66d9ef">select</span> B.id,B.province,<span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">as</span> num <span style="color:#66d9ef">from</span> city A,province B <span style="color:#66d9ef">where</span> A.provinceid<span style="color:#f92672">=</span>B.id <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> B.id</code></pre></div>
+<h5 id="取出表a中第10到第20记录-注意-id可能不是连续的">取出表A中第10到第20记录（注意：ID可能不是连续的）</h5>
+
+<p>表1: id, name, typeid, titre;表2: typeid ,typename
+查询 表1的全部字段 和表2 的typename 要求实现分页，每页要有10条数据，查询第二页 写出查询的select语句</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> TOP <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> (<span style="color:#66d9ef">select</span> a.<span style="color:#f92672">*</span>,b.typename <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表</span><span style="color:#ae81ff">1</span> a <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> <span style="color:#960050;background-color:#1e0010">表</span><span style="color:#ae81ff">2</span> b <span style="color:#66d9ef">on</span> a.typeid<span style="color:#f92672">=</span>b.typeid) a
+<span style="color:#66d9ef">WHERE</span> ID <span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">MAX</span>(id) <span style="color:#66d9ef">FROM</span> (<span style="color:#66d9ef">SELECT</span> TOP <span style="color:#ae81ff">20</span> id <span style="color:#66d9ef">FROM</span>  <span style="color:#960050;background-color:#1e0010">表</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> id) b) <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> ID</code></pre></div>
+<h4 id="服务器">服务器</h4>
+
+<h5 id="nginx与apache的区别">Nginx与Apache的区别</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Scss" data-lang="Scss"><span style="color:#f92672">Nginx相对于Apache比较来说</span><span style="color:#a6e22e">:</span>
+  <span style="color:#f92672">轻量级</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">同样是</span> <span style="color:#f92672">web</span> <span style="color:#f92672">服务</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">比apache占用更少的内存及资源</span> 
+  <span style="color:#f92672">抗并发</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">nginx</span> <span style="color:#f92672">处理请求是异步非阻塞的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">而apache</span> <span style="color:#f92672">则是阻塞型的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">在高并发下nginx</span> <span style="color:#f92672">能保持低资源低消耗高性</span>
+<span style="color:#f92672">能</span><span style="color:#f92672">,</span><span style="color:#f92672">Nginx是epoll网络IO</span><span style="color:#f92672">,</span> <span style="color:#f92672">Apache是select模型</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">所以处理请求起来效率会低很多</span><span style="color:#960050;background-color:#1e0010">。</span>
+  <span style="color:#f92672">高度模块化的设计</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">编写模块相对简单</span><span style="color:#f92672">,</span><span style="color:#f92672">配置文件简洁</span>
+  <span style="color:#f92672">Nginx具有高性能</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#f92672">轻量级</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#f92672">内存消耗少及强大的负载均衡能力</span></code></pre></div>
+<h4 id="php">PHP</h4>
+
+<h5 id="echo-print-print-r-的区别">echo(),print(),print_r()的区别</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">echo是PHP语句, print和print_r是函数,语句没有返回值,函数可以有返回值(即便没有用)
+
+print（） 只能打印出简单类型变量的值(如int,string)
+
+print_r（） 可以打印出复杂类型变量的值(如数组,对象)
+
+echo 输出一个或者多个字符串</code></pre></div>
+<h5 id="include和require有什么区别">include和require有什么区别？</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">区别在于他们如何处理失败，如果require的文件没有找到，会造成fatal error，脚本停止执行，如果include的文件没有找到，会显示警告，但是脚本会继续往下执行。</code></pre></div>
+<h5 id="给一个变量赋值为0123-但是输出该变量的值总是为其他数字">给一个变量赋值为0123，但是输出该变量的值总是为其他数字</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">PHP 解释器会把以0开始的数字当做是八进制的，所以它的值会变成八进制的。</code></pre></div>
+<h5 id="如何对一个变量进行值传递">如何对一个变量进行值传递？</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">可以像C++那样， 在变量的前面加上<span style="color:#960050;background-color:#1e0010">&amp;</span>, 例如：$a = <span style="color:#960050;background-color:#1e0010">&amp;</span>$b</code></pre></div>
+<h5 id="请描述-message和-message的区别-并输出这两个变量的结果">请描述$message和$message的区别，并输出这两个变量的结果。</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$message是个简单的变量，$$message是变量的变量，表示这个变量的值。</code></pre></div>
+<h5 id="htmlentities-和-htmlspecialchars-有什么区别">htmlentities() 和 htmlspecialchars()有什么区别</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">htmlspecialchars只转化<span style="color:#960050;background-color:#1e0010">&lt;</span>、&gt;、 单引号、双引号、<span style="color:#960050;background-color:#1e0010">&amp;</span>符号
+
+htmlentities会转化所有的html符号</code></pre></div>
+<h5 id="显示客户端ip与服务器ip的代码">显示客户端IP与服务器IP的代码</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$ip=gethostbyname (&#34;www.google.cn&#34;);
+echo $ip;</code></pre></div>
+<h5 id="遍历一个文件夹下的所有文件和子文件夹">遍历一个文件夹下的所有文件和子文件夹</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">function my_scandir($dir)
+{
+  $files=array();
+  if(is_dir($dir)){
+  	if($handle=opendir($dir)){
+  		while(($file=readdir($handle))!==false){
+  			if($file != &#34;.&#34; <span style="color:#960050;background-color:#1e0010">&amp;&amp;</span> $file != &#34;..&#34;){
+              	 		// 判断是否是文件夹
+				if(is_dir($dir . &#34;/&#34; . $file)){
+					// 递归调用
+  					$files[$file]=my_scandir($dir . &#34;/&#34; .$file);
+  				}else{
+  					$files[]=$dir . &#34;/&#34; . $file;
+  				}
+  			}
+ 		 }
+  		closedir($handle);
+  		return $files;
+  	}
+  }
+}
+  print_r(my_scandir(__DIR__ . &#34;/var/www&#34;));
+?&gt;</code></pre></div>
+<h5 id="不用新变量直接交换现有两个变量的值">不用新变量直接交换现有两个变量的值</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$a = 1;
+$b = 2;
+list($a, $b) = [$b, $a];
+echo $a . $b; // 2 1</code></pre></div>
+<h5 id="如何知道有几个参数传入到了一个function">如何知道有几个参数传入到了一个function?</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">函数返回传入的参数的个数
+func_num_args();</code></pre></div>
+<h5 id="求两个日期的差数-例如2007-2-5-2007-3-6-的日期差数">求两个日期的差数，例如2007-2-5 ~ 2007-3-6 的日期差数</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$temp = explode(&#39;-&#39;, &#39;2007-2-5&#39;);
+$time1 = mktime(0, 0, 0, $temp[1], $temp[2], $temp[0]);
+$temp = explode(&#39;-&#39;, &#39;2007-3-6&#39;);
+$time2 = mktime(0, 0, 0, $temp[1], $temp[2], $temp[0]);
+echo ($time2-$time1)/86400;</code></pre></div>
+<h5 id="字符串-open-door-转换成-opendoor-make-by-id-转换成-makebyid">字符串 &ldquo;open_door&rdquo; 转换成 &ldquo;OpenDoor&rdquo;、&rdquo;make_by_id&rdquo; 转换成 &ldquo;MakeById&rdquo;</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function change2($str) {  
+    $arr = explode(&#39;_&#39;,$str);  
+    foreach($arr as $key=&gt;$val) {  
+        $tmp = ucfirst($val);  
+        $tarr[] = $tmp;  
+    }  
+    return implode(&#34;&#34;,$tarr);  
+}  </code></pre></div>
+<h5 id="字符串大小写的转换的函数">字符串大小写的转换的函数</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">strtoupper(): 将字符串中的小写字符转变为大写的字符 
+strtolower(): 将字符串中大写的字符转变为小写的字符 
+ucfirst(): 首字符大写(只针对首字符，不对其他的字符进行操作) 
+ucwords():单词首字母大写(只针对每一个单词首字符，不对其他的字符进行操作)</code></pre></div>
+<h5 id="str-pad-函数把字符串填充为新的长度">str_pad() 函数把字符串填充为新的长度</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$str = &#34;Hello World&#34;;
+echo str_pad($str,30,&#34;.:&#34;,STR_PAD_BOTH);
+// .:.:.:.:.Hello World.:.:.:.:.:</code></pre></div>
+<h5 id="2016年11月1日-前6天时间">2016年11月1日 前6天时间</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">date(&#34;Y-m-d&#34;,strtotime(&#39;-6 day 1 November 2016&#39;));</code></pre></div>
+<h5 id="xhtml-与-html-之间的差异">XHTML 与 HTML 之间的差异</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#f92672">XHTML</span> <span style="color:#f92672">元素必须被正确地嵌套</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">XHTML</span> <span style="color:#f92672">元素必须被关闭</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">XHTML</span> <span style="color:#f92672">文档必须拥有根元素</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">标签名必须用小写字母</span><span style="color:#960050;background-color:#1e0010">。</span></code></pre></div>
+<h5 id="json-和-jsonp-的区别-返回值的区别">json 和 jsonp 的区别，返回值的区别</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#f92672">JSON是数据格式</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">用在同源异步请求的返回结果</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">JSONP是一种跨域请求方式</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">其原理就是动态生成Script标签</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">设置src为远端地址</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">内容为一个js调用</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">返回值</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#f92672">json</span> <span style="color:#a6e22e">:</span> {<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">a&#39;</span><span style="color:#a6e22e">:</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">1&#39;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">b&#39;</span><span style="color:#a6e22e">:</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">2&#39;</span>}
+<span style="color:#f92672">jsonp</span><span style="color:#a6e22e">:</span> <span style="color:#f92672">foo</span><span style="color:#f92672">(</span>{<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">a&#39;</span><span style="color:#a6e22e">:</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">1&#39;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">b&#39;</span><span style="color:#a6e22e">:</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">2&#39;</span>}<span style="color:#f92672">);</span></code></pre></div>
+<h5 id="ftp-dns-smtp-pop3-http-https-dhcp-dns-snmp-telnet-协议">FTP DNS SMTP POP3 HTTP HTTPS DHCP DNS SNMP Telnet 协议</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#f92672">FTP文件传送协议</span> <span style="color:#f92672">(</span><span style="color:#f92672">File</span> <span style="color:#f92672">Transfer</span> <span style="color:#f92672">Protocol</span> <span style="color:#f92672">简称FTP</span><span style="color:#f92672">)</span> <span style="color:#f92672">端口号</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">21</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">控制端口</span><span style="color:#960050;background-color:#1e0010">），</span><span style="color:#f92672">20</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">数据端口</span><span style="color:#960050;background-color:#1e0010">）</span>
+<span style="color:#f92672">DNS</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">域名解析协议</span><span style="color:#960050;background-color:#1e0010">）</span>        <span style="color:#f92672">端口号</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">53</span>
+<span style="color:#f92672">SMTP</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">Simple</span> <span style="color:#f92672">Mail</span> <span style="color:#f92672">Transfer</span> <span style="color:#f92672">Protocal</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#f92672">称为简单邮件传输协议</span>       <span style="color:#f92672">端口</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">25</span>
+<span style="color:#f92672">POP的全称是</span> <span style="color:#f92672">Post</span> <span style="color:#f92672">Office</span> <span style="color:#f92672">Protocol</span> <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">简称POP3</span><span style="color:#960050;background-color:#1e0010">），</span><span style="color:#f92672">即邮局协议</span>       <span style="color:#f92672">端口</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">110</span>
+<span style="color:#f92672">HTTP</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">超文本传输协议</span><span style="color:#960050;background-color:#1e0010">）</span>     <span style="color:#f92672">端口</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">80</span>    <span style="color:#f92672">范围</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">0</span><span style="color:#960050;background-color:#1e0010">——</span><span style="color:#f92672">1023</span>
+<span style="color:#f92672">HTTPS</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">Secure</span> <span style="color:#f92672">Hypertext</span> <span style="color:#f92672">Transfer</span> <span style="color:#f92672">Protocol</span> <span style="color:#f92672">安全超文本传输协议</span><span style="color:#960050;background-color:#1e0010">）</span> <span style="color:#f92672">端口</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">443</span>
+<span style="color:#f92672">DHCP</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">动态主机配置协议</span><span style="color:#960050;background-color:#1e0010">）</span>
+<span style="color:#f92672">所有</span> <span style="color:#f92672">DHCP</span> <span style="color:#f92672">流量都使用用户数据报协议</span> <span style="color:#f92672">(</span><span style="color:#f92672">UDP</span><span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">从</span> <span style="color:#f92672">DHCP</span> <span style="color:#f92672">客户端发送到</span> <span style="color:#f92672">DHCP</span> <span style="color:#f92672">服务器的消息使用</span> <span style="color:#f92672">UDP</span> <span style="color:#f92672">源端口</span> <span style="color:#f92672">68</span> <span style="color:#f92672">和</span> <span style="color:#f92672">UDP</span> <span style="color:#f92672">目标端口</span> <span style="color:#f92672">67</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">从</span> <span style="color:#f92672">DHCP</span> <span style="color:#f92672">服务器发送到</span> <span style="color:#f92672">DHCP</span> <span style="color:#f92672">客户端的消息使用</span> <span style="color:#f92672">UDP</span> <span style="color:#f92672">源端口</span> <span style="color:#f92672">67</span> <span style="color:#f92672">和</span> <span style="color:#f92672">UDP</span> <span style="color:#f92672">目标端口</span> <span style="color:#f92672">68</span>
+<span style="color:#f92672">SNMP</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">简单网络管理协议</span><span style="color:#960050;background-color:#1e0010">），</span>    <span style="color:#f92672">端口号</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">161</span>
+<span style="color:#f92672">Telnet</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">运程控制协议</span><span style="color:#960050;background-color:#1e0010">），</span>     <span style="color:#f92672">端口号</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">23</span>
+<span style="color:#f92672">终端服务远程桌面共享</span><span style="color:#960050;background-color:#1e0010">，</span>       <span style="color:#f92672">端口</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">3389</span></code></pre></div>
+<h5 id="a-hello-b-a">$a = &ldquo;hello&rdquo;; $b = &amp;$a;</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$a = &#34;hello&#34;;
+
+$b = &amp;$a;
+
+echo $b.&#34;\n&#34;; // hello
+
+unset($b);
+
+$b = &#34;world&#34;; 
+
+echo $a.&#34;\n&#34;;// hello
+
+echo $b.&#34;\n&#34;;// world</code></pre></div>
+<h5 id="var-false-if-empty-var-echo-null">$var =false; if (empty($var)){echo &ldquo;null&rdquo;}</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$var = false;
+if (empty($var)){
+    echo &#34;null&#34;;
+}else{
+    echo &#34;have value&#34;;
+}
+// null</code></pre></div>
+<h5 id="strcmp-比较两个字符串-区分大小写">strcmp() 比较两个字符串（区分大小写）</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">echo strcmp(&#34;Hello world!&#34;,&#34;Hello world!&#34;).&#34;\n&#34;; // 两字符串相等 0
+echo strcmp(&#34;Helloworld&#34;,&#34;Hello&#34;).&#34;\n&#34;; // string1 大于 string2 5
+echo strcmp(&#34;Hello world!&#34;,&#34;Hello world! Hello!&#34;).&#34;\n&#34;; // string1 小于 string2 -7</code></pre></div>
+<h5 id="current-函数返回数组中的当前元素的值">current()函数返回数组中的当前元素的值</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$arr = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+foreach ($arr as $k =&gt; $v) {
+    echo key($arr) . &#34;=&gt;&#34; . current($arr) .&#34;\n&#34;;
+    next($arr);
+    echo key($arr) . &#34;=&gt;&#34; . current($arr).&#34;\n&#34;;
+}
+// 0=&gt;a
+// 1=&gt;b
+// 1=&gt;b
+// 2=&gt;c
+// 2=&gt;c
+// =&gt;</code></pre></div>
+<h5 id="b-1d9-echo-b">$b = &lsquo;1d9&rsquo;; echo ++$b;</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php">$b = &#39;1d9&#39;;
+echo ++$b; // 1e0</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>439</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

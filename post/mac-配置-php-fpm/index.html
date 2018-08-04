@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Mac 配置 PHP_FPM</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="参考: [开发环境]Mac 配置 php-fpm
+使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
+ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed 
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Mac 配置 PHP_FPM" />
+    <meta name="twitter:description" content="参考: [开发环境]Mac 配置 php-fpm
+使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
+ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed 
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Mac 配置 PHP_FPM" />
+  <meta property="og:description" content="参考: [开发环境]Mac 配置 php-fpm
+使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
+ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed 
+" />
+  <meta property="og:url" content="http://localhost:1313/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Mac 配置 PHP_FPM</h1>
+      <p class="post-meta">@郭扑克 · Apr 28, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>参考: <a href="https://github.com/musicode/test/issues/5">[开发环境]Mac 配置 php-fpm</a></p>
+
+<p>使用 brew 安装好 php 后, 运行<code>php-fpm</code> 时提示我如下错误信息：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ERROR: failed to open configuration file <span style="color:#e6db74">&#39;/private/etc/php-fpm.conf&#39;</span>: No such file or directory <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>
+ERROR: failed to load configuration file <span style="color:#e6db74">&#39;/private/etc/php-fpm.conf&#39;</span>
+ERROR: FPM initialization failed</code></pre></div>
+<p></p>
+
+<p>错误信息显示，不能打开配置文件，<code>cd /private/etc</code>，发现没有 <code>php-fpm.conf</code> 文件，但是有 <code>php-fpm.conf.default</code> 文件。这个文件是默认配置，我们可以复制一份，改名为 <code>php-fpm.conf</code>，然后再根据需要改动配置。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">cp /private/etc/php-fpm.conf.default /private/etc/php-fpm.conf</code></pre></div>
+<p>执行 <code>php-fpm</code>，再次报错：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ERROR: failed to open error_log <span style="color:#f92672">(</span>/usr/var/log/php-fpm.log<span style="color:#f92672">)</span>: No such file or directory <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>
+ERROR: failed to post process the configuration
+ERROR: FPM initialization failed</code></pre></div>
+<p>错误信息显示，不能打开错误日志文件。<code>cd /usr/var/log</code> 发现根本没有这个目录，甚至连 <strong>var</strong> 目录都没有，加上为了避免权限问题，干脆配置到 <strong>/usr/local/var/log</strong> 目录。</p>
+
+<p>修改 <strong>php-fpm.conf</strong> <code>error_log</code> 配置为 <code>/usr/local/var/log/php-fpm.log</code>，并把 <code>user</code> 和 <code>group</code> 改为和当前用户一样。</p>
+
+<p>执行 <code>php-fpm</code>，再次报错：</p>
+
+<pre><code>NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+
+</code></pre>
+
+<p>于是 <code>sudo php-fpm</code>，再次报错：</p>
+
+<pre><code>ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
+ERROR: FPM initialization failed
+</code></pre>
+
+<p>此时意思很明显了, 就是端口被系统自带的 php-fpm 占用了, 执行如下命令, kill 当前所有 php-fpm 进程:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">killall php-fpm</code></pre></div>
+<p>再运行:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">php-fpm -t</code></pre></div>
+<p>提示如下信息, 就说明已经启动成功了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NOTICE: configuration file /private/etc/php-fpm.conf test is successful</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>462</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

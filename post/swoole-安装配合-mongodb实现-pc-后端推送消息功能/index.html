@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Swoole 实现消息发送功能</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="郭扑克" />
+  <meta name="description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Swoole 实现消息发送功能" />
+    <meta name="twitter:description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Swoole 实现消息发送功能" />
+  <meta property="og:description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
+" />
+  <meta property="og:url" content="http://localhost:1313/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/"></a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Swoole 实现消息发送功能</h1>
+      <p class="post-meta">@郭扑克 · May 22, 2017 · 2 min read</p>
+    </header>
+    <article class="post-content"><h4 id="导语">导语</h4>
+
+<ul>
+<li><a href="http://www.swoole.com">Swoole</a> 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。</li>
+<li>官网提供了<a href="https://wiki.swoole.com/wiki/page/p-server.html">PHP语言的异步多线程服务器</a>，<a href="https://wiki.swoole.com/wiki/page/p-client.html">异步TCP/UDP网络客户端</a>，<a href="https://wiki.swoole.com/wiki/page/517.html">异步MySQL</a>，<a href="https://wiki.swoole.com/wiki/page/p-redis.html">异步Redis</a>，<a href="https://github.com/swoole/framework/blob/master/tests/async_mysql.php">数据库连接池</a>，<a href="https://wiki.swoole.com/wiki/page/134.html">AsyncTask</a>，<a href="http://wiki.swoole.com/wiki/page/289.html">消息队列</a>，<a href="https://wiki.swoole.com/wiki/page/244.html">毫秒定时器</a>，<a href="https://wiki.swoole.com/wiki/page/183.html">异步文件读写</a>，<a href="https://wiki.swoole.com/wiki/page/186.html">异步DNS查询</a>。 Swoole内置了<a href="https://wiki.swoole.com/wiki/page/326.html">Http/WebSocket服务器端</a>/<a href="https://wiki.swoole.com/wiki/page/p-http_client.html">客户端</a>、<a href="https://wiki.swoole.com/wiki/page/326.html">Http2.0服务器端</a>。</li>
+</ul>
+
+<p></p>
+
+<h4 id="安装swoole">安装Swoole</h4>
+
+<ul>
+<li><p>下载地址：<a href="https://github.com/swoole/swoole-src/releases">Downloads</a></p></li>
+
+<li><p>解包，进入swoole-src 目录执行</p></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  ~ ᐅ phpize
+  ~ ᐅ ./configure
+  ~ ᐅ make 
+  ~ ᐅ sudo make install</code></pre></div>
+<ul>
+<li>打开 <code>php.ini</code> 文件添加扩展（具体根据自己使用的 PHP 路径）：</li>
+</ul>
+
+<blockquote>
+<p>vi /usr/local/etc/php/7.0/php.ini</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  extension=swoole.so</code></pre></div>
+<ul>
+<li>重启 PHP-FPM</li>
+</ul>
+
+<blockquote>
+<p>sudo /usr/local/Cellar/php70/7.0.18_10/sbin/php70-fpm restart</p>
+</blockquote>
+
+<ul>
+<li>查看Swoole 扩展是否已安装成功</li>
+</ul>
+
+<blockquote>
+<p>php -m</p>
+</blockquote>
+
+<p>​</p>
+
+<h4 id="运行-server">运行 Server</h4>
+
+<ul>
+<li>创建一个 <code>server.php</code> 文件，用来启动 Swoole 的服务</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  <span style="color:#75715e">&lt;?php</span>
+
+  <span style="color:#75715e">// 创建 server 并监听9300端口
+</span><span style="color:#75715e"></span>  $server <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\swoole_server</span>(<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, <span style="color:#ae81ff">9300</span>);
+
+  <span style="color:#75715e">//监听连接进入事件
+</span><span style="color:#75715e"></span>  $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;connect&#39;</span>, <span style="color:#66d9ef">function</span> ($server, $fd) {  
+      <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Client: Connect.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+  });
+
+  <span style="color:#75715e">//监听数据发送事件
+</span><span style="color:#75715e"></span>  $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;receive&#39;</span>, <span style="color:#66d9ef">function</span> ($server, $fd, $from_id, $data) {
+      $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">send</span>($fd, <span style="color:#e6db74">&#34;Server: &#34;</span><span style="color:#f92672">.</span>$data);
+  });
+
+  <span style="color:#75715e">//监听连接关闭事件
+</span><span style="color:#75715e"></span>  $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;close&#39;</span>, <span style="color:#66d9ef">function</span> ($server, $fd) {
+      <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Client: Close.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+  });
+
+  <span style="color:#75715e">//启动服务器
+</span><span style="color:#75715e"></span>  $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">start</span>(); 
+</code></pre></div>
+<p>运行 <code>server.php</code> 文件就会发现开始监听9300端口了</p>
+
+<blockquote>
+<p>php server.php</p>
+</blockquote>
+
+<p>另开一个终端执行远程登录输入 ‘hello world’</p>
+
+<blockquote>
+<p>telnet 127.0.0.1 9300</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  Trying 127.0.0.1...
+  Connected to localhost.
+  Escape character is <span style="color:#e6db74">&#39;^]&#39;</span>.
+  hello world
+  Server<span style="color:#960050;background-color:#1e0010">:</span> hello world</code></pre></div>
+<ul>
+<li>创建 <code>client.php</code> 文件，建立 TCP客户端请求发送数据</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  <span style="color:#75715e">&lt;?php</span>
+  <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">   * client
+</span><span style="color:#e6db74">   */</span>
+
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">writeMsg</span>($message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello Everybody&#34;</span>)
+  {
+      $host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>;
+      $port <span style="color:#f92672">=</span> <span style="color:#ae81ff">9300</span>;
+      <span style="color:#75715e">// $client = new Swoole\Client(SWOOLE_TCP | SWOOLE_ASYNC | SWOOLE_SSL);
+</span><span style="color:#75715e"></span>      $client <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\swoole_client</span>(<span style="color:#a6e22e">SWOOLE_SOCK_TCP</span>);
+      <span style="color:#75715e">// 连接远程服务器：bool $swoole_client-&gt;connect(string $host, int $port, float $timeout = 0.1, int $flag = 0)
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$client<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">connect</span>($host, $port, <span style="color:#ae81ff">1</span>)) {
+          <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">{</span>$client-&gt;errMsg<span style="color:#e6db74">}</span><span style="color:#e6db74">[</span><span style="color:#e6db74">{</span>$client-&gt;errCode<span style="color:#e6db74">}</span><span style="color:#e6db74">]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+      }
+
+    	<span style="color:#75715e">/*
+</span><span style="color:#75715e">    	转码发送发送给服务端
+</span><span style="color:#75715e">    	$data = array(
+</span><span style="color:#75715e">              &#34;url&#34; =&gt;  &#34;http://127.0.0.1/send_mail&#34; ,
+</span><span style="color:#75715e">              &#34;param&#34; =&gt; array(
+</span><span style="color:#75715e">                  &#34;username&#34;=&gt;&#39;test&#39;,
+</span><span style="color:#75715e">                  &#34;password&#34; =&gt; &#39;test&#39;
+</span><span style="color:#75715e">                  )
+</span><span style="color:#75715e">              );
+</span><span style="color:#75715e">      $json_data = json_encode($data);
+</span><span style="color:#75715e">      $client-&gt;send($json_data);
+</span><span style="color:#75715e">    	*/</span>
+    
+      $client<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">send</span>($message);
+
+      <span style="color:#75715e">// 从服务器接收数据
+</span><span style="color:#75715e"></span>      $data <span style="color:#f92672">=</span> $client<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">recv</span>();
+      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$data) {
+          <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;recv failed.&#34;</span>);
+      }
+      <span style="color:#66d9ef">echo</span> $data;
+      <span style="color:#75715e">// 关闭连接
+</span><span style="color:#75715e"></span>      $client<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">close</span>();
+  }
+
+  <span style="color:#a6e22e">writeMsg</span>();	
+</code></pre></div>
+<ul>
+<li><p>调用客户端
+&gt; php client.php</p></li>
+
+<li><p>服务端会返回</p></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Swoole<span style="color:#960050;background-color:#1e0010">:</span> Hello Everybody</code></pre></div>
+<p><strong><em>本文只是个 demo，client.php 课根据自己的业务需求增加业务代码就行，简单流程就是这样</em></strong></p>
+
+<p>再推荐一个<a href="http://www.workerman.net">Workerman</a>（是一款<strong>纯PHP开发</strong>的<strong>开源</strong>高性能的PHP socket 服务器框架），用法更加简单，只需要一个 pcntl 的网络扩展 + 引入类文件就可以使用。</p>
+
+<ul>
+<li><a href="https://surprisepeas.github.io/2017/04/20/Workerman-高性能的PHP-socket框架/">Workerman - 高性能的PHP socket框架</a></li>
+</ul></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>438</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>
