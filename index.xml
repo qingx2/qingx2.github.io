@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>郭扑克儿</title>
-    <link>https://guopuke.github.io/</link>
+    <link>http://guopuke.github.io/</link>
     <description>Recent content on 郭扑克儿</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <lastBuildDate>Tue, 26 Jun 2018 10:00:02 +0000</lastBuildDate>
     
-	<atom:link href="https://guopuke.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://guopuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Byte bit</title>
-      <link>https://guopuke.github.io/post/byte-bit/</link>
+      <link>http://guopuke.github.io/post/byte-bit/</link>
       <pubDate>Tue, 26 Jun 2018 10:00:02 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/byte-bit/</guid>
+      <guid>http://guopuke.github.io/post/byte-bit/</guid>
       <description>bit 就是位，也叫比特位，是计算机表示数据最小的单位
 byte 就是字节
 1个字符 = 2 字节
@@ -29,10 +29,10 @@ byte 就是字节
     
     <item>
       <title>ICMP and ping</title>
-      <link>https://guopuke.github.io/post/icmp-and-ping/</link>
+      <link>http://guopuke.github.io/post/icmp-and-ping/</link>
       <pubDate>Fri, 15 Jun 2018 14:01:09 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/icmp-and-ping/</guid>
+      <guid>http://guopuke.github.io/post/icmp-and-ping/</guid>
       <description> ICMP全称Internet Control Message Protocol，就是互联网控制报文协议，ping就 是基于 ICMP 协议工作的。
 查询报文类型 查询报文是以一种主动请求的方式，并且获得主动应答的 ICMP 协议，ping 就是查询报文的一种。
 差错报文类型  终点不可达 (网络、主机、协议、端口&amp;hellip;) 源站抑制(限流) 时间超时 路由重定向   </description>
@@ -40,10 +40,10 @@ byte 就是字节
     
     <item>
       <title>Systemd 定时器教程</title>
-      <link>https://guopuke.github.io/post/systemd-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%95%99%E7%A8%8B/</link>
+      <link>http://guopuke.github.io/post/systemd-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%95%99%E7%A8%8B/</link>
       <pubDate>Sat, 09 Jun 2018 18:14:12 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/systemd-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://guopuke.github.io/post/systemd-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%95%99%E7%A8%8B/</guid>
       <description>&lt;p&gt;作者： &lt;a href=&#34;http://www.ruanyifeng.com/&#34;&gt;阮一峰&lt;/a&gt; 日期： &lt;a href=&#34;http://www.ruanyifeng.com/blog/2018/03/&#34;&gt;2018年3月30日&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html&#34;&gt;Systemd&lt;/a&gt; 作为 Linux 的系统启动器，功能强大。&lt;/p&gt;
@@ -55,10 +55,10 @@ byte 就是字节
     
     <item>
       <title>微信小程序发送模板消息</title>
-      <link>https://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF/</link>
+      <link>http://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF/</link>
       <pubDate>Wed, 14 Mar 2018 14:04:00 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF/</guid>
+      <guid>http://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF/</guid>
       <description>&lt;h3 id=&#34;前提要求&#34;&gt;前提要求&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -81,10 +81,10 @@ byte 就是字节
     
     <item>
       <title>Docker-compose搭建本地PHP运行环境</title>
-      <link>https://guopuke.github.io/post/docker-compose%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0php%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</link>
+      <link>http://guopuke.github.io/post/docker-compose%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0php%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Thu, 08 Mar 2018 09:35:34 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/docker-compose%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0php%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</guid>
+      <guid>http://guopuke.github.io/post/docker-compose%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0php%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</guid>
       <description>&lt;p&gt;非常感谢 &lt;a href=&#34;https://github.com/LaraDock/laradock&#34;&gt;laradock&lt;/a&gt;是简化定制之后的产物，方便学习使用。&lt;/p&gt;
 
 &lt;h2 id=&#34;镜像&#34;&gt;镜像&lt;/h2&gt;
@@ -140,19 +140,19 @@ byte 就是字节
     
     <item>
       <title>Mysql常用命令</title>
-      <link>https://guopuke.github.io/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://guopuke.github.io/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 22 Nov 2017 17:06:39 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://guopuke.github.io/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>表结构-数据导出 mysqldump -uroot -piMariadb168 &amp;ndash;databases aquarium &amp;ndash;tables aq_region aq_chip &amp;gt;/tmp/db1.sql;</description>
     </item>
     
     <item>
       <title>Web系统并发设计思路</title>
-      <link>https://guopuke.github.io/post/web%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</link>
+      <link>http://guopuke.github.io/post/web%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</link>
       <pubDate>Fri, 06 Oct 2017 14:53:35 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/web%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</guid>
+      <guid>http://guopuke.github.io/post/web%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</guid>
       <description>&lt;p&gt;电商的秒杀和抢购，对我们来说，都不是一个陌生的东西。然而，从技术的角度来说，这对于Web系统是一个巨大的考验。当一个Web系统，在一秒钟内收到数以万计甚至更多请求时，系统的优化和稳定至关重要。这次我们会关注秒杀和抢购的技术实现和优化，同时，从技术层面揭开，为什么我们总是不容易抢到火车票的原因？&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -160,10 +160,10 @@ byte 就是字节
     
     <item>
       <title>Yii-自动加载</title>
-      <link>https://guopuke.github.io/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/</link>
+      <link>http://guopuke.github.io/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/</link>
       <pubDate>Thu, 28 Sep 2017 23:14:08 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/</guid>
+      <guid>http://guopuke.github.io/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/</guid>
       <description>&lt;h3 id=&#34;入口脚本-web-index-php&#34;&gt;入口脚本(web/index.php)&lt;/h3&gt;
 
 &lt;p&gt;Yii2的&lt;strong&gt;advanced版本&lt;/strong&gt;默认是有2个入口的（frontend、backend），但其实只是在使用同一个框架及公共配置让2个server分离工作进行构建网站、API等。&lt;/p&gt;
@@ -177,10 +177,10 @@ byte 就是字节
     
     <item>
       <title>Yii-事件篇</title>
-      <link>https://guopuke.github.io/post/yii-%E4%BA%8B%E4%BB%B6%E7%AF%87/</link>
+      <link>http://guopuke.github.io/post/yii-%E4%BA%8B%E4%BB%B6%E7%AF%87/</link>
       <pubDate>Thu, 21 Sep 2017 23:32:23 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/yii-%E4%BA%8B%E4%BB%B6%E7%AF%87/</guid>
+      <guid>http://guopuke.github.io/post/yii-%E4%BA%8B%E4%BB%B6%E7%AF%87/</guid>
       <description>&lt;p&gt;最近看到一篇 &lt;a href=&#34;http://mp.weixin.qq.com/s/0M7pmESV0EJmTkd5FXCQVg&#34;&gt;越过长城，走向世界！中国第一封 Email 发出 30 年&lt;/a&gt;，感慨这些先驱者们的同时，内心使命感也涌涌而上。之前也没配置过相关邮件服务，遂打算以此文来纪录学习一番。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://ws3.sinaimg.cn/large/006tNc79gy1fjro4d2a9rj30go0bc75r.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
@@ -190,10 +190,10 @@ byte 就是字节
     
     <item>
       <title>Yii-属性篇</title>
-      <link>https://guopuke.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/</link>
+      <link>http://guopuke.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/</link>
       <pubDate>Sat, 16 Sep 2017 00:49:52 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/</guid>
+      <guid>http://guopuke.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/</guid>
       <description>&lt;p&gt;属性用于表征类的状态，从访问的形式上看，属性与成员变量没有区别。&lt;/p&gt;
 
 &lt;p&gt;成员变量是就类的结构构成而言的概念，而属性是就类的功能逻辑而言的概念，两者紧密联系又相互区别。&lt;/p&gt;
@@ -203,10 +203,10 @@ byte 就是字节
     
     <item>
       <title>PHP魔术方法、依赖注入、控制反转容器</title>
-      <link>https://guopuke.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</link>
+      <link>http://guopuke.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</link>
       <pubDate>Fri, 15 Sep 2017 00:31:41 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</guid>
+      <guid>http://guopuke.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</guid>
       <description>&lt;h3 id=&#34;依赖注入&#34;&gt;依赖注入&lt;/h3&gt;
 
 &lt;p&gt;“注入”，就是把一个实例传递到另一个实例的内部。&lt;/p&gt;
@@ -229,10 +229,10 @@ byte 就是字节
     
     <item>
       <title>物流信息API对接</title>
-      <link>https://guopuke.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/</link>
+      <link>http://guopuke.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/</link>
       <pubDate>Wed, 06 Sep 2017 13:30:59 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/</guid>
+      <guid>http://guopuke.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/</guid>
       <description>&lt;p&gt;​   项目刚好涉及一小块儿订单部分，需要一个第三方的快递物流信息接口API做一个物流轨迹的跟踪。国内的快递100、快递鸟、快递网、聚合数据，国际快递的话使用 &lt;strong&gt;Trackingmore&lt;/strong&gt;也不错。个人综合比较考虑一下，决定使用 &lt;a href=&#34;http://www.kdniao.com/&#34;&gt;快递鸟&lt;/a&gt; 物流数据平台。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -240,10 +240,10 @@ byte 就是字节
     
     <item>
       <title>Chrome cVim 快捷键速查表</title>
-      <link>https://guopuke.github.io/post/chrome-cvim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/</link>
+      <link>http://guopuke.github.io/post/chrome-cvim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/</link>
       <pubDate>Thu, 24 Aug 2017 21:26:55 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/chrome-cvim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/</guid>
+      <guid>http://guopuke.github.io/post/chrome-cvim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://7xoosr.com1.z0.glb.clouddn.com/%E7%99%BD%E5%87%A4.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -251,10 +251,10 @@ byte 就是字节
     
     <item>
       <title>微信小程序支付功能</title>
-      <link>https://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/</link>
+      <link>http://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Thu, 17 Aug 2017 13:32:14 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/</guid>
+      <guid>http://guopuke.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/</guid>
       <description>&lt;h3 id=&#34;大致流程&#34;&gt;大致流程&lt;/h3&gt;
 
 &lt;p&gt;实现微信支付主要分为以下两步：&lt;/p&gt;
@@ -272,10 +272,10 @@ byte 就是字节
     
     <item>
       <title>PHP根据特定字段进行分组</title>
-      <link>https://guopuke.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/</link>
+      <link>http://guopuke.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/</link>
       <pubDate>Fri, 28 Jul 2017 11:46:28 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/</guid>
+      <guid>http://guopuke.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/</guid>
       <description>如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
@@ -284,10 +284,10 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
     <item>
       <title>JWTAuth运用到Laravel5</title>
-      <link>https://guopuke.github.io/post/jwtauth%E8%BF%90%E7%94%A8%E5%88%B0laravel5/</link>
+      <link>http://guopuke.github.io/post/jwtauth%E8%BF%90%E7%94%A8%E5%88%B0laravel5/</link>
       <pubDate>Fri, 14 Jul 2017 14:56:37 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/jwtauth%E8%BF%90%E7%94%A8%E5%88%B0laravel5/</guid>
+      <guid>http://guopuke.github.io/post/jwtauth%E8%BF%90%E7%94%A8%E5%88%B0laravel5/</guid>
       <description>&lt;h2 id=&#34;json-web-token-authentication-for-laravel-lumen&#34;&gt;JSON Web Token Authentication for Laravel &amp;amp; Lumen&lt;/h2&gt;
 
 &lt;p&gt;​   现在项目基本全是前后端分离的开发模式，特别是在使用Angular这种前端框架来构建单页面应用程序时会发现配合 &lt;code&gt;angular-locker&lt;/code&gt; 实现存储令牌等方面更加得心应手，So 此次项目决定用jwt-auth建立一套API规范来练练手。&lt;/p&gt;
@@ -299,10 +299,10 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
     <item>
       <title>php7新特性学习</title>
-      <link>https://guopuke.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/</link>
+      <link>http://guopuke.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Sat, 01 Jul 2017 00:36:44 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>http://guopuke.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/</guid>
       <description>&lt;p&gt;&lt;em&gt;参考&lt;a href=&#34;http://php.net/manual/zh/migration70.new-features.php&#34;&gt;PHP官网&lt;/a&gt;个人记录学习&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -310,10 +310,10 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
     <item>
       <title>Redis配置使用守护进程启动sentinel</title>
-      <link>https://guopuke.github.io/post/redis%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8sentinel/</link>
+      <link>http://guopuke.github.io/post/redis%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8sentinel/</link>
       <pubDate>Thu, 29 Jun 2017 14:40:08 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/redis%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8sentinel/</guid>
+      <guid>http://guopuke.github.io/post/redis%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8sentinel/</guid>
       <description>&lt;h4 id=&#34;概述&#34;&gt;概述&lt;/h4&gt;
 
 &lt;p&gt;​   Redis-Sentinel是Redis官方推荐的高可用性(HA)解决方案，当用Redis做Master-slave的高可用方案时，假如master宕机了，Redis本身(包括它的很多客户端)都没有实现自动进行主备切换，而Redis-sentinel本身也是一个独立运行的进程，它能监控多个master-slave集群，发现master宕机后能进行自懂切换。&lt;/p&gt;
@@ -323,10 +323,10 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
     <item>
       <title>Vue常用组件库</title>
-      <link>https://guopuke.github.io/post/vue%E7%BB%84%E4%BB%B6%E5%BA%93/</link>
+      <link>http://guopuke.github.io/post/vue%E7%BB%84%E4%BB%B6%E5%BA%93/</link>
       <pubDate>Fri, 16 Jun 2017 07:40:07 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/vue%E7%BB%84%E4%BB%B6%E5%BA%93/</guid>
+      <guid>http://guopuke.github.io/post/vue%E7%BB%84%E4%BB%B6%E5%BA%93/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;h5 id=&#34;element-web-ui工具套件-http-element-eleme-io-zh-cn-component-installation&#34;&gt;&lt;a href=&#34;http://element.eleme.io/#/zh-CN/component/installation&#34;&gt;element （web UI工具套件）&lt;/a&gt;&lt;/h5&gt;&lt;/li&gt;
 
@@ -340,10 +340,10 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
     <item>
       <title>Laravel语法提示PHPStorm </title>
-      <link>https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</link>
+      <link>http://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</link>
       <pubDate>Tue, 30 May 2017 16:21:50 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</guid>
+      <guid>http://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</guid>
       <description>添加 composer 依赖包 在 composer.json 文件里添加依赖包信息
  &amp;ldquo;barryvdh/laravel-ide-helper&amp;rdquo;:&amp;ldquo;dev-master&amp;rdquo;
 &amp;ldquo;php artisan ide-helper:generate&amp;rdquo;
@@ -353,10 +353,10 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
     
     <item>
       <title>Swoole 实现消息发送功能</title>
-      <link>https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/</link>
+      <link>http://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Mon, 22 May 2017 23:54:53 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/</guid>
+      <guid>http://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/</guid>
       <description>&lt;h4 id=&#34;导语&#34;&gt;导语&lt;/h4&gt;
 
 &lt;ul&gt;
@@ -369,10 +369,10 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
     
     <item>
       <title>Mongodb 安装使用</title>
-      <link>https://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</link>
+      <link>http://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 22 May 2017 23:22:08 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</guid>
+      <guid>http://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</guid>
       <description>Mac 环境
 安装Mongodb brew install mongodb  安装完以后可以看见有很明显的提示:
 brew services start mongodb Or, if you don&amp;#39;t want/need a background service you can just run: mongod --config /usr/local/etc/mongod.conf  为了方便使用, 将其设置为全局变量
@@ -382,10 +382,10 @@ brew services start mongodb Or, if you don&amp;#39;t want/need a background serv
     
     <item>
       <title>PHP 面试题纪录</title>
-      <link>https://guopuke.github.io/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</link>
+      <link>http://guopuke.github.io/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</link>
       <pubDate>Sun, 21 May 2017 10:32:37 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</guid>
+      <guid>http://guopuke.github.io/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</guid>
       <description>&lt;h4 id=&#34;数据库&#34;&gt;数据库&lt;/h4&gt;
 
 &lt;h5 id=&#34;连接数据库&#34;&gt;连接数据库&lt;/h5&gt;
@@ -396,10 +396,10 @@ $DB-&amp;gt;query(&amp;#34;SET NAMES UTF8&amp;#34;);&lt;/code&gt;&lt;/pre&gt;&lt
     
     <item>
       <title>阅后有感: 《未来世界的幸存者》</title>
-      <link>https://guopuke.github.io/post/%E8%AF%BB%E6%9C%AA%E6%9D%A5%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B8%E5%AD%98%E8%80%85/</link>
+      <link>http://guopuke.github.io/post/%E8%AF%BB%E6%9C%AA%E6%9D%A5%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B8%E5%AD%98%E8%80%85/</link>
       <pubDate>Thu, 18 May 2017 22:47:45 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/%E8%AF%BB%E6%9C%AA%E6%9D%A5%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B8%E5%AD%98%E8%80%85/</guid>
+      <guid>http://guopuke.github.io/post/%E8%AF%BB%E6%9C%AA%E6%9D%A5%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B8%E5%AD%98%E8%80%85/</guid>
       <description>&lt;p&gt;​   提要：《&lt;a href=&#34;https://ruanyf.github.io/survivor/index.html&#34;&gt;未来世界的幸存者&lt;/a&gt;》是知名blogger阮一峰在网络博客里写的文章，主要表达了作者对于未来世界的一些看法。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -407,10 +407,10 @@ $DB-&amp;gt;query(&amp;#34;SET NAMES UTF8&amp;#34;);&lt;/code&gt;&lt;/pre&gt;&lt
     
     <item>
       <title>Mac 配置 PHP_FPM</title>
-      <link>https://guopuke.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/</link>
+      <link>http://guopuke.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/</link>
       <pubDate>Fri, 28 Apr 2017 13:18:23 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/</guid>
+      <guid>http://guopuke.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/</guid>
       <description>&lt;p&gt;参考: &lt;a href=&#34;https://github.com/musicode/test/issues/5&#34;&gt;[开发环境]Mac 配置 php-fpm&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;使用 brew 安装好 php 后, 运行&lt;code&gt;php-fpm&lt;/code&gt; 时提示我如下错误信息：&lt;/p&gt;
@@ -422,10 +422,10 @@ ERROR: FPM initialization failed&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>Workerman - 高性能的PHP socket框架</title>
-      <link>https://guopuke.github.io/post/workerman-%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84php-socket%E6%A1%86%E6%9E%B6/</link>
+      <link>http://guopuke.github.io/post/workerman-%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84php-socket%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Thu, 20 Apr 2017 21:59:16 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/workerman-%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84php-socket%E6%A1%86%E6%9E%B6/</guid>
+      <guid>http://guopuke.github.io/post/workerman-%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84php-socket%E6%A1%86%E6%9E%B6/</guid>
       <description>&lt;h4 id=&#34;介绍&#34;&gt;介绍&lt;/h4&gt;
 
 &lt;p&gt;​   &lt;a href=&#34;http://doc3.workerman.net/&#34;&gt;WorkerMan&lt;/a&gt;是一款纯PHP开发的开源的高性能的PHP socket服务器框架，基于WorkerMan开发者可以开发出各种网络服务器，即时IM通讯，游戏服务器通讯，与硬件传感器通讯等等，开发这些应用程序我们无法直接使用Nginx/Apache + PHP来实现，几乎任何基于TCP/UDP通讯的服务端都可以用WorkerMan来开发。WorkerMan使得开发者摆脱PHP只能用于Web开发的束缚，向更广阔的前景发展。&lt;/p&gt;
@@ -435,10 +435,10 @@ ERROR: FPM initialization failed&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>Homebrew 安装 PHP、Nginx、MySql</title>
-      <link>https://guopuke.github.io/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/</link>
+      <link>http://guopuke.github.io/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/</link>
       <pubDate>Wed, 19 Apr 2017 09:32:37 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/</guid>
+      <guid>http://guopuke.github.io/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/</guid>
       <description>&lt;p&gt;参考 &lt;a href=&#34;https://laravel-china.org/topics/3129/new-installation-mac-os-sierra-1012-and-use-homebrew-to-install-zsh-mnmp-mac-nginx-mysql-php-development-environment&#34;&gt;全新安装 Mac OS Sierra (10.12) 并使用 HomeBrew 安装 ZSH + MNMP (Mac + Nginx + MySQL + PHP) 开发环境&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -446,38 +446,38 @@ ERROR: FPM initialization failed&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>Git 常用命令整理</title>
-      <link>https://guopuke.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</link>
+      <link>http://guopuke.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</link>
       <pubDate>Tue, 11 Apr 2017 16:05:09 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</guid>
+      <guid>http://guopuke.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PHP 依赖注入</title>
-      <link>https://guopuke.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
+      <link>http://guopuke.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
       <pubDate>Thu, 06 Apr 2017 13:38:41 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</guid>
+      <guid>http://guopuke.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mac vi 无法编辑~/.base_profile(配置全局变量)</title>
-      <link>https://guopuke.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</link>
+      <link>http://guopuke.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</link>
       <pubDate>Wed, 29 Mar 2017 17:08:46 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
+      <guid>http://guopuke.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
       <description>vi编辑 .base_profile 文件时,提示如下信息:
 E325: ATTENTION Found a swap file by the name &amp;#34;.bash_profile.swp&amp;#34; owned by: root dated: Tue Nov 10 17:42:38 2017 file name: /etc/proftpd/etc/proftpd.conf modified: no user name: root host name: localhost process ID: 11195 While opening file &amp;#34;.bash_profile&amp;#34; dated: Tue Nov 10 18:32:16 2017 NEWER than swap file! (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of the same file when making changes.</description>
     </item>
     
     <item>
       <title>configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt;</title>
-      <link>https://guopuke.github.io/post/configure-error-cannot-find-openssl-s-evp-h/</link>
+      <link>http://guopuke.github.io/post/configure-error-cannot-find-openssl-s-evp-h/</link>
       <pubDate>Wed, 29 Mar 2017 16:49:55 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/configure-error-cannot-find-openssl-s-evp-h/</guid>
+      <guid>http://guopuke.github.io/post/configure-error-cannot-find-openssl-s-evp-h/</guid>
       <description>进行编译安装PHP-mongodb扩展, 执行 ./configure 时提示如下错误信息:
 configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; 因为执行的PHP是MAMP里集成的, 缺少OpenSSL，只有编译安装的PHP才有OpenSSL，偷个懒直接使用brew下载一个PHP。执行 configure 时添加如下参数(换成homebrew下载的php-openssl目录)如下命令：
 ./configure --with-openssl-dir=/usr/local/Cellar/openssl/1.</description>
@@ -485,10 +485,10 @@ configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; 因为执�
     
     <item>
       <title>Hexo更换主题 (此篇以安装NexT为例)</title>
-      <link>https://guopuke.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/</link>
+      <link>http://guopuke.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/</link>
       <pubDate>Fri, 24 Mar 2017 09:42:18 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/</guid>
+      <guid>http://guopuke.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/</guid>
       <description>&lt;h3 id=&#34;进入到主题文件目录&#34;&gt;进入到主题文件目录&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;cd themes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;默认主题 &lt;u&gt;landscape&lt;/u&gt; 目录结构:&lt;/p&gt;
@@ -500,10 +500,10 @@ configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; 因为执�
     
     <item>
       <title>GitHub 配置秘钥SSH</title>
-      <link>https://guopuke.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/</link>
+      <link>http://guopuke.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/</link>
       <pubDate>Thu, 23 Mar 2017 22:40:31 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/</guid>
+      <guid>http://guopuke.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;h5 id=&#34;1-查看电脑是否已经有-shh-key&#34;&gt;1、查看电脑是否已经有 SHH key&lt;/h5&gt;
 
 &lt;p&gt;终端输入:&lt;/p&gt;
@@ -520,19 +520,19 @@ id_rsa      id_rsa.pub  known_hosts
     
     <item>
       <title>Mac使用快捷键快速启动应用程序</title>
-      <link>https://guopuke.github.io/post/mac%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</link>
+      <link>http://guopuke.github.io/post/mac%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</link>
       <pubDate>Thu, 23 Mar 2017 18:15:18 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/mac%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</guid>
+      <guid>http://guopuke.github.io/post/mac%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</guid>
       <description> 打开Mac自带的Automator应用程序   文稿类型选择服务   设置应用程序   将iTerm应用拖到空白区域 Command+Shift+Option+S 保存   系统偏好设置-键盘-快捷键-服务-通用  </description>
     </item>
     
     <item>
       <title>MacOS 配置iTerm2 &#43; Oh My Zsh主题</title>
-      <link>https://guopuke.github.io/post/macos-%E9%85%8D%E7%BD%AEiterm2-oh-my-zsh%E4%B8%BB%E9%A2%98/</link>
+      <link>http://guopuke.github.io/post/macos-%E9%85%8D%E7%BD%AEiterm2-oh-my-zsh%E4%B8%BB%E9%A2%98/</link>
       <pubDate>Thu, 16 Mar 2017 22:53:45 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/macos-%E9%85%8D%E7%BD%AEiterm2-oh-my-zsh%E4%B8%BB%E9%A2%98/</guid>
+      <guid>http://guopuke.github.io/post/macos-%E9%85%8D%E7%BD%AEiterm2-oh-my-zsh%E4%B8%BB%E9%A2%98/</guid>
       <description>&lt;p&gt;😏 想让你的终端也变成这样？Come On！跟着我左手右手一个慢动作&amp;hellip;
 &lt;img src=&#34;https://cloud.githubusercontent.com/assets/1415488/13198621/f2c1320c-d848-11e5-8f22-7fac1baeec2f.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
@@ -554,10 +554,10 @@ id_rsa      id_rsa.pub  known_hosts
     
     <item>
       <title>使用GitHub写Blog</title>
-      <link>https://guopuke.github.io/post/%E4%BD%BF%E7%94%A8github%E5%86%99blog/</link>
+      <link>http://guopuke.github.io/post/%E4%BD%BF%E7%94%A8github%E5%86%99blog/</link>
       <pubDate>Thu, 16 Mar 2017 21:00:24 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/post/%E4%BD%BF%E7%94%A8github%E5%86%99blog/</guid>
+      <guid>http://guopuke.github.io/post/%E4%BD%BF%E7%94%A8github%E5%86%99blog/</guid>
       <description>&lt;h3 id=&#34;创建github-pages&#34;&gt;创建GitHub Pages&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -571,64 +571,64 @@ id_rsa      id_rsa.pub  known_hosts
     
     <item>
       <title>Awesome Collaborative Project</title>
-      <link>https://guopuke.github.io/project/collaborativeproject/</link>
+      <link>http://guopuke.github.io/project/collaborativeproject/</link>
       <pubDate>Mon, 05 Oct 2015 02:27:08 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/project/collaborativeproject/</guid>
+      <guid>http://guopuke.github.io/project/collaborativeproject/</guid>
       <description>Mustache keytar disrupt ugh PBR. Before they sold out Brooklyn pickled, lumbersexual lo-fi mustache hoodie Tumblr Banksy semiotics salvia seitan 8-bit four loko PBR. Readymade mumblecore selfies, forage Schlitz Truffaut Portland PBR&amp;amp;B brunch sustainable chia retro 90&amp;rsquo;s tofu actually. Cold-pressed synth pickled Blue Bottle, chambray photo booth Schlitz Austin leggings distillery. Whatever kogi gastropub hashtag, 90&amp;rsquo;s wayfarers church-key ennui chia actually. Disrupt Bushwick trust fund, bicycle rights umami pork belly sartorial lumbersexual scenester asymmetrical Schlitz.</description>
     </item>
     
     <item>
       <title>Useful Code Snippet</title>
-      <link>https://guopuke.github.io/project/snippet/</link>
+      <link>http://guopuke.github.io/project/snippet/</link>
       <pubDate>Mon, 05 Oct 2015 02:24:15 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/project/snippet/</guid>
+      <guid>http://guopuke.github.io/project/snippet/</guid>
       <description>Mustache keytar disrupt ugh PBR. Before they sold out Brooklyn pickled, lumbersexual lo-fi mustache hoodie Tumblr Banksy semiotics salvia seitan 8-bit four loko PBR. Readymade mumblecore selfies, forage Schlitz Truffaut Portland PBR&amp;amp;B brunch sustainable chia retro 90&amp;rsquo;s tofu actually. Cold-pressed synth pickled Blue Bottle, chambray photo booth Schlitz Austin leggings distillery. Whatever kogi gastropub hashtag, 90&amp;rsquo;s wayfarers church-key ennui chia actually. Disrupt Bushwick trust fund, bicycle rights umami pork belly sartorial lumbersexual scenester asymmetrical Schlitz.</description>
     </item>
     
     <item>
       <title>A Cool Piece of Code</title>
-      <link>https://guopuke.github.io/project/coolcode/</link>
+      <link>http://guopuke.github.io/project/coolcode/</link>
       <pubDate>Sun, 27 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/project/coolcode/</guid>
+      <guid>http://guopuke.github.io/project/coolcode/</guid>
       <description>Mustache keytar disrupt ugh PBR. Before they sold out Brooklyn pickled, lumbersexual lo-fi mustache hoodie Tumblr Banksy semiotics salvia seitan 8-bit four loko PBR. Readymade mumblecore selfies, forage Schlitz Truffaut Portland PBR&amp;amp;B brunch sustainable chia retro 90&amp;rsquo;s tofu actually. Cold-pressed synth pickled Blue Bottle, chambray photo booth Schlitz Austin leggings distillery. Whatever kogi gastropub hashtag, 90&amp;rsquo;s wayfarers church-key ennui chia actually. Disrupt Bushwick trust fund, bicycle rights umami pork belly sartorial lumbersexual scenester asymmetrical Schlitz.</description>
     </item>
     
     <item>
       <title>A Cool Website</title>
-      <link>https://guopuke.github.io/project/coolwebsite/</link>
+      <link>http://guopuke.github.io/project/coolwebsite/</link>
       <pubDate>Sun, 27 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/project/coolwebsite/</guid>
+      <guid>http://guopuke.github.io/project/coolwebsite/</guid>
       <description>Mustache keytar disrupt ugh PBR. Before they sold out Brooklyn pickled, lumbersexual lo-fi mustache hoodie Tumblr Banksy semiotics salvia seitan 8-bit four loko PBR. Readymade mumblecore selfies, forage Schlitz Truffaut Portland PBR&amp;amp;B brunch sustainable chia retro 90&amp;rsquo;s tofu actually. Cold-pressed synth pickled Blue Bottle, chambray photo booth Schlitz Austin leggings distillery. Whatever kogi gastropub hashtag, 90&amp;rsquo;s wayfarers church-key ennui chia actually. Disrupt Bushwick trust fund, bicycle rights umami pork belly sartorial lumbersexual scenester asymmetrical Schlitz.</description>
     </item>
     
     <item>
       <title>Another Cool Website</title>
-      <link>https://guopuke.github.io/project/myproject/</link>
+      <link>http://guopuke.github.io/project/myproject/</link>
       <pubDate>Sun, 27 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/project/myproject/</guid>
+      <guid>http://guopuke.github.io/project/myproject/</guid>
       <description>Mustache keytar disrupt ugh PBR. Before they sold out Brooklyn pickled, lumbersexual lo-fi mustache hoodie Tumblr Banksy semiotics salvia seitan 8-bit four loko PBR. Readymade mumblecore selfies, forage Schlitz Truffaut Portland PBR&amp;amp;B brunch sustainable chia retro 90&amp;rsquo;s tofu actually. Cold-pressed synth pickled Blue Bottle, chambray photo booth Schlitz Austin leggings distillery. Whatever kogi gastropub hashtag, 90&amp;rsquo;s wayfarers church-key ennui chia actually. Disrupt Bushwick trust fund, bicycle rights umami pork belly sartorial lumbersexual scenester asymmetrical Schlitz.</description>
     </item>
     
     <item>
       <title>Material Design Lite theme for Hugo</title>
-      <link>https://guopuke.github.io/project/hugotheme/</link>
+      <link>http://guopuke.github.io/project/hugotheme/</link>
       <pubDate>Sun, 27 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/project/hugotheme/</guid>
+      <guid>http://guopuke.github.io/project/hugotheme/</guid>
       <description>Mustache keytar disrupt ugh PBR. Before they sold out Brooklyn pickled, lumbersexual lo-fi mustache hoodie Tumblr Banksy semiotics salvia seitan 8-bit four loko PBR. Readymade mumblecore selfies, forage Schlitz Truffaut Portland PBR&amp;amp;B brunch sustainable chia retro 90&amp;rsquo;s tofu actually. Cold-pressed synth pickled Blue Bottle, chambray photo booth Schlitz Austin leggings distillery. Whatever kogi gastropub hashtag, 90&amp;rsquo;s wayfarers church-key ennui chia actually. Disrupt Bushwick trust fund, bicycle rights umami pork belly sartorial lumbersexual scenester asymmetrical Schlitz.</description>
     </item>
     
     <item>
       <title>About Me</title>
-      <link>https://guopuke.github.io/about/</link>
+      <link>http://guopuke.github.io/about/</link>
       <pubDate>Tue, 18 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://guopuke.github.io/about/</guid>
+      <guid>http://guopuke.github.io/about/</guid>
       <description>90&amp;rsquo;s slow-carb Schlitz Shoreditch mixtape typewriter, wayfarers Austin keffiyeh Helvetica artisan flexitarian. Health goth vinyl scenester pickled kitsch. Organic slow-carb stumptown freegan, PBR ugh chia Intelligentsia pork belly locavore retro kale chips. Tofu put a bird on it squid tattooed beard master cleanse, mumblecore keytar mustache blog direct trade PBR&amp;amp;B quinoa.
 Education  2015 - Master of Arts in Wine Tasting, University of British Columbia
  2013 - Bachelor of Arts , University of British Columbia</description>
