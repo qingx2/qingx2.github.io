@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Php on 郭扑克儿</title>
-    <link>http://guopuke.github.io/tags/php/</link>
+    <link>https://guopuke.github.io/tags/php/</link>
     <description>Recent content in Php on 郭扑克儿</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <lastBuildDate>Tue, 30 May 2017 16:21:50 +0000</lastBuildDate>
     
-	<atom:link href="http://guopuke.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://guopuke.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Laravel语法提示PHPStorm </title>
-      <link>http://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</link>
+      <link>https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</link>
       <pubDate>Tue, 30 May 2017 16:21:50 +0000</pubDate>
       
-      <guid>http://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</guid>
+      <guid>https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</guid>
       <description>添加 composer 依赖包 在 composer.json 文件里添加依赖包信息
  &amp;ldquo;barryvdh/laravel-ide-helper&amp;rdquo;:&amp;ldquo;dev-master&amp;rdquo;
 &amp;ldquo;php artisan ide-helper:generate&amp;rdquo;
