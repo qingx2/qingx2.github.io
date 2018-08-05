@@ -5,7 +5,7 @@
     <link>https://guopuke.github.io/</link>
     <description>Recent content on 郭扑克儿</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>cn</language>
+    <language>zh-CN</language>
     <lastBuildDate>Sun, 05 Aug 2018 11:08:21 +0800</lastBuildDate>
     
 	<atom:link href="https://guopuke.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -56,6 +56,26 @@
 &lt;p&gt;今天在 macOS 上使用 Homebrew 安装 MySql ，正常情况下 MySql 会默认分配默认 root 账户 root 密码，但如果之前安装过MySql修改过账户密码，并且后面删除 MySql 服务，因为配置文件还在，所以这个时候不会产生 root 密码，但当自己在终端上使用默认密码登录的时候，总会提示一个授权失败的错误：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Access denied &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; user  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;using password&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图解 正向代理、反向代理、透明代理</title>
+      <link>https://guopuke.github.io/post/%E5%9B%BE%E8%A7%A3-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Sat, 04 Aug 2018 16:31:32 +0800</pubDate>
+      
+      <guid>https://guopuke.github.io/post/%E5%9B%BE%E8%A7%A3-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86/</guid>
+      <description>&lt;p&gt;套用古龙武侠小说套路来说，代理服务技术是一门很古老的技术，是在互联网早期出现就使用的技术。一般实现代理技术的方式就是在服务器上安装代理服务软件，让其成为一个代理服务器，从而实现代理技术。常用的代理技术分为正向代理、反向代理和透明代理。本文就是针对这三种代理来讲解一些基本原理和具体的适用范围，便于大家更深入理解代理服务技术。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Links</title>
+      <link>https://guopuke.github.io/links/</link>
+      <pubDate>Sat, 04 Aug 2018 15:58:51 +0800</pubDate>
+      
+      <guid>https://guopuke.github.io/links/</guid>
+      <description></description>
     </item>
     
     <item>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Docker初识</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Internet" />
+  <meta name="description" content="
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Docker初识" />
+    <meta name="twitter:description" content="
+" />
+    <meta name="twitter:image" content="https://guopuke.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Docker初识" />
+  <meta property="og:description" content="
+" />
+  <meta property="og:url" content="https://guopuke.github.io/post/docker%E5%88%9D%E8%AF%86/" />
+  <meta property="og:image" content="https://guopuke.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="https://guopuke.github.io/post/docker%E5%88%9D%E8%AF%86/" />
+<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://guopuke.github.io/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://guopuke.github.io/tags/">Tags</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Docker初识</h1>
+      <p class="post-meta">@Internet · Aug 5, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><p></p>
+
+<h3 id="使用容器">使用容器</h3>
+
+<p>如何管理我们的容器？</p>
+
+<p>当你在docker容器中运行和管理你的应用程序，我们会展示如何管理这些容器。了解如何检查、监控和管理容器。</p>
+
+<p>阅读<a href="http://www.widuu.com/docker/userguide/usingdocker.html">使用容器</a></p>
+
+<h3 id="使用docker镜像">使用docker镜像</h3>
+
+<p>我是如何创建、访问和分享我自己的容器呢？</p>
+
+<p>当你学会如何使用docker的时候，是时候进行下一步来学习如何在 Docker 中构建你自己应用程序镜像。</p>
+
+<p>阅读<a href="http://www.widuu.com/docker/userguide/dockerimages.html">使用docker镜像</a></p>
+
+<h3 id="容器连接">容器连接</h3>
+
+<p>到这里我们学会了如何在 Docker 容器中构建一个单独的应用程序。而现在我们要学习如何将多个容器连接在一起构建一个完整的应用程序。</p>
+
+<p>阅读<a href="http://www.widuu.com/docker/userguide/dockerlinks.html">容器连接</a></p>
+
+<h3 id="管理容器数据">管理容器数据</h3>
+
+<p>现在我们知道如何连接 Docker 容器，下一步，我们学习如何管理容器数据，如何将卷挂载到我们的容器中。</p>
+
+<p>阅读<a href="http://www.widuu.com/docker/userguide/dockervolumes.html">管理容器数据</a></p>
+
+<blockquote>
+<p>数据卷是一个可以供一个或多个容器使用的特殊目录。</p>
+
+<p>可以达到以下目的：</p>
+
+<ol>
+<li>绕过“拷贝写”系统，以达到本地磁盘IO的性能，（比如运行一个容器，在容器中对数据卷修改内容，会直接改变宿主机上的数据卷中的内容，所以是本地磁盘IO的性能，而不是先在容器中写一份，最后还要将容器中的修改的内容拷贝出来进行同步。）</li>
+<li>绕过“拷贝写”系统，有些文件不需要在docker commit打包进镜像文件。</li>
+<li>在多个容器间共享目录</li>
+<li>在宿主和容器间共享目录</li>
+<li>在宿主和容器间共享一个文件。</li>
+</ol>
+</blockquote>
+
+<h3 id="docker-hub">Docker Hub</h3>
+
+<p>现在我们应该学习更多关于使用 Docker 的知识。例如通过 Docker Hub 提供的服务来构建私有仓库。</p>
+
+<p>阅读<a href="http://www.widuu.com/docker/userguide/dockerrepos.html">使用Docker Hub</a></p>
+
+<h3 id="docker-compose">Docker Compose</h3>
+
+<p>Docker Compose 你只需要一个简单的配置文件就可以自定义你所需要的应用组件，包括容器、配置、网络链接和挂载卷。只需要一个简单的命令就可以启动和运行你的应用程序。</p>
+
+<p>阅读<a href="http://www.widuu.com/docker/compose/README.md">Docker Compose 用户指南.</a></p>
+
+<h3 id="docker-machine">Docker Machine</h3>
+
+<p>Docker Machine 可以帮助你快速的启动和运行 Docker 引擎。 Machine 可以帮助你配置本地电脑、云服务商和你的个人数据中心上的 Docker 引擎主机，并且通过配置 Docker 客户端来让它们进行安全的通信。</p>
+
+<p>查阅 <a href="http://www.widuu.com/docker/machine/README.md">Go to Docker Machine user guide.</a></p>
+
+<h3 id="docker-集群">Docker 集群</h3>
+
+<p>Docker 集群是将多个 Docker 引擎池连接在一起组合成一个独立的主机来提供给外界。它是以 Docker API 作为服务标准的，所以任何已经在Docker上工作的工具，现在都可以透明地扩展到多个主机上。</p>
+
+<p>阅读 <a href="http://www.widuu.com/docker/swarm">Go to Docker Swarm user guide.</a></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://guopuke.github.io/tags/taga"><span class="tag">TagA</span></a></li>
+        
+          <li><a href="https://guopuke.github.io/tags/tagb"><span class="tag">TagB</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>
