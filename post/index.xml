@@ -59,17 +59,6 @@
     </item>
     
     <item>
-      <title>图解 正向代理、反向代理、透明代理</title>
-      <link>https://guopuke.github.io/post/%E5%9B%BE%E8%A7%A3-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86/</link>
-      <pubDate>Sat, 04 Aug 2018 16:31:32 +0800</pubDate>
-      
-      <guid>https://guopuke.github.io/post/%E5%9B%BE%E8%A7%A3-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86/</guid>
-      <description>&lt;p&gt;套用古龙武侠小说套路来说，代理服务技术是一门很古老的技术，是在互联网早期出现就使用的技术。一般实现代理技术的方式就是在服务器上安装代理服务软件，让其成为一个代理服务器，从而实现代理技术。常用的代理技术分为正向代理、反向代理和透明代理。本文就是针对这三种代理来讲解一些基本原理和具体的适用范围，便于大家更深入理解代理服务技术。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>答疑解惑：渴望、热情和选择</title>
       <link>https://guopuke.github.io/post/%E7%AD%94%E7%96%91%E8%A7%A3%E6%83%91%E6%B8%B4%E6%9C%9B%E7%83%AD%E6%83%85%E5%92%8C%E9%80%89%E6%8B%A9/</link>
       <pubDate>Sat, 04 Aug 2018 15:09:55 +0800</pubDate>
