@@ -262,9 +262,11 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
       
         <article class="post-entry">
   <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/redis%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8sentinel/" class="post-link">Redis配置使用守护进程启动sentinel</a></h3>
-    <p class="post-meta">@Internet · Jun 29, 2017 · 1 min read</p>
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/redis%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8sentinel/" class="post-link">Redis 配置使用守护进程启动 sentinel</a></h3>
+    <p class="post-meta">@Paco · Jun 29, 2017 · 1 min read</p>
   </header>
+  
+    <img class="post-cover" src="https://guopuke.github.io/img/redis.png" alt="Redis 配置使用守护进程启动 sentinel">
   
   <p class="post-summary">概述 ​ Redis-Sentinel是Redis官方推荐的高可用性(HA)解决方案，当用Redis做Master-slave的高可用方案时，假如master宕机了，Redis本身(包括它的很多客户端)都没有实现自动进行主备切换，而Redis-sentinel本身也是一个独立运行的进程，它能监控多个master-slave集群，发现master宕机后能进行自懂切换。
 
