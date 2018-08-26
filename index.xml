@@ -6,10 +6,23 @@
     <description>Recent content on 郭扑克儿</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 22 Aug 2018 14:01:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Aug 2018 19:19:42 +0800</lastBuildDate>
     
 	<atom:link href="https://guopuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PHP 扩展安装失败</title>
+      <link>https://guopuke.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Sun, 26 Aug 2018 19:19:42 +0800</pubDate>
+      
+      <guid>https://guopuke.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</guid>
+      <description>PHP 扩展安装失败 1. Connection to ssl://pecl.php.net:443 fail  安装 pecl install redis, pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误
+ No releases available for package &amp;quot;pecl.php.net/memcache&amp;quot;
+导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 OpenSSL 的问题，这里提供一个简单的办法：
+ 从 pecl.php.net 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 redis-4.1.1.tgz 这个压缩包） 执行 pecl install redis-4.1.1.tgz  2. configure: error: Cannot find OpenSSL&amp;rsquo;s   错误信息
+ configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&amp;#39; failed  解决办法</description>
+    </item>
     
     <item>
       <title>Redis 单机多项目配置</title>

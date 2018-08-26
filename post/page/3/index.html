@@ -222,6 +222,22 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/" class="post-link">PHP根据特定字段进行分组</a></h3>
+    <p class="post-meta">@Internet · Jul 28, 2017 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">如果你的数据是这样:
+需要转换为如下格式
+添加此函数可以进行转为
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms); } } return $grouped; }</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://guopuke.github.io/post/jwtauth%E8%BF%90%E7%94%A8%E5%88%B0laravel5/" class="post-link">JWTAuth运用到Laravel5</a></h3>
     <p class="post-meta">@Internet · Jul 14, 2017 · 1 min read</p>
   </header>
@@ -353,22 +369,6 @@ brew services start mongodb Or, if you don&#39;t want/need a background service 
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://guopuke.github.io/post/%E8%AF%BB%E6%9C%AA%E6%9D%A5%E4%B8%96%E7%95%8C%E7%9A%84%E5%B9%B8%E5%AD%98%E8%80%85/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/" class="post-link">Mac 配置 PHP_FPM</a></h3>
-    <p class="post-meta">@Internet · Apr 28, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">参考: [开发环境]Mac 配置 php-fpm
-使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
-ERROR: failed to open configuration file &#39;/private/etc/php-fpm.conf&#39;: No such file or directory (2) ERROR: failed to load configuration file &#39;/private/etc/php-fpm.conf&#39; ERROR: FPM initialization failed 
-</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/">Read More →</a>
   </footer>
 </article>
 

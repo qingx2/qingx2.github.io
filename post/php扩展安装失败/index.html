@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>PHP 扩展安装失败</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Paco" />
+  <meta name="description" content="PHP 扩展安装失败 1. Connection to ssl://pecl.php.net:443 fail  安装 pecl install redis, pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误
+ No releases available for package &amp;quot;pecl.php.net/memcache&amp;quot;
+导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 OpenSSL 的问题，这里提供一个简单的办法：
+ 从 pecl.php.net 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 redis-4.1.1.tgz 这个压缩包） 执行 pecl install redis-4.1.1.tgz  2. configure: error: Cannot find OpenSSL&amp;rsquo;s   错误信息
+ configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&amp;#39; failed  解决办法" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="PHP 扩展安装失败" />
+    <meta name="twitter:description" content="PHP 扩展安装失败 1. Connection to ssl://pecl.php.net:443 fail  安装 pecl install redis, pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误
+ No releases available for package &amp;quot;pecl.php.net/memcache&amp;quot;
+导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 OpenSSL 的问题，这里提供一个简单的办法：
+ 从 pecl.php.net 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 redis-4.1.1.tgz 这个压缩包） 执行 pecl install redis-4.1.1.tgz  2. configure: error: Cannot find OpenSSL&amp;rsquo;s   错误信息
+ configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&amp;#39; failed  解决办法" />
+    <meta name="twitter:image" content="https://guopuke.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PHP 扩展安装失败" />
+  <meta property="og:description" content="PHP 扩展安装失败 1. Connection to ssl://pecl.php.net:443 fail  安装 pecl install redis, pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误
+ No releases available for package &amp;quot;pecl.php.net/memcache&amp;quot;
+导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 OpenSSL 的问题，这里提供一个简单的办法：
+ 从 pecl.php.net 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 redis-4.1.1.tgz 这个压缩包） 执行 pecl install redis-4.1.1.tgz  2. configure: error: Cannot find OpenSSL&amp;rsquo;s   错误信息
+ configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&amp;#39; failed  解决办法" />
+  <meta property="og:url" content="https://guopuke.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/" />
+  <meta property="og:image" content="https://guopuke.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.45.1" />
+
+
+<link rel="canonical" href="https://guopuke.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/" />
+<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">~ Keep It Simple &amp; Stupid ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://guopuke.github.io/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu"></a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://guopuke.github.io/tags/">Tags</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">PHP 扩展安装失败</h1>
+      <p class="post-meta">@Paco · Aug 26, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content">
+
+<h1 id="php-扩展安装失败">PHP 扩展安装失败</h1>
+
+<h3 id="1-connection-to-ssl-pecl-php-net-443-fail">1. Connection to ssl://pecl.php.net:443 fail</h3>
+
+<blockquote>
+<p>安装 pecl install redis,  pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误</p>
+</blockquote>
+
+<p><code>No releases available for package &quot;pecl.php.net/memcache&quot;</code></p>
+
+<p>导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 <code>OpenSSL</code> 的问题，这里提供一个简单的办法：</p>
+
+<ul>
+<li>从 <a href="https://pecl.php.net/">pecl.php.net</a> 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 <strong>redis-4.1.1.tgz</strong> 这个压缩包）</li>
+<li>执行 <code>pecl install redis-4.1.1.tgz</code></li>
+</ul>
+
+<h3 id="2-configure-error-cannot-find-openssl-s-evp-h">2. configure: error: Cannot find OpenSSL&rsquo;s <evp.h></h3>
+
+<blockquote>
+<p>错误信息</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">configure: error: Cannot find OpenSSL<span style="color:#e6db74">&#39;s &lt;evp.h&gt;
+</span><span style="color:#e6db74">ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&#39;</span> failed</code></pre></div>
+<blockquote>
+<p>解决办法</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install openssl
+
+$ ln -s /usr/local/Cellar/openssl/1.0.2m/include/openssl /usr/local/include/openssl
+
+$ export LDFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-L/usr/local/opt/openssl/lib&#34;</span>
+
+$ export CFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-I/usr/local/opt/openssl/include&#34;</span></code></pre></div>
+<h3 id="3-configure-error-please-reinstall-the-mosquitto-distribution">3. configure: error: Please reinstall the mosquitto distribution</h3>
+
+<p>在安装 <code>mosquitto</code> 扩展的时候总是 error</p>
+
+<blockquote>
+<p>错误信息如下</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">configure: error: Please reinstall the mosquitto distribution
+ERROR: <span style="color:#e6db74">`</span>/private/tmp/pear/temp/Mosquitto/configure --with-php-config<span style="color:#f92672">=</span>/usr/local/opt/php@7.0/bin/php-config --with-mosquitto<span style="color:#960050;background-color:#1e0010">&#39;</span> failed</code></pre></div>
+<blockquote>
+<p>解决办法: 原来是这个扩展包会依赖本地的 Mosquitto Broke 才能进行安装，MacOS 可用 <code>Homebrew</code> 直接安装</p>
+
+<p>错误提示信息，类似这种 <code>reinstall</code> <code>distribution</code> 都可以考虑按照以下方法尝试解决</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew install mosquitto
+
+pecl install mosquitto</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://guopuke.github.io/tags/php"><span class="tag">PHP</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>
