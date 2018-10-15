@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>/dev/null 的用途</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="风 fworld $ 雪狼湖" />
+  <meta name="description" content="/dev/null从名称上可以很显然看出是一个空文件（写入到 / dev/null 时全部丢失，读取 / dev/null 时自己返回 EOF），那么你会很疑惑，他到底有什么用途呢，请看下文听我讲解，可能你在很多脚本里看过 /dev/null，具体总结下几种常见用途.
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="/dev/null 的用途" />
+    <meta name="twitter:description" content="/dev/null从名称上可以很显然看出是一个空文件（写入到 / dev/null 时全部丢失，读取 / dev/null 时自己返回 EOF），那么你会很疑惑，他到底有什么用途呢，请看下文听我讲解，可能你在很多脚本里看过 /dev/null，具体总结下几种常见用途.
+
+" />
+    <meta name="twitter:image" content="https://tse1.mm.bing.net/th?id=OIP.zS8tyKqTEemlRgYTWfcNYgHaFj&pid=Api" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="/dev/null 的用途" />
+  <meta property="og:description" content="/dev/null从名称上可以很显然看出是一个空文件（写入到 / dev/null 时全部丢失，读取 / dev/null 时自己返回 EOF），那么你会很疑惑，他到底有什么用途呢，请看下文听我讲解，可能你在很多脚本里看过 /dev/null，具体总结下几种常见用途.
+
+" />
+  <meta property="og:url" content="https://guopuke.github.io/post/devnull-%E7%9A%84%E7%94%A8%E9%80%94/" />
+  <meta property="og:image" content="https://tse1.mm.bing.net/th?id=OIP.zS8tyKqTEemlRgYTWfcNYgHaFj&pid=Api" />
+
+
+
+
+<meta name="generator" content="Hugo 0.47.1" />
+
+
+<link rel="canonical" href="https://guopuke.github.io/post/devnull-%E7%9A%84%E7%94%A8%E9%80%94/" />
+<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://guopuke.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://guopuke.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/guopuke">GitHub</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">/dev/null 的用途</h1>
+      <p class="post-meta">@风 fworld $ 雪狼湖 · Oct 15, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><p><code>/dev/null</code>从名称上可以很显然看出是一个空文件（写入到 <code>/ dev/null</code> 时全部丢失，读取 <code>/ dev/null</code> 时自己返回 <code>EOF</code>），那么你会很疑惑，他到底有什么用途呢，请看下文听我讲解，可能你在很多脚本里看过 <code>/dev/null</code>，具体总结下几种常见用途.</p>
+
+<p></p>
+
+<h3 id="清除文本文件内容">清除文本文件内容</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /dev/null &gt; /var/log/messages
+
+<span style="color:#75715e"># 有同样的效果, 但不会产生新的进程.（因为: 是内建的）
+</span><span style="color:#75715e"></span>: &gt; /var/log/messages</code></pre></div>
+<h3 id="禁止标准输出">禁止标准输出</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 文件内容丢失，不会输出到标准输出
+</span><span style="color:#75715e"></span>cat $filename &gt;/dev/null</code></pre></div>
+<h3 id="禁止标准错误">禁止标准错误</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 删除文件错误时，不会再有提示到终端，都丢到 / dev/null 里去了
+</span><span style="color:#75715e"></span>rm $badname <span style="color:#ae81ff">2</span>&gt;/dev/null</code></pre></div>
+<h3 id="禁止标准输出和标准错误的输出">禁止标准输出和标准错误的输出</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 如果 &#34;$filename&#34; 不存在，将不会有任何错误信息提示
+</span><span style="color:#75715e"># 如果 &#34;$filename&#34; 存在, 文件的内容不会打印到标准输出
+</span><span style="color:#75715e"># 因此, 上面的代码根本不会输出任何信息
+</span><span style="color:#75715e"># 当只想测试命令的退出码而不想有任何输出时非常有用
+</span><span style="color:#75715e"></span>cat $filename <span style="color:#ae81ff">2</span>&gt;/dev/null &gt;/dev/null</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#----------- 测试命令的退出 begin ----------------------#  
+</span><span style="color:#75715e"></span>ls dddd <span style="color:#ae81ff">2</span>&gt;/dev/null <span style="color:#ae81ff">8</span> 
+echo $?    // 输出命令退出代码：0 为命令正常执行，1-255 为有出错。  
+
+<span style="color:#75715e">#----------- 测试命令的退出 end-----------#    
+</span><span style="color:#75715e"></span>cat $filename &amp;&gt;/dev/null     </code></pre></div>
+<h3 id="隐藏-cookie-而不再使用">隐藏 cookie 而不再使用</h3>
+
+<blockquote>
+<p>所有的 cookies 都会丢弃, 而不会保存在磁盘上了</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>-f ~/.netscape/cookies<span style="color:#f92672">]</span>  <span style="color:#75715e"># 如果存在则删除
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">then</span>
+  rm -f ~/.netscape/cookies  
+<span style="color:#66d9ef">fi</span>
+  ln -s /dev/null ~/.netscape/cookies </code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://guopuke.github.io/tags//dev/null"><span class="tag">/Dev/Null</span></a></li>
+        
+          <li><a href="https://guopuke.github.io/tags/linux"><span class="tag">Linux</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>
