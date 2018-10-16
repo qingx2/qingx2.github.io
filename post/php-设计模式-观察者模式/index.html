@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>PHP 设计模式 观察者模式</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="杰枫 Jeff" />
+  <meta name="description" content="​ 这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。
+　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。  
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="PHP 设计模式 观察者模式" />
+    <meta name="twitter:description" content="​ 这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。
+　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。  
+" />
+    <meta name="twitter:image" content="https://tse3-mm.cn.bing.net/th?id=OIP.YAZ67-5eAkmJ4XQhcjm52wHaFG&w=259&h=172&c=7&o=5&dpr=2&pid=1.7" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PHP 设计模式 观察者模式" />
+  <meta property="og:description" content="​ 这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。
+　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。  
+" />
+  <meta property="og:url" content="https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" />
+  <meta property="og:image" content="https://tse3-mm.cn.bing.net/th?id=OIP.YAZ67-5eAkmJ4XQhcjm52wHaFG&w=259&h=172&c=7&o=5&dpr=2&pid=1.7" />
+
+
+
+
+<meta name="generator" content="Hugo 0.47.1" />
+
+
+<link rel="canonical" href="https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" />
+<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://guopuke.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://guopuke.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/guopuke">GitHub</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">PHP 设计模式 观察者模式</h1>
+      <p class="post-meta">@杰枫 Jeff · Oct 16, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>​       这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。</p>
+
+<pre><code>　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。
+</code></pre>
+
+<p></p>
+
+<p>　　　从面向过程的角度来看，首先是观察者向主题<strong>注册</strong>，注册完之后，主题再<strong>通知</strong>观察者做出相应的<strong>操作</strong>，整个事情就完了。</p>
+
+<p>　　　从面向对象的角度来看，主题提供注册和通知的接口，观察者提供自身操作的接口。（这些观察者拥有一个同一个接口。）观察者利用主题的接口向主题注册，而主题利用观察者接口通知观察者。耦合度相当之低。</p>
+
+<p>​         如何实现观察者注册？通过前面的注册者模式很容易给我们提供思路，把这些对象加到一棵注册树上就好了嘛。如何通知？这就更简单了，对注册树进行遍历，让每个对象实现其接口提供的操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">// 主题接口
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Subject</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">register</span>(<span style="color:#a6e22e">Observer</span> $observer);
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">notify</span>();
+}
+<span style="color:#75715e">// 观察者接口
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Observer</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">watch</span>();
+}
+<span style="color:#75715e">// 主题
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Action</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Subject</span>{
+     <span style="color:#66d9ef">public</span> $_observers<span style="color:#f92672">=</span><span style="color:#66d9ef">array</span>();
+     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">register</span>(<span style="color:#a6e22e">Observer</span> $observer){
+         $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_observers</span>[]<span style="color:#f92672">=</span>$observer;
+     }
+
+     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">notify</span>(){
+         <span style="color:#66d9ef">foreach</span> ($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_observers</span> <span style="color:#66d9ef">as</span> $observer) {
+             $observer<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">watch</span>();
+         }
+
+     }
+ }
+
+<span style="color:#75715e">// 观察者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Observer</span>{
+     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">watch</span>(){
+         <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Cat watches TV&lt;hr/&gt;&#34;</span>;
+     }
+ } 
+ <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Observer</span>{
+     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">watch</span>(){
+         <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Dog watches TV&lt;hr/&gt;&#34;</span>;
+     }
+ } 
+ <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">People</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Observer</span>{
+     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">watch</span>(){
+         <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;People watches TV&lt;hr/&gt;&#34;</span>;
+     }
+ }
+
+<span style="color:#75715e">// 应用实例
+</span><span style="color:#75715e"></span>$action<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Action</span>();
+$action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">register</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Cat</span>());
+$action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">register</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">People</span>());
+$action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">register</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Dog</span>());
+$action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">notify</span>();
+</code></pre></div>
+<p>　　　所谓模式，更多的是一种想法，完全没必要拘泥于代码细节。观察者模式更多体现了两个独立的类利用接口完成一件本应该很复杂的事情。不利用主题类的话，我们还需要不断循环创建实例，执行操作。而现在只需要创建实例就好，执行操作的事儿只需要调用一次通知的方法就好啦。</p>
+
+<p>　　　从开始的单例模式我一步步考虑如何实现代码，到现在大部分实现代码一句带过，实际上是建立在前面不断积累的基础上。真心感觉通过不断学习设计模式能很大加深对面向对象编程的思考。当然纸上谈兵还是要不得的，最好还是投入更多的练习中去吧~~·</p>
+
+<p>　　相关文章  《<a href="http://www.cnblogs.com/DeanChopper/p/4726773.html">使用观察者模式处理异常信息</a>》</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://guopuke.github.io/tags/php"><span class="tag">PHP</span></a></li>
+        
+          <li><a href="https://guopuke.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="tag">设计模式</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

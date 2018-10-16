@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PHP on 郭扑克儿</title>
-    <link>https://guopuke.github.io/tags/php/</link>
-    <description>Recent content in PHP on 郭扑克儿</description>
+    <title>设计模式 on 郭扑克儿</title>
+    <link>https://guopuke.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on 郭扑克儿</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 16 Oct 2018 16:11:08 +0800</lastBuildDate>
     
-	<atom:link href="https://guopuke.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://guopuke.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -55,32 +55,6 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PHP 扩展安装失败</title>
-      <link>https://guopuke.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</link>
-      <pubDate>Sun, 26 Aug 2018 19:19:42 +0800</pubDate>
-      
-      <guid>https://guopuke.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</guid>
-      <description>1. Connection to ssl://pecl.php.net:443 fail  安装 pecl install redis, pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误
- No releases available for package &amp;quot;pecl.php.net/memcache&amp;quot;
-导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 OpenSSL 的问题，这里提供一个简单的办法：
- 从 pecl.php.net 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 redis-4.1.1.tgz 这个压缩包） 执行 pecl install redis-4.1.1.tgz  2. configure: error: Cannot find OpenSSL&amp;rsquo;s &amp;lt;evp.h&amp;gt;  错误信息
- configure: error: Cannot find OpenSSL&amp;#39;s &amp;lt;evp.h&amp;gt; ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&amp;#39; failed  解决办法</description>
-    </item>
-    
-    <item>
-      <title>Laravel语法提示PHPStorm </title>
-      <link>https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</link>
-      <pubDate>Tue, 30 May 2017 16:21:50 +0000</pubDate>
-      
-      <guid>https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/</guid>
-      <description>添加 composer 依赖包 在 composer.json 文件里添加依赖包信息
- &amp;ldquo;barryvdh/laravel-ide-helper&amp;rdquo;:&amp;ldquo;dev-master&amp;rdquo;
-&amp;ldquo;php artisan ide-helper:generate&amp;rdquo;
- &amp;#34;require&amp;#34;: { // other composer ... &amp;#34;barryvdh/laravel-ide-helper&amp;#34;:&amp;#34;dev-master&amp;#34; } &amp;#34;scripts&amp;#34;: { &amp;#34;post-update-cmd&amp;#34;: [ // other cmd.. // 以后执行 composer update 的时候会自动执行此扩展包的任务 &amp;#34;php artisan ide-helper:generate&amp;#34; ] }, 添加service provider 服务 在你的Laravel项目 config/app.php 于 providers 添加如下代码注册为服务提供者，使其在每个环境下都加载进来：
-Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行 composer update 下载依赖包并会自动执行扩展包任务</description>
     </item>
     
   </channel>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>PHP 设计模式 工厂模式</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="杰枫 Jeff" />
+  <meta name="description" content="那么何为工厂模式？ 　定义一个创建对象的接口，但是让子类去实例化具体类。工厂方法模式让类的实例化延迟到子类中。
+　工厂模式有一个关键的构造，根据一般原则命名为 Factory 的静态方法，然而这只是一种原则，虽然工厂方法可以任意命名这个静态还可以接受任意数据的参数，必须返回一个对象。
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="PHP 设计模式 工厂模式" />
+    <meta name="twitter:description" content="那么何为工厂模式？ 　定义一个创建对象的接口，但是让子类去实例化具体类。工厂方法模式让类的实例化延迟到子类中。
+　工厂模式有一个关键的构造，根据一般原则命名为 Factory 的静态方法，然而这只是一种原则，虽然工厂方法可以任意命名这个静态还可以接受任意数据的参数，必须返回一个对象。
+
+" />
+    <meta name="twitter:image" content="http://images2017.cnblogs.com/blog/1140613/201710/1140613-20171001132944809-1197263766.png" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PHP 设计模式 工厂模式" />
+  <meta property="og:description" content="那么何为工厂模式？ 　定义一个创建对象的接口，但是让子类去实例化具体类。工厂方法模式让类的实例化延迟到子类中。
+　工厂模式有一个关键的构造，根据一般原则命名为 Factory 的静态方法，然而这只是一种原则，虽然工厂方法可以任意命名这个静态还可以接受任意数据的参数，必须返回一个对象。
+
+" />
+  <meta property="og:url" content="https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
+  <meta property="og:image" content="http://images2017.cnblogs.com/blog/1140613/201710/1140613-20171001132944809-1197263766.png" />
+
+
+
+
+<meta name="generator" content="Hugo 0.47.1" />
+
+
+<link rel="canonical" href="https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
+<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://guopuke.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://guopuke.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/guopuke">GitHub</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">PHP 设计模式 工厂模式</h1>
+      <p class="post-meta">@杰枫 Jeff · Oct 16, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><h3 id="那么何为工厂模式">那么何为工厂模式？</h3>
+
+<p>　　定义一个创建对象的接口，但是让子类去实例化具体类。工厂方法模式让类的实例化延迟到子类中。</p>
+
+<p>　<em>工厂模式有一个关键的构造，根据一般原则命名为 Factory 的静态方法，然而这只是一种原则，虽然工厂方法可以任意命名这个静态还可以接受任意数据的参数，必须返回一个对象。</em></p>
+
+<p></p>
+
+<h3 id="为什么要用工厂模式">为什么要用工厂模式？</h3>
+
+<p>　　很多没接触过工厂模式的人会不禁问，为啥我要费那么大的劲儿去构造工厂类去创建对象呢？不去套用那些易维护，可扩展之类的话，我们可以考虑这样一个简单的问题。如果项目中，我们通过一个类创建对象。在快完成或者已经完成，要扩展功能的时候，发现原来的类类名不是很合适或者发现类需要添加构造函数参数才能实现功能扩展。我都通过这个类创建了一大堆对象实例了啊，难道我还要一个一个去改不成？我们现在才感受到了 “高内聚低耦合” 的博大精深。没问题，工厂方法可以解决这个问题。</p>
+
+<p>​   再考虑一下，我要连接数据库，在 PHP 里面就有好几种方法，mysql 扩展，mysqli 扩展，PDO 扩展。我就是想要一个对象用来以后的操作，具体要哪个，视情况而定喽。既然你们都是连接数据库的操作，你们就应该拥有相同的功能，建立连接，查询，断开连接&hellip;（此处显示接口的重要性）。总而言之，这几种方法应该 “团结一致，一致对外”。如何实现呢？利用工厂模式。</p>
+
+<h3 id="工厂模式如何实现">工厂模式如何实现？</h3>
+
+<p>​   相对于单例模式，上面我们提供了足够的信息，工厂类，工厂类里面的静态方法。静态方法里面 new 一下需要创建的对象实例就搞定了。当然至于考虑上面的第二个问题，根据工厂类静态方法的参数，我们简单做个判断就好了。管你用 <code>if..else..</code> 还是 <code>switch..case..</code>，能快速高效完成判断该创建哪个类的工作就好了。最后，一定要记得，<strong>工厂类静态方法只返回一个对象</strong>。不是两个，更不是三个。</p>
+
+<blockquote>
+<p>基本的工厂类</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">//要创建对象实例的类
+class MyObject{
+}
+
+ //工厂类
+class MyFactory{
+	public static function factory(){
+        return new MyObject():
+    }
+}
+
+
+$instance=MyFactory::factory();</code></pre></div>
+<blockquote>
+<p>一个稍微复杂的工厂模式</p>
+
+<p>需要注意同名构造函数的问题，不能是工厂类名为 <code>Factory</code> ，静态方法名为 <code>factory()</code></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">interface Transport{
+    public function go();
+
+}
+
+class Bus implements Transport{
+    public function go(){
+        echo &#34;bus每一站都要停&#34;;
+    }
+}
+
+class Car implements Transport{
+    public function go(){
+        echo &#34;car跑的飞快&#34;;
+    }
+}
+
+class Bike implements Transport{
+    public function go(){
+        echo &#34;bike比较慢&#34;;
+    }
+}
+
+class transFactory{
+    public static function factory($transport)
+    {
+        
+        switch ($transport) {
+            case &#39;bus&#39;:
+                return new Bus();
+                break;
+
+            case &#39;car&#39;:
+                return new Car();
+                break;
+            case &#39;bike&#39;:
+                return new Bike();
+                break;
+        }
+    }
+}
+
+
+$transport=transFactory::factory(&#39;car&#39;);
+$transport-&gt;go();</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://guopuke.github.io/tags/php"><span class="tag">PHP</span></a></li>
+        
+          <li><a href="https://guopuke.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="tag">设计模式</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

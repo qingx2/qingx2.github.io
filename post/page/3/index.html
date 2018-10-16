@@ -222,6 +222,55 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/" class="post-link">Yii-属性篇</a></h3>
+    <p class="post-meta">@Internet · Sep 16, 2017 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">属性用于表征类的状态，从访问的形式上看，属性与成员变量没有区别。
+成员变量是就类的结构构成而言的概念，而属性是就类的功能逻辑而言的概念，两者紧密联系又相互区别。
+
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" class="post-link">PHP魔术方法、依赖注入、控制反转容器</a></h3>
+    <p class="post-meta">@Internet · Sep 15, 2017 · 2 min read</p>
+  </header>
+  
+  <p class="post-summary">依赖注入 “注入”，就是把一个实例传递到另一个实例的内部。
+控制反转容器（Ioc Container） 如果存在如下这样复杂的依赖关系，该如何解决呢？
+$a = new A(new B(new D(new F)), new C(new E())); IoC容器（控制反转）就是为了帮助我们解决因复杂的依赖注入而产生混乱的解决方案。
+IoC容器需要满足2个最基本的功能：
+ 存储定义的类 实例化类  
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/" class="post-link">物流信息API对接</a></h3>
+    <p class="post-meta">@Internet · Sep 6, 2017 · 3 min read</p>
+  </header>
+  
+  <p class="post-summary">​ 项目刚好涉及一小块儿订单部分，需要一个第三方的快递物流信息接口API做一个物流轨迹的跟踪。国内的快递100、快递鸟、快递网、聚合数据，国际快递的话使用 Trackingmore也不错。个人综合比较考虑一下，决定使用 快递鸟 物流数据平台。
+
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://guopuke.github.io/post/chrome-cvim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/" class="post-link">Chrome cVim 快捷键速查表</a></h3>
     <p class="post-meta">@Internet · Aug 24, 2017 · 3 min read</p>
   </header>
@@ -326,54 +375,6 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://guopuke.github.io/post/vue%E7%BB%84%E4%BB%B6%E5%BA%93/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/" class="post-link">Laravel语法提示PHPStorm </a></h3>
-    <p class="post-meta">@Internet · May 30, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">添加 composer 依赖包 在 composer.json 文件里添加依赖包信息
- “barryvdh/laravel-ide-helper”:“dev-master”
-“php artisan ide-helper:generate”
- &#34;require&#34;: { // other composer ... &#34;barryvdh/laravel-ide-helper&#34;:&#34;dev-master&#34; } &#34;scripts&#34;: { &#34;post-update-cmd&#34;: [ // other cmd.. // 以后执行 composer update 的时候会自动执行此扩展包的任务 &#34;php artisan ide-helper:generate&#34; ] }, 添加service provider 服务 在你的Laravel项目 config/app.php 于 providers 添加如下代码注册为服务提供者，使其在每个环境下都加载进来：
-Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行 composer update 下载依赖包并会自动执行扩展包任务</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" class="post-link">Swoole 实现消息发送功能</a></h3>
-    <p class="post-meta">@Internet · May 22, 2017 · 2 min read</p>
-  </header>
-  
-  <p class="post-summary">导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
-</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="post-link">Mongodb 安装使用</a></h3>
-    <p class="post-meta">@Internet · May 22, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">Mac 环境
-安装Mongodb brew install mongodb  安装完以后可以看见有很明显的提示:
-brew services start mongodb Or, if you don&#39;t want/need a background service you can just run: mongod --config /usr/local/etc/mongod.conf  为了方便使用, 将其设置为全局变量
-// 在 ~/.bash_profile 添加PATH路径信息 ➜ ~ sudo vi ~/.bash_profile export PATH=&#34;/usr/local/Cellar/mongodb/3.4.3/bin:$PATH&#34;  启动 mongodb sudo mongod --dbpath=/usr/local/var/mongodb  启动成功后末尾会有如下信息
-2017-05-22T23:18:24.487&#43;0800 I FTDC [initandlisten] Initializing full-time diagnostic data capture with directory &#39;/usr/local/var/mongodb/diagnostic.data&#39; 2017-05-22T23:18:24.489&#43;0800 I NETWORK [thread1] waiting for connections on port 27017  说明已经启动成功了， 如果不成功，可能就是数据库路径不正确，仔细看一下提示。启动的时候可定义数据库路径。</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">Read More →</a>
   </footer>
 </article>
 

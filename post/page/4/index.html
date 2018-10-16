@@ -222,6 +222,54 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/" class="post-link">Laravel语法提示PHPStorm </a></h3>
+    <p class="post-meta">@Internet · May 30, 2017 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">添加 composer 依赖包 在 composer.json 文件里添加依赖包信息
+ “barryvdh/laravel-ide-helper”:“dev-master”
+“php artisan ide-helper:generate”
+ &#34;require&#34;: { // other composer ... &#34;barryvdh/laravel-ide-helper&#34;:&#34;dev-master&#34; } &#34;scripts&#34;: { &#34;post-update-cmd&#34;: [ // other cmd.. // 以后执行 composer update 的时候会自动执行此扩展包的任务 &#34;php artisan ide-helper:generate&#34; ] }, 添加service provider 服务 在你的Laravel项目 config/app.php 于 providers 添加如下代码注册为服务提供者，使其在每个环境下都加载进来：
+Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行 composer update 下载依赖包并会自动执行扩展包任务</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" class="post-link">Swoole 实现消息发送功能</a></h3>
+    <p class="post-meta">@Internet · May 22, 2017 · 2 min read</p>
+  </header>
+  
+  <p class="post-summary">导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="post-link">Mongodb 安装使用</a></h3>
+    <p class="post-meta">@Internet · May 22, 2017 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">Mac 环境
+安装Mongodb brew install mongodb  安装完以后可以看见有很明显的提示:
+brew services start mongodb Or, if you don&#39;t want/need a background service you can just run: mongod --config /usr/local/etc/mongod.conf  为了方便使用, 将其设置为全局变量
+// 在 ~/.bash_profile 添加PATH路径信息 ➜ ~ sudo vi ~/.bash_profile export PATH=&#34;/usr/local/Cellar/mongodb/3.4.3/bin:$PATH&#34;  启动 mongodb sudo mongod --dbpath=/usr/local/var/mongodb  启动成功后末尾会有如下信息
+2017-05-22T23:18:24.487&#43;0800 I FTDC [initandlisten] Initializing full-time diagnostic data capture with directory &#39;/usr/local/var/mongodb/diagnostic.data&#39; 2017-05-22T23:18:24.489&#43;0800 I NETWORK [thread1] waiting for connections on port 27017  说明已经启动成功了， 如果不成功，可能就是数据库路径不正确，仔细看一下提示。启动的时候可定义数据库路径。</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://guopuke.github.io/post/mongodb-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://guopuke.github.io/post/php%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" class="post-link">PHP 面试题纪录</a></h3>
     <p class="post-meta">@Internet · May 21, 2017 · 3 min read</p>
   </header>
@@ -319,50 +367,6 @@ ERROR: failed to open configuration file &#39;/private/etc/php-fpm.conf&#39;: No
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://guopuke.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" class="post-link">Mac vi 无法编辑~/.base_profile(配置全局变量)</a></h3>
-    <p class="post-meta">@Internet · Mar 29, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">vi编辑 .base_profile 文件时,提示如下信息:
-E325: ATTENTION Found a swap file by the name &#34;.bash_profile.swp&#34; owned by: root dated: Tue Nov 10 17:42:38 2017 file name: /etc/proftpd/etc/proftpd.conf modified: no user name: root host name: localhost process ID: 11195 While opening file &#34;.bash_profile&#34; dated: Tue Nov 10 18:32:16 2017 NEWER than swap file! (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of the same file when making changes.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/configure-error-cannot-find-openssl-s-evp-h/" class="post-link">configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt;</a></h3>
-    <p class="post-meta">@Internet · Mar 29, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">进行编译安装PHP-mongodb扩展, 执行 ./configure 时提示如下错误信息:
-configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt; 因为执行的PHP是MAMP里集成的, 缺少OpenSSL，只有编译安装的PHP才有OpenSSL，偷个懒直接使用brew下载一个PHP。执行 configure 时添加如下参数(换成homebrew下载的php-openssl目录)如下命令：
-./configure --with-openssl-dir=/usr/local/Cellar/openssl/1.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/configure-error-cannot-find-openssl-s-evp-h/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://guopuke.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" class="post-link">Hexo更换主题 (此篇以安装NexT为例)</a></h3>
-    <p class="post-meta">@Internet · Mar 24, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">进入到主题文件目录 cd themes 默认主题 landscape 目录结构:
-
-</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://guopuke.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/">Read More →</a>
   </footer>
 </article>
 
