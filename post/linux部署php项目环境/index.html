@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Linux部署PHP项目环境</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Paco" />
+  <meta name="description" content=" 全新 Linux 服务器部署记录 使用 yum、systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置 主要软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git  
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Linux部署PHP项目环境" />
+    <meta name="twitter:description" content=" 全新 Linux 服务器部署记录 使用 yum、systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置 主要软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git  
+" />
+    <meta name="twitter:image" content="http://img4.imgtn.bdimg.com/it/u=1223535331,1961651451&fm=26&gp=0.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Linux部署PHP项目环境" />
+  <meta property="og:description" content=" 全新 Linux 服务器部署记录 使用 yum、systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置 主要软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git  
+" />
+  <meta property="og:url" content="https://guopuke.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/" />
+  <meta property="og:image" content="http://img4.imgtn.bdimg.com/it/u=1223535331,1961651451&fm=26&gp=0.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.47.1" />
+
+
+<link rel="canonical" href="https://guopuke.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/" />
+<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
+<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">郭扑克儿</h2>
+  
+  <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://guopuke.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://guopuke.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/guopuke">GitHub</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Linux部署PHP项目环境</h1>
+      <p class="post-meta">@Paco · Nov 6, 2018 · 2 min read</p>
+    </header>
+    <article class="post-content"><ul>
+<li>全新 Linux 服务器部署记录</li>
+<li>使用 yum、systemd 进行各依赖的管理</li>
+<li>主要记录：安装步骤、依赖配置</li>
+<li>主要软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git</li>
+</ul>
+
+<p></p>
+
+<ol>
+<li>更新yum</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">update</span>
+</code></pre></div>
+<ol>
+<li><p>安装 Nginx</p>
+
+<ol>
+<li>下载安装</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">yum</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">nginx</span>
+</code></pre></div>
+<ol>
+<li>设置开机自启、启动服务</li>
+</ol></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">nginx</span>
+   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">nginx</span>
+</code></pre></div>
+<ol>
+<li><p>安装 PHP PHP-fpm</p>
+
+<ol>
+<li>首先需要安装 PHP 源</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</code></pre></div>
+<ol>
+<li>下载安装</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">yum</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">php70w</span> <span style="color:#a6e22e">php70w</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fpm</span>
+</code></pre></div>
+<ol>
+<li>设置开机自启、启动服务</li>
+</ol></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">php</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fpm</span>
+   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">php</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fpm</span>
+</code></pre></div>
+<ol>
+<li>安装 PHP 扩展</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">yum</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">php70w</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mysql</span> <span style="color:#a6e22e">php70w</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pecl</span><span style="color:#f92672">-</span><span style="color:#a6e22e">redis</span> <span style="color:#a6e22e">php70w</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pecl</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mongodb</span> <span style="color:#a6e22e">php70w</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mbstring</span> <span style="color:#a6e22e">php70w</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bcmath</span>
+</code></pre></div>
+<ol>
+<li><p>安装 MongoDB</p>
+
+<ol>
+<li>指定 MongoDB 版本 (无特殊要求可省略)</li>
+</ol>
+
+<blockquote>
+<p>因为 yum 默认安装的是版本是 2.6.12，我需要 3.* 的版本，需要配置一下 repo</p>
+</blockquote>
+
+<pre><code>   vi /etc/yum.repos.d/mongodb-org-3.4.repo
+      
+   # 将以下配置复制进
+      
+   [mongodb-org-3.4]
+   name=MongoDB Repository
+   baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+   gpgcheck=0
+   enabled=1
+</code></pre>
+
+<ol>
+<li>下载安装</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">install</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span> <span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span>
+</code></pre></div>
+<ol>
+<li>查看版本是否正常安装</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">mongo</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">version</span>
+       
+   <span style="color:#a6e22e">MongoDB</span> <span style="color:#a6e22e">shell</span> <span style="color:#a6e22e">version</span> <span style="color:#a6e22e">v3</span><span style="color:#ae81ff">.4.17</span>
+   <span style="color:#a6e22e">git</span> <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span><span style="color:#a6e22e">c14a47868643bb691a507a92fe25541f998eca4</span>
+   <span style="color:#a6e22e">OpenSSL</span> <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">OpenSSL</span> <span style="color:#ae81ff">1.0.1</span><span style="color:#a6e22e">e</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fips</span> <span style="color:#ae81ff">11</span> <span style="color:#a6e22e">Feb</span> <span style="color:#ae81ff">2013</span>
+   <span style="color:#a6e22e">allocator</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tcmalloc</span>
+   <span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">none</span>
+   <span style="color:#a6e22e">build</span> <span style="color:#a6e22e">environment</span><span style="color:#f92672">:</span>
+       <span style="color:#a6e22e">distmod</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">rhel70</span>
+       <span style="color:#a6e22e">distarch</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">x86_64</span>
+       <span style="color:#a6e22e">target_arch</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">x86_64</span>
+</code></pre></div>
+<ol>
+<li>使用 Shell 交互验证是否正常启用</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   <span style="color:#75715e"># 进入 Shell 环境
+</span><span style="color:#75715e"></span>   mongo
+       
+   <span style="color:#75715e"># 查看帮助信息
+</span><span style="color:#75715e"></span>   help
+       
+   <span style="color:#75715e"># 查看当前所有数据库
+</span><span style="color:#75715e"></span>   show dbs</code></pre></div>
+<ol>
+<li>设置开机自启、启动服务</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">mongod</span>
+  <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">status</span> <span style="color:#a6e22e">mongod</span>
+</code></pre></div>
+<ol>
+<li><p>密码权限设置</p>
+
+<ul>
+<li>创建 root 用户</li>
+</ul></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  $ mongo
+  &gt; use admin
+  &gt; db.createUser<span style="color:#f92672">({</span>user:<span style="color:#e6db74">&#39;root&#39;</span>,pwd:<span style="color:#e6db74">&#39;root&#39;</span>,roles:<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">]})</span>
+      
+  <span style="color:#75715e"># 分配其它数据库的权限 (可选)
+</span><span style="color:#75715e"></span>  &gt; db.grantRolesToUser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;root&#34;</span>,<span style="color:#f92672">[{</span> role: <span style="color:#e6db74">&#34;readWrite&#34;</span>, db: <span style="color:#e6db74">&#34;iStrip&#34;</span> <span style="color:#f92672">}</span>,<span style="color:#f92672">{</span> role: <span style="color:#e6db74">&#34;dbAdmin&#34;</span>, db: <span style="color:#e6db74">&#34;iStrip&#34;</span> <span style="color:#f92672">}])</span>
+      
+  <span style="color:#75715e"># 指定用户指定数据库权限 (可选)
+</span><span style="color:#75715e"></span>  db.createUser<span style="color:#f92672">({</span>user:<span style="color:#e6db74">&#39;power&#39;</span>,pwd:<span style="color:#e6db74">&#39;highPower4Mongo&#39;</span>,roles:<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;readWrite&#39;</span>,<span style="color:#e6db74">&#39;dbAdmin&#39;</span><span style="color:#f92672">]})</span></code></pre></div>
+<ul>
+<li>开启权限验证</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  $ vi /etc/mongod.conf
+      
+  <span style="color:#75715e"># 添加如下配置
+</span><span style="color:#75715e"></span>      
+  security:
+    authorization: <span style="color:#e6db74">&#34;enabled&#34;</span></code></pre></div>
+<ul>
+<li>重启生效</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  systemctl restart mongod.service</code></pre></div></li>
+
+<li><p>安装 MariaDB</p>
+
+<ol>
+<li>下载安装</li>
+</ol></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">mariadb</span> <span style="color:#a6e22e">mariadb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>
+</code></pre></div>
+<ol>
+<li>设置用户权限</li>
+<li>设置开机自启、启动服务</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">mariadb</span>
+   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">status</span> <span style="color:#a6e22e">mariadb</span>
+</code></pre></div>
+<ol>
+<li><p>安装 Redis</p>
+
+<ol>
+<li>下载安装</li>
+</ol></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">redis</span>
+</code></pre></div>
+<ol>
+<li>配置 <code>/etc/redis.conf</code></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   <span style="color:#75715e"># Auth 权限密码
+</span><span style="color:#75715e"></span>   requirepass highPower4Redis
+   
+   <span style="color:#75715e"># 开启 AOF 模式，数据持久化
+</span><span style="color:#75715e"></span>   appendonly yes</code></pre></div>
+<ol>
+<li>设置开机自启、启动服务</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">redis</span>
+   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">status</span> <span style="color:#a6e22e">redis</span>
+</code></pre></div>
+<ol>
+<li><p>安装 Mosquitto</p>
+
+<ol>
+<li>下载安装</li>
+</ol></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">install</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span> <span style="color:#a6e22e">libmosquitto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">devel</span>
+</code></pre></div>
+<ol>
+<li>创建用户、密码</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">mosquitto_passwd</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">c</span> <span style="color:#960050;background-color:#1e0010">/etc/mosquitto/pwfile userName</span>
+</code></pre></div>
+<ol>
+<li>开启权限验证</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   vim /etc/mosquitto/mosquitto.conf
+   
+   <span style="color:#75715e"># 修改以下参数
+</span><span style="color:#75715e"></span>   allow_anonymous false
+   password_file /etc/mosquitto/pwfile</code></pre></div>
+<ol>
+<li>设置开机自启、启动服务</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">mosquitto</span>
+   <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">status</span> <span style="color:#a6e22e">mosquitto</span>
+</code></pre></div>
+<ol>
+<li><p>安装 PHP mosquito扩展(遇到的意外错误)</p>
+
+<blockquote>
+<p><code>pecl install Mosquitto-0.4.0</code></p>
+</blockquote>
+
+<pre><code>```shell
+WARNING: channel &quot;pecl.php.net&quot; has updated its protocols, use &quot;pecl channel-update pecl.php.net&quot; to update
+downloading Mosquitto-0.4.0.tgz ...
+Starting to download Mosquitto-0.4.0.tgz (23,804 bytes)
+........done: 23,804 bytes
+5 source files, building
+running: phpize
+Can't find PHP headers in /usr/include/php
+The php-devel package is required for use of this command.
+ERROR: `phpize' failed
+```
+
+解决办法:  `yum install php70w-devel`
+
+
+
+```shell
+configure: error: in `/var/tmp/pear-build-rootOGtRth/Mosquitto-0.4.0':
+configure: error: no acceptable C compiler found in $PATH
+See `config.log' for more details
+ERROR: `/var/tmp/Mosquitto/configure --with-php-config=/usr/bin/php-config --with-mosquitto' failed
+```
+
+解决办法: `yum install gcc`
+
+
+
+```shell
+configure: error: Please reinstall the mosquitto distribution
+ERROR: `/var/tmp/Mosquitto/configure --with-php-config=/usr/bin/php-config --with-mosquitto' failed
+```
+
+解决办法: 
+
+```shell
+# 添加 MQTT yum源
+$ wget http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/home:oojah:mqtt.repo
+# 服务器上的软件包信息缓存起来
+$ yum makecache
+# 安装
+$ yum install libmosquitto-devel
+```
+</code></pre></li>
+
+<li><p>安装 Git</p></li>
+</ol>
+
+<pre><code>yum install git
+</code></pre></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://guopuke.github.io/tags/php"><span class="tag">PHP</span></a></li>
+        
+          <li><a href="https://guopuke.github.io/tags/linux"><span class="tag">Linux</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 郭扑克儿</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+
+
+
+
+  </body>
+</html>

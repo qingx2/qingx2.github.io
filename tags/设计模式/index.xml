@@ -6,10 +6,27 @@
     <description>Recent content in 设计模式 on 郭扑克儿</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 16 Oct 2018 16:11:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Oct 2018 16:13:24 +0800</lastBuildDate>
     
 	<atom:link href="https://guopuke.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PHP 设计模式 适配器模式</title>
+      <link>https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 16 Oct 2018 16:13:24 +0800</pubDate>
+      
+      <guid>https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;转载 &lt;a href=&#34;http://www.php.cn/php-weizijiaocheng-381339.html&#34;&gt;原创地址&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;​   适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。&lt;/p&gt;
+
+&lt;p&gt;​   适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。&lt;strong&gt;适配器模式&lt;/strong&gt;还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与&lt;strong&gt;适配器&lt;/strong&gt;交互的代码，符合 “减少代码间耦合” 的设计原则。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PHP 设计模式 工厂模式</title>
