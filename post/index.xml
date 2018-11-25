@@ -19,9 +19,9 @@
       <guid>https://guopuke.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;全新 Linux 服务器部署记录&lt;/li&gt;
-&lt;li&gt;使用 yum、systemd 进行各依赖的管理&lt;/li&gt;
-&lt;li&gt;主要记录：安装步骤、依赖配置&lt;/li&gt;
-&lt;li&gt;主要软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git&lt;/li&gt;
+&lt;li&gt;使用 Yum、Systemd 进行各依赖的管理&lt;/li&gt;
+&lt;li&gt;主要记录：安装步骤、依赖配置、可能遇到的问题&lt;/li&gt;
+&lt;li&gt;涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
