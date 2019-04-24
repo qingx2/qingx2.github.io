@@ -16,35 +16,32 @@
 
   
   <meta name="author" content="Internet" />
-  <meta name="description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
-" />
+  <meta name="description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。 " />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Swoole 实现消息发送功能" />
-    <meta name="twitter:description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
-" />
-    <meta name="twitter:image" content="https://guopuke.github.io/img/avatar.jpg" />
+    <meta name="twitter:description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。 " />
+    <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Swoole 实现消息发送功能" />
-  <meta property="og:description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。  
-" />
-  <meta property="og:url" content="https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" />
-  <meta property="og:image" content="https://guopuke.github.io/img/avatar.jpg" />
+  <meta property="og:description" content="导语  Swoole 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。 官网提供了PHP语言的异步多线程服务器，异步TCP/UDP网络客户端，异步MySQL，异步Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。 " />
+  <meta property="og:url" content="https://qingeekk.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" />
+  <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.47.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 
-<link rel="canonical" href="https://guopuke.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" />
-<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+<link rel="canonical" href="https://qingeekk.github.io/post/swoole-%E5%AE%89%E8%A3%85%E9%85%8D%E5%90%88-mongodb%E5%AE%9E%E7%8E%B0-pc-%E5%90%8E%E7%AB%AF%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD/" />
+<link rel="alternative" href="https://qingeekk.github.io/index.xml" title="Qing" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -64,23 +61,23 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
-<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name="apple-mobile-web-app-title" content="Qing" />
+<meta name="msapplication-tooltip" content="Qing" />
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://qingeekk.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://qingeekk.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://qingeekk.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://qingeekk.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://qingeekk.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://qingeekk.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+<link rel="stylesheet" href="https://qingeekk.github.io/css/bundle.ff02473a9a.css" />
 
 
   
@@ -113,9 +110,9 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://qingeekk.github.io/img/avatar.jpg" alt="Avatar">
   
-  <h2 class="title">郭扑克儿</h2>
+  <h2 class="title">Qing</h2>
   
   <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
   <button class="menu-toggle" type="button">
@@ -134,21 +131,21 @@
             
               is-active
             ">
-            <a href="https://guopuke.github.io/">主页</a>
+            <a href="https://qingeekk.github.io/">主页</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://guopuke.github.io/tags/">标签</a>
+            <a href="https://qingeekk.github.io/tags/">标签</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://github.com/guopuke">GitHub</a>
+            <a href="https://github.com/qingeekk">GitHub</a>
           </li>
       
     </ul>
@@ -159,44 +156,12 @@
 
       
       <li class="social-item">
-        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+        <a href="mailto:qingeekk@qq.com" title="Email"><span class="icon icon-email"></span></a>
       </li>
 
       
       <li class="social-item">
-        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+        <a href="//github.com/qingeekk" title="GitHub"><span class="icon icon-github"></span></a>
       </li>
 
       
@@ -207,8 +172,40 @@
 
       
 
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
       <li class="social-item">
-        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://qingeekk.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://qingeekk.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -226,8 +223,6 @@
 <li><a href="http://www.swoole.com">Swoole</a> 是 PHP 的一个扩展，使用纯C语言编写，Swoole底层内置了异步非阻塞、多线程的网络IO服务器。PHP程序员仅需处理事件回调即可，无需关心底层。</li>
 <li>官网提供了<a href="https://wiki.swoole.com/wiki/page/p-server.html">PHP语言的异步多线程服务器</a>，<a href="https://wiki.swoole.com/wiki/page/p-client.html">异步TCP/UDP网络客户端</a>，<a href="https://wiki.swoole.com/wiki/page/517.html">异步MySQL</a>，<a href="https://wiki.swoole.com/wiki/page/p-redis.html">异步Redis</a>，<a href="https://github.com/swoole/framework/blob/master/tests/async_mysql.php">数据库连接池</a>，<a href="https://wiki.swoole.com/wiki/page/134.html">AsyncTask</a>，<a href="http://wiki.swoole.com/wiki/page/289.html">消息队列</a>，<a href="https://wiki.swoole.com/wiki/page/244.html">毫秒定时器</a>，<a href="https://wiki.swoole.com/wiki/page/183.html">异步文件读写</a>，<a href="https://wiki.swoole.com/wiki/page/186.html">异步DNS查询</a>。 Swoole内置了<a href="https://wiki.swoole.com/wiki/page/326.html">Http/WebSocket服务器端</a>/<a href="https://wiki.swoole.com/wiki/page/p-http_client.html">客户端</a>、<a href="https://wiki.swoole.com/wiki/page/326.html">Http2.0服务器端</a>。</li>
 </ul>
-
-<p></p>
 
 <h4 id="安装swoole">安装Swoole</h4>
 
@@ -373,7 +368,7 @@
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>551</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>701</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -381,7 +376,7 @@
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2018 郭扑克儿</p>
+  <p>© 2017-2019 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>
@@ -412,7 +407,7 @@
   });
 </script>
 
-<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+<script src="https://qingeekk.github.io/js/bundle.d1288006cf.js"></script>
 
 
 

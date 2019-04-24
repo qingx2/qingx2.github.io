@@ -17,8 +17,7 @@
   
   <meta name="author" content="杰枫 Jeff" />
   <meta name="description" content="​ 这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。
-　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。  
-" />
+　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。 " />
 
   
   
@@ -26,8 +25,7 @@
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="PHP 设计模式 观察者模式" />
     <meta name="twitter:description" content="​ 这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。
-　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。  
-" />
+　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。 " />
     <meta name="twitter:image" content="https://tse3-mm.cn.bing.net/th?id=OIP.YAZ67-5eAkmJ4XQhcjm52wHaFG&w=259&h=172&c=7&o=5&dpr=2&pid=1.7" />
   
 
@@ -35,19 +33,18 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="PHP 设计模式 观察者模式" />
   <meta property="og:description" content="​ 这是我写的《php 模式设计》的第五篇。前面的四篇在不断学习不断加深认识，到了今天再看观察者模式，觉得非常容易理解。这也许就是我们积少成多的结果吧。希望还是能够不断进步。
-　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。  
-" />
-  <meta property="og:url" content="https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" />
+　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &amp;quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。 " />
+  <meta property="og:url" content="https://qingeekk.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" />
   <meta property="og:image" content="https://tse3-mm.cn.bing.net/th?id=OIP.YAZ67-5eAkmJ4XQhcjm52wHaFG&w=259&h=172&c=7&o=5&dpr=2&pid=1.7" />
 
 
 
 
-<meta name="generator" content="Hugo 0.47.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 
-<link rel="canonical" href="https://guopuke.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" />
-<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+<link rel="canonical" href="https://qingeekk.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" />
+<link rel="alternative" href="https://qingeekk.github.io/index.xml" title="Qing" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -67,23 +64,23 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
-<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name="apple-mobile-web-app-title" content="Qing" />
+<meta name="msapplication-tooltip" content="Qing" />
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://qingeekk.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://qingeekk.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://qingeekk.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://qingeekk.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://qingeekk.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://qingeekk.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+<link rel="stylesheet" href="https://qingeekk.github.io/css/bundle.ff02473a9a.css" />
 
 
   
@@ -116,9 +113,9 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://qingeekk.github.io/img/avatar.jpg" alt="Avatar">
   
-  <h2 class="title">郭扑克儿</h2>
+  <h2 class="title">Qing</h2>
   
   <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
   <button class="menu-toggle" type="button">
@@ -137,21 +134,21 @@
             
               is-active
             ">
-            <a href="https://guopuke.github.io/">主页</a>
+            <a href="https://qingeekk.github.io/">主页</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://guopuke.github.io/tags/">标签</a>
+            <a href="https://qingeekk.github.io/tags/">标签</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://github.com/guopuke">GitHub</a>
+            <a href="https://github.com/qingeekk">GitHub</a>
           </li>
       
     </ul>
@@ -162,44 +159,12 @@
 
       
       <li class="social-item">
-        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+        <a href="mailto:qingeekk@qq.com" title="Email"><span class="icon icon-email"></span></a>
       </li>
 
       
       <li class="social-item">
-        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+        <a href="//github.com/qingeekk" title="GitHub"><span class="icon icon-github"></span></a>
       </li>
 
       
@@ -210,8 +175,40 @@
 
       
 
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
       <li class="social-item">
-        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://qingeekk.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://qingeekk.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -228,9 +225,7 @@
 <pre><code>　开篇还是从名字说起，“观察者模式” 的观察者三个字信息量很大。玩过很多网络游戏的童鞋们应该知道，即便是斗地主，除了玩家，还有一个角色叫 “观察者 &quot;。在我们今天他谈论的模式设计中，观察者也是如此。首先，要有一个 “主题”。只有有了一个主题，观察者才能搬着小板凳儿聚在一堆。其次，观察者还必须要有自己的操作。否则你聚在一堆儿没事做也没什么意义。
 </code></pre>
 
-<p></p>
-
-<p>　　　从面向过程的角度来看，首先是观察者向主题<strong>注册</strong>，注册完之后，主题再<strong>通知</strong>观察者做出相应的<strong>操作</strong>，整个事情就完了。</p>
+<p>从面向过程的角度来看，首先是观察者向主题<strong>注册</strong>，注册完之后，主题再<strong>通知</strong>观察者做出相应的<strong>操作</strong>，整个事情就完了。</p>
 
 <p>　　　从面向对象的角度来看，主题提供注册和通知的接口，观察者提供自身操作的接口。（这些观察者拥有一个同一个接口。）观察者利用主题的接口向主题注册，而主题利用观察者接口通知观察者。耦合度相当之低。</p>
 
@@ -293,14 +288,14 @@ $action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">notif
       
       <ul class="post-tags">
         
-          <li><a href="https://guopuke.github.io/tags/php"><span class="tag">PHP</span></a></li>
+          <li><a href="https://qingeekk.github.io/tags/php"><span class="tag">PHP</span></a></li>
         
-          <li><a href="https://guopuke.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="tag">设计模式</span></a></li>
+          <li><a href="https://qingeekk.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="tag">设计模式</span></a></li>
         
       </ul>
       
       <p class="post-copyright">
-        
+        This post was published <strong>189</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -308,7 +303,7 @@ $action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">notif
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2018 郭扑克儿</p>
+  <p>© 2017-2019 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>
@@ -339,7 +334,7 @@ $action<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">notif
   });
 </script>
 
-<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+<script src="https://qingeekk.github.io/js/bundle.d1288006cf.js"></script>
 
 
 

@@ -16,35 +16,32 @@
 
   
   <meta name="author" content="Internet" />
-  <meta name="description" content="
-" />
+  <meta name="description" content="git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &amp;quot;不使用git add 直接提交&amp;quot;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?" />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Git 常用命令整理" />
-    <meta name="twitter:description" content="
-" />
-    <meta name="twitter:image" content="https://guopuke.github.io/img/avatar.jpg" />
+    <meta name="twitter:description" content="git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &amp;quot;不使用git add 直接提交&amp;quot;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?" />
+    <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Git 常用命令整理" />
-  <meta property="og:description" content="
-" />
-  <meta property="og:url" content="https://guopuke.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
-  <meta property="og:image" content="https://guopuke.github.io/img/avatar.jpg" />
+  <meta property="og:description" content="git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &amp;quot;不使用git add 直接提交&amp;quot;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?" />
+  <meta property="og:url" content="https://qingeekk.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
+  <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.47.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 
-<link rel="canonical" href="https://guopuke.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
-<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+<link rel="canonical" href="https://qingeekk.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
+<link rel="alternative" href="https://qingeekk.github.io/index.xml" title="Qing" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -64,23 +61,23 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
-<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name="apple-mobile-web-app-title" content="Qing" />
+<meta name="msapplication-tooltip" content="Qing" />
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://qingeekk.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://qingeekk.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://qingeekk.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://qingeekk.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://qingeekk.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://qingeekk.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+<link rel="stylesheet" href="https://qingeekk.github.io/css/bundle.ff02473a9a.css" />
 
 
   
@@ -113,9 +110,9 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://qingeekk.github.io/img/avatar.jpg" alt="Avatar">
   
-  <h2 class="title">郭扑克儿</h2>
+  <h2 class="title">Qing</h2>
   
   <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
   <button class="menu-toggle" type="button">
@@ -134,21 +131,21 @@
             
               is-active
             ">
-            <a href="https://guopuke.github.io/">主页</a>
+            <a href="https://qingeekk.github.io/">主页</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://guopuke.github.io/tags/">标签</a>
+            <a href="https://qingeekk.github.io/tags/">标签</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://github.com/guopuke">GitHub</a>
+            <a href="https://github.com/qingeekk">GitHub</a>
           </li>
       
     </ul>
@@ -159,44 +156,12 @@
 
       
       <li class="social-item">
-        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+        <a href="mailto:qingeekk@qq.com" title="Email"><span class="icon icon-email"></span></a>
       </li>
 
       
       <li class="social-item">
-        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+        <a href="//github.com/qingeekk" title="GitHub"><span class="icon icon-github"></span></a>
       </li>
 
       
@@ -207,8 +172,40 @@
 
       
 
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
       <li class="social-item">
-        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://qingeekk.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://qingeekk.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -220,9 +217,7 @@
       <h1 class="post-title">Git 常用命令整理</h1>
       <p class="post-meta">@Internet · Apr 11, 2017 · 2 min read</p>
     </header>
-    <article class="post-content"><p></p>
-
-<blockquote>
+    <article class="post-content"><blockquote>
 <h5 id="git-config-配置文件的三种级别">git config 配置文件的三种级别</h5>
 </blockquote>
 
@@ -311,16 +306,16 @@ source/_posts/
 <blockquote>
 <h5 id="比较差异">比较差异</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 工作区与提交暂存区(stage)对比:
-</span><span style="color:#75715e"></span>git diff
-<span style="color:#75715e"># 工作区与HEAD(当前工作分支)对比:
-</span><span style="color:#75715e"></span>git diff HEAD
-<span style="color:#75715e"># 提交暂存区与版本库文件比较:
-</span><span style="color:#75715e"></span>git diff --cached
-<span style="color:#75715e"># 比较里程碑 A 和里程碑 B
-</span><span style="color:#75715e"></span>git diff A B
-<span style="color:#75715e"># 比较工作区和里程碑 A
-</span><span style="color:#75715e"></span>git diff A</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 工作区与提交暂存区(stage)对比:</span>
+git diff
+<span style="color:#75715e"># 工作区与HEAD(当前工作分支)对比:</span>
+git diff HEAD
+<span style="color:#75715e"># 提交暂存区与版本库文件比较:</span>
+git diff --cached
+<span style="color:#75715e"># 比较里程碑 A 和里程碑 B</span>
+git diff A B
+<span style="color:#75715e"># 比较工作区和里程碑 A</span>
+git diff A</code></pre></div>
 <blockquote>
 <h5 id="逐词比较">逐词比较</h5>
 </blockquote>
@@ -329,8 +324,8 @@ source/_posts/
 <h5 id="文件追溯-找出谁修改过文件-由谁引入">文件追溯，找出谁修改过文件，由谁引入</h5>
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git blame README
-<span style="color:#75715e"># 只查看第2行后面的3行
-</span><span style="color:#75715e"></span>git blame -L <span style="color:#ae81ff">2</span>,+3 README</code></pre></div>
+<span style="color:#75715e"># 只查看第2行后面的3行</span>
+git blame -L <span style="color:#ae81ff">2</span>,+3 README</code></pre></div>
 <blockquote>
 <h5 id="显示暂存区的目录树">显示暂存区的目录树</h5>
 </blockquote>
@@ -468,14 +463,14 @@ hello echo</code></pre></div>
 <blockquote>
 <h5 id="从历史-head-前一次提交-恢复指定文件">从历史( HEAD^ 前一次提交)恢复指定文件</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell"><span style="color:#75715e"># 以下3种命令均可实现
-</span><span style="color:#75715e"></span>$ git cat-file -p HEAD~1:welcome.txt &gt; welcome.txt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell"><span style="color:#75715e"># 以下3种命令均可实现</span>
+$ git cat-file -p HEAD~1:welcome.txt &gt; welcome.txt
 $ git show HEAD~1:welcome.txt &gt; welcome.txt
 $ git checkout HEAD~1 --welcome.txt</code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>592</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>742</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -483,7 +478,7 @@ $ git checkout HEAD~1 --welcome.txt</code></pre></div></article>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2018 郭扑克儿</p>
+  <p>© 2017-2019 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>
@@ -514,7 +509,7 @@ $ git checkout HEAD~1 --welcome.txt</code></pre></div></article>
   });
 </script>
 
-<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+<script src="https://qingeekk.github.io/js/bundle.d1288006cf.js"></script>
 
 
 

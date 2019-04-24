@@ -16,35 +16,83 @@
 
   
   <meta name="author" content="Internet" />
-  <meta name="description" content="
-" />
+  <meta name="description" content="使用容器 如何管理我们的容器？
+当你在docker容器中运行和管理你的应用程序，我们会展示如何管理这些容器。了解如何检查、监控和管理容器。
+阅读使用容器
+使用docker镜像 我是如何创建、访问和分享我自己的容器呢？
+当你学会如何使用docker的时候，是时候进行下一步来学习如何在 Docker 中构建你自己应用程序镜像。
+阅读使用docker镜像
+容器连接 到这里我们学会了如何在 Docker 容器中构建一个单独的应用程序。而现在我们要学习如何将多个容器连接在一起构建一个完整的应用程序。
+阅读容器连接
+管理容器数据 现在我们知道如何连接 Docker 容器，下一步，我们学习如何管理容器数据，如何将卷挂载到我们的容器中。
+阅读管理容器数据
+ 数据卷是一个可以供一个或多个容器使用的特殊目录。
+可以达到以下目的：
+ 绕过“拷贝写”系统，以达到本地磁盘IO的性能，（比如运行一个容器，在容器中对数据卷修改内容，会直接改变宿主机上的数据卷中的内容，所以是本地磁盘IO的性能，而不是先在容器中写一份，最后还要将容器中的修改的内容拷贝出来进行同步。） 绕过“拷贝写”系统，有些文件不需要在docker commit打包进镜像文件。 在多个容器间共享目录 在宿主和容器间共享目录 在宿主和容器间共享一个文件。   Docker Hub 现在我们应该学习更多关于使用 Docker 的知识。例如通过 Docker Hub 提供的服务来构建私有仓库。
+阅读使用Docker Hub
+Docker Compose Docker Compose 你只需要一个简单的配置文件就可以自定义你所需要的应用组件，包括容器、配置、网络链接和挂载卷。只需要一个简单的命令就可以启动和运行你的应用程序。
+阅读Docker Compose 用户指南.
+Docker Machine Docker Machine 可以帮助你快速的启动和运行 Docker 引擎。 Machine 可以帮助你配置本地电脑、云服务商和你的个人数据中心上的 Docker 引擎主机，并且通过配置 Docker 客户端来让它们进行安全的通信。
+查阅 Go to Docker Machine user guide." />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Docker初识" />
-    <meta name="twitter:description" content="
-" />
-    <meta name="twitter:image" content="https://guopuke.github.io/img/avatar.jpg" />
+    <meta name="twitter:description" content="使用容器 如何管理我们的容器？
+当你在docker容器中运行和管理你的应用程序，我们会展示如何管理这些容器。了解如何检查、监控和管理容器。
+阅读使用容器
+使用docker镜像 我是如何创建、访问和分享我自己的容器呢？
+当你学会如何使用docker的时候，是时候进行下一步来学习如何在 Docker 中构建你自己应用程序镜像。
+阅读使用docker镜像
+容器连接 到这里我们学会了如何在 Docker 容器中构建一个单独的应用程序。而现在我们要学习如何将多个容器连接在一起构建一个完整的应用程序。
+阅读容器连接
+管理容器数据 现在我们知道如何连接 Docker 容器，下一步，我们学习如何管理容器数据，如何将卷挂载到我们的容器中。
+阅读管理容器数据
+ 数据卷是一个可以供一个或多个容器使用的特殊目录。
+可以达到以下目的：
+ 绕过“拷贝写”系统，以达到本地磁盘IO的性能，（比如运行一个容器，在容器中对数据卷修改内容，会直接改变宿主机上的数据卷中的内容，所以是本地磁盘IO的性能，而不是先在容器中写一份，最后还要将容器中的修改的内容拷贝出来进行同步。） 绕过“拷贝写”系统，有些文件不需要在docker commit打包进镜像文件。 在多个容器间共享目录 在宿主和容器间共享目录 在宿主和容器间共享一个文件。   Docker Hub 现在我们应该学习更多关于使用 Docker 的知识。例如通过 Docker Hub 提供的服务来构建私有仓库。
+阅读使用Docker Hub
+Docker Compose Docker Compose 你只需要一个简单的配置文件就可以自定义你所需要的应用组件，包括容器、配置、网络链接和挂载卷。只需要一个简单的命令就可以启动和运行你的应用程序。
+阅读Docker Compose 用户指南.
+Docker Machine Docker Machine 可以帮助你快速的启动和运行 Docker 引擎。 Machine 可以帮助你配置本地电脑、云服务商和你的个人数据中心上的 Docker 引擎主机，并且通过配置 Docker 客户端来让它们进行安全的通信。
+查阅 Go to Docker Machine user guide." />
+    <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Docker初识" />
-  <meta property="og:description" content="
-" />
-  <meta property="og:url" content="https://guopuke.github.io/post/docker%E5%88%9D%E8%AF%86/" />
-  <meta property="og:image" content="https://guopuke.github.io/img/avatar.jpg" />
+  <meta property="og:description" content="使用容器 如何管理我们的容器？
+当你在docker容器中运行和管理你的应用程序，我们会展示如何管理这些容器。了解如何检查、监控和管理容器。
+阅读使用容器
+使用docker镜像 我是如何创建、访问和分享我自己的容器呢？
+当你学会如何使用docker的时候，是时候进行下一步来学习如何在 Docker 中构建你自己应用程序镜像。
+阅读使用docker镜像
+容器连接 到这里我们学会了如何在 Docker 容器中构建一个单独的应用程序。而现在我们要学习如何将多个容器连接在一起构建一个完整的应用程序。
+阅读容器连接
+管理容器数据 现在我们知道如何连接 Docker 容器，下一步，我们学习如何管理容器数据，如何将卷挂载到我们的容器中。
+阅读管理容器数据
+ 数据卷是一个可以供一个或多个容器使用的特殊目录。
+可以达到以下目的：
+ 绕过“拷贝写”系统，以达到本地磁盘IO的性能，（比如运行一个容器，在容器中对数据卷修改内容，会直接改变宿主机上的数据卷中的内容，所以是本地磁盘IO的性能，而不是先在容器中写一份，最后还要将容器中的修改的内容拷贝出来进行同步。） 绕过“拷贝写”系统，有些文件不需要在docker commit打包进镜像文件。 在多个容器间共享目录 在宿主和容器间共享目录 在宿主和容器间共享一个文件。   Docker Hub 现在我们应该学习更多关于使用 Docker 的知识。例如通过 Docker Hub 提供的服务来构建私有仓库。
+阅读使用Docker Hub
+Docker Compose Docker Compose 你只需要一个简单的配置文件就可以自定义你所需要的应用组件，包括容器、配置、网络链接和挂载卷。只需要一个简单的命令就可以启动和运行你的应用程序。
+阅读Docker Compose 用户指南.
+Docker Machine Docker Machine 可以帮助你快速的启动和运行 Docker 引擎。 Machine 可以帮助你配置本地电脑、云服务商和你的个人数据中心上的 Docker 引擎主机，并且通过配置 Docker 客户端来让它们进行安全的通信。
+查阅 Go to Docker Machine user guide." />
+  <meta property="og:url" content="https://qingeekk.github.io/post/docker%E5%88%9D%E8%AF%86/" />
+  <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.47.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 
-<link rel="canonical" href="https://guopuke.github.io/post/docker%E5%88%9D%E8%AF%86/" />
-<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+<link rel="canonical" href="https://qingeekk.github.io/post/docker%E5%88%9D%E8%AF%86/" />
+<link rel="alternative" href="https://qingeekk.github.io/index.xml" title="Qing" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -64,23 +112,23 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
-<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name="apple-mobile-web-app-title" content="Qing" />
+<meta name="msapplication-tooltip" content="Qing" />
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://qingeekk.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://qingeekk.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://qingeekk.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://qingeekk.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://qingeekk.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://qingeekk.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+<link rel="stylesheet" href="https://qingeekk.github.io/css/bundle.ff02473a9a.css" />
 
 
   
@@ -113,9 +161,9 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://qingeekk.github.io/img/avatar.jpg" alt="Avatar">
   
-  <h2 class="title">郭扑克儿</h2>
+  <h2 class="title">Qing</h2>
   
   <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
   <button class="menu-toggle" type="button">
@@ -134,21 +182,21 @@
             
               is-active
             ">
-            <a href="https://guopuke.github.io/">主页</a>
+            <a href="https://qingeekk.github.io/">主页</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://guopuke.github.io/tags/">标签</a>
+            <a href="https://qingeekk.github.io/tags/">标签</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://github.com/guopuke">GitHub</a>
+            <a href="https://github.com/qingeekk">GitHub</a>
           </li>
       
     </ul>
@@ -159,44 +207,12 @@
 
       
       <li class="social-item">
-        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+        <a href="mailto:qingeekk@qq.com" title="Email"><span class="icon icon-email"></span></a>
       </li>
 
       
       <li class="social-item">
-        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+        <a href="//github.com/qingeekk" title="GitHub"><span class="icon icon-github"></span></a>
       </li>
 
       
@@ -207,8 +223,40 @@
 
       
 
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
       <li class="social-item">
-        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://qingeekk.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://qingeekk.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -220,9 +268,7 @@
       <h1 class="post-title">Docker初识</h1>
       <p class="post-meta">@Internet · Aug 5, 2018 · 1 min read</p>
     </header>
-    <article class="post-content"><p></p>
-
-<h3 id="使用容器">使用容器</h3>
+    <article class="post-content"><h3 id="使用容器">使用容器</h3>
 
 <p>如何管理我们的容器？</p>
 
@@ -291,14 +337,14 @@
       
       <ul class="post-tags">
         
-          <li><a href="https://guopuke.github.io/tags/taga"><span class="tag">TagA</span></a></li>
+          <li><a href="https://qingeekk.github.io/tags/taga"><span class="tag">TagA</span></a></li>
         
-          <li><a href="https://guopuke.github.io/tags/tagb"><span class="tag">TagB</span></a></li>
+          <li><a href="https://qingeekk.github.io/tags/tagb"><span class="tag">TagB</span></a></li>
         
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>112</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>262</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -306,7 +352,7 @@
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2018 郭扑克儿</p>
+  <p>© 2017-2019 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>
@@ -337,7 +383,7 @@
   });
 </script>
 
-<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+<script src="https://qingeekk.github.io/js/bundle.d1288006cf.js"></script>
 
 
 

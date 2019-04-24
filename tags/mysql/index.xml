@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MySQL on 郭扑克儿</title>
-    <link>https://guopuke.github.io/tags/mysql/</link>
-    <description>Recent content in MySQL on 郭扑克儿</description>
+    <title>MySQL on Qing</title>
+    <link>https://qingeekk.github.io/tags/mysql/</link>
+    <description>Recent content in MySQL on Qing</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 04 Aug 2018 17:05:54 +0800</lastBuildDate>
     
-	<atom:link href="https://guopuke.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qingeekk.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MySQL重置密码</title>
-      <link>https://guopuke.github.io/post/mysql%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/</link>
+      <link>https://qingeekk.github.io/post/mysql%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/</link>
       <pubDate>Sat, 04 Aug 2018 17:05:54 +0800</pubDate>
       
-      <guid>https://guopuke.github.io/post/mysql%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/</guid>
+      <guid>https://qingeekk.github.io/post/mysql%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;h3 id=&#34;问题描述&#34;&gt;问题描述&lt;/h3&gt;
 
 &lt;p&gt;今天在 macOS 上使用 Homebrew 安装 MySql ，正常情况下 MySql 会默认分配默认 root 账户 root 密码，但如果之前安装过MySql修改过账户密码，并且后面删除 MySql 服务，因为配置文件还在，所以这个时候不会产生 root 密码，但当自己在终端上使用默认密码登录的时候，总会提示一个授权失败的错误：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Access denied &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; user  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;using password&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Access denied &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; user  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;using password&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

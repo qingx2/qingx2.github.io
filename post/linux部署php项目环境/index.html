@@ -16,35 +16,32 @@
 
   
   <meta name="author" content="Paco" />
-  <meta name="description" content=" 全新 Linux 服务器部署记录 使用 Yum、Systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置、可能遇到的问题 涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git  
-" />
+  <meta name="description" content=" 全新 Linux 服务器部署记录 使用 Yum、Systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置、可能遇到的问题 涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git " />
 
   
   
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Linux部署PHP项目环境" />
-    <meta name="twitter:description" content=" 全新 Linux 服务器部署记录 使用 Yum、Systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置、可能遇到的问题 涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git  
-" />
+    <meta name="twitter:description" content=" 全新 Linux 服务器部署记录 使用 Yum、Systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置、可能遇到的问题 涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git " />
     <meta name="twitter:image" content="http://img4.imgtn.bdimg.com/it/u=1223535331,1961651451&fm=26&gp=0.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Linux部署PHP项目环境" />
-  <meta property="og:description" content=" 全新 Linux 服务器部署记录 使用 Yum、Systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置、可能遇到的问题 涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git  
-" />
-  <meta property="og:url" content="https://guopuke.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/" />
+  <meta property="og:description" content=" 全新 Linux 服务器部署记录 使用 Yum、Systemd 进行各依赖的管理 主要记录：安装步骤、依赖配置、可能遇到的问题 涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git " />
+  <meta property="og:url" content="https://qingeekk.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/" />
   <meta property="og:image" content="http://img4.imgtn.bdimg.com/it/u=1223535331,1961651451&fm=26&gp=0.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.47.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 
-<link rel="canonical" href="https://guopuke.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/" />
-<link rel="alternative" href="https://guopuke.github.io/index.xml" title="郭扑克儿" type="application/atom+xml" />
+<link rel="canonical" href="https://qingeekk.github.io/post/linux%E9%83%A8%E7%BD%B2php%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/" />
+<link rel="alternative" href="https://qingeekk.github.io/index.xml" title="Qing" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -64,23 +61,23 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="郭扑克儿" />
-<meta name="msapplication-tooltip" content="郭扑克儿" />
+<meta name="apple-mobile-web-app-title" content="Qing" />
+<meta name="msapplication-tooltip" content="Qing" />
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://guopuke.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://guopuke.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://guopuke.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://guopuke.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://guopuke.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://guopuke.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://qingeekk.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://qingeekk.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://qingeekk.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://qingeekk.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://qingeekk.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://qingeekk.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://guopuke.github.io/css/bundle.ff02473a9a.css" />
+<link rel="stylesheet" href="https://qingeekk.github.io/css/bundle.ff02473a9a.css" />
 
 
   
@@ -113,9 +110,9 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="https://guopuke.github.io/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://qingeekk.github.io/img/avatar.jpg" alt="Avatar">
   
-  <h2 class="title">郭扑克儿</h2>
+  <h2 class="title">Qing</h2>
   
   <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
   <button class="menu-toggle" type="button">
@@ -134,21 +131,21 @@
             
               is-active
             ">
-            <a href="https://guopuke.github.io/">主页</a>
+            <a href="https://qingeekk.github.io/">主页</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://guopuke.github.io/tags/">标签</a>
+            <a href="https://qingeekk.github.io/tags/">标签</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="https://github.com/guopuke">GitHub</a>
+            <a href="https://github.com/qingeekk">GitHub</a>
           </li>
       
     </ul>
@@ -159,44 +156,12 @@
 
       
       <li class="social-item">
-        <a href="mailto:guopuke@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+        <a href="mailto:qingeekk@qq.com" title="Email"><span class="icon icon-email"></span></a>
       </li>
 
       
       <li class="social-item">
-        <a href="//github.com/guopuke" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://guopuke.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+        <a href="//github.com/qingeekk" title="GitHub"><span class="icon icon-github"></span></a>
       </li>
 
       
@@ -207,8 +172,40 @@
 
       
 
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
       <li class="social-item">
-        <a href="https://guopuke.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://qingeekk.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://qingeekk.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -226,8 +223,6 @@
 <li>主要记录：安装步骤、依赖配置、可能遇到的问题</li>
 <li>涉及软件：PHP、MySQL、Nginx、MongoDB、Redis、Mosquitto、Git</li>
 </ul>
-
-<p></p>
 
 <h3 id="更新yum">更新yum</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">update</span>
@@ -252,7 +247,7 @@
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#a6e22e">rpm</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">Uvh</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 </span><span style="color:#75715e"></span> <span style="color:#a6e22e">rpm</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">Uvh</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//mirror.webtatic.com/yum/el7/webtatic-release.rpm
-</span><span style="color:#75715e"></span></code></pre></div>
+</span></code></pre></div>
 <ul>
 <li>下载安装</li>
 </ul>
@@ -280,8 +275,8 @@
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> vi /etc/yum.repos.d/mongodb-org-3.4.repo
 
- <span style="color:#75715e"># 将以下配置复制进
-</span><span style="color:#75715e"></span>
+ <span style="color:#75715e"># 将以下配置复制进</span>
+
  <span style="color:#f92672">[</span>mongodb-org-3.4<span style="color:#f92672">]</span>
  name<span style="color:#f92672">=</span>MongoDB Repository
  baseurl<span style="color:#f92672">=</span>https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
@@ -309,14 +304,14 @@ build environment:
 <ul>
 <li>使用 javascript 交互验证是否正常启用</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 进入 javascript 环境
-</span><span style="color:#75715e"></span>mongo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 进入 javascript 环境</span>
+mongo
 
-<span style="color:#75715e"># 查看帮助信息
-</span><span style="color:#75715e"></span>help
+<span style="color:#75715e"># 查看帮助信息</span>
+help
 
-<span style="color:#75715e"># 查看当前所有数据库
-</span><span style="color:#75715e"></span>show dbs</code></pre></div>
+<span style="color:#75715e"># 查看当前所有数据库</span>
+show dbs</code></pre></div>
 <ul>
 <li>设置开机自启、启动服务</li>
 </ul>
@@ -330,18 +325,18 @@ build environment:
 &gt; use admin
 &gt; db.createUser<span style="color:#f92672">({</span>user:<span style="color:#e6db74">&#39;root&#39;</span>,pwd:<span style="color:#e6db74">&#39;root&#39;</span>,roles:<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">]})</span>
 
-<span style="color:#75715e"># 分配其它数据库的权限 (可选)
-</span><span style="color:#75715e"></span>&gt; db.grantRolesToUser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;root&#34;</span>,<span style="color:#f92672">[{</span> role: <span style="color:#e6db74">&#34;readWrite&#34;</span>, db: <span style="color:#e6db74">&#34;iStrip&#34;</span> <span style="color:#f92672">}</span>,<span style="color:#f92672">{</span> role: <span style="color:#e6db74">&#34;dbAdmin&#34;</span>, db: <span style="color:#e6db74">&#34;iStrip&#34;</span> <span style="color:#f92672">}])</span>
+<span style="color:#75715e"># 分配其它数据库的权限 (可选)</span>
+&gt; db.grantRolesToUser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;root&#34;</span>,<span style="color:#f92672">[{</span> role: <span style="color:#e6db74">&#34;readWrite&#34;</span>, db: <span style="color:#e6db74">&#34;iStrip&#34;</span> <span style="color:#f92672">}</span>,<span style="color:#f92672">{</span> role: <span style="color:#e6db74">&#34;dbAdmin&#34;</span>, db: <span style="color:#e6db74">&#34;iStrip&#34;</span> <span style="color:#f92672">}])</span>
 
-<span style="color:#75715e"># 指定用户指定数据库权限 (可选)
-</span><span style="color:#75715e"></span>db.createUser<span style="color:#f92672">({</span>user:<span style="color:#e6db74">&#39;power&#39;</span>,pwd:<span style="color:#e6db74">&#39;highPower4Mongo&#39;</span>,roles:<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;readWrite&#39;</span>,<span style="color:#e6db74">&#39;dbAdmin&#39;</span><span style="color:#f92672">]})</span></code></pre></div>
+<span style="color:#75715e"># 指定用户指定数据库权限 (可选)</span>
+db.createUser<span style="color:#f92672">({</span>user:<span style="color:#e6db74">&#39;power&#39;</span>,pwd:<span style="color:#e6db74">&#39;highPower4Mongo&#39;</span>,roles:<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;readWrite&#39;</span>,<span style="color:#e6db74">&#39;dbAdmin&#39;</span><span style="color:#f92672">]})</span></code></pre></div>
 <ul>
 <li>开启权限验证</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi /etc/mongod.conf
 
-<span style="color:#75715e"># 添加如下配置
-</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># 添加如下配置</span>
+
 security:
   authorization: <span style="color:#e6db74">&#34;enabled&#34;</span></code></pre></div>
 <ul>
@@ -374,11 +369,11 @@ security:
 <ul>
 <li>配置 <code>/etc/redis.conf</code></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Auth 权限密码
-</span><span style="color:#75715e"></span>requirepass highPower4Redis
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Auth 权限密码</span>
+requirepass highPower4Redis
 
-<span style="color:#75715e"># 开启 AOF 模式，数据持久化
-</span><span style="color:#75715e"></span>appendonly yes</code></pre></div>
+<span style="color:#75715e"># 开启 AOF 模式，数据持久化</span>
+appendonly yes</code></pre></div>
 <ul>
 <li>设置开机自启、启动服务</li>
 </ul>
@@ -402,8 +397,8 @@ security:
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim /etc/mosquitto/mosquitto.conf
 
-<span style="color:#75715e"># 修改以下参数
-</span><span style="color:#75715e"></span>allow_anonymous false
+<span style="color:#75715e"># 修改以下参数</span>
+allow_anonymous false
 password_file /etc/mosquitto/pwfile</code></pre></div>
 <ol>
 <li>设置开机自启、启动服务</li>
@@ -447,7 +442,7 @@ $ yum install php70w-devel</code></pre></div><div class="highlight"><pre style="
 </span><span style="color:#e6db74">$ yum makecache
 </span><span style="color:#e6db74"># 安装
 </span><span style="color:#e6db74">$ yum install libmosquitto-devel
-</span><span style="color:#e6db74"></span></code></pre></div>
+</span></code></pre></div>
 <h3 id="安装-git">安装 Git</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">yum</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">git</span>
 </code></pre></div></article>
@@ -455,14 +450,14 @@ $ yum install php70w-devel</code></pre></div><div class="highlight"><pre style="
       
       <ul class="post-tags">
         
-          <li><a href="https://guopuke.github.io/tags/php"><span class="tag">PHP</span></a></li>
+          <li><a href="https://qingeekk.github.io/tags/php"><span class="tag">PHP</span></a></li>
         
-          <li><a href="https://guopuke.github.io/tags/linux"><span class="tag">Linux</span></a></li>
+          <li><a href="https://qingeekk.github.io/tags/linux"><span class="tag">Linux</span></a></li>
         
       </ul>
       
       <p class="post-copyright">
-        
+        This post was published <strong>168</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -470,7 +465,7 @@ $ yum install php70w-devel</code></pre></div><div class="highlight"><pre style="
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2018 郭扑克儿</p>
+  <p>© 2017-2019 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>
@@ -501,7 +496,7 @@ $ yum install php70w-devel</code></pre></div><div class="highlight"><pre style="
   });
 </script>
 
-<script src="https://guopuke.github.io/js/bundle.d1288006cf.js"></script>
+<script src="https://qingeekk.github.io/js/bundle.d1288006cf.js"></script>
 
 
 
