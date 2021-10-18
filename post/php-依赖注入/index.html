@@ -16,43 +16,28 @@
 
   
   <meta name="author" content="Internet" />
-  <meta name="description" content="依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。 下面是一个简单的实例化类：
-&amp;lt;?php namespace Databases; class Databases { protected $adapter; public function __construct() { $this-&amp;gt;adapter = new MysqlAdapter; } } class MysqlAdapter {code...}  使用依赖注入重构，实现解耦：
-&amp;lt;?php namespace Database; class Database { protected $adapter; public function __construct(MySqlAdapter $adapter) { $this-&amp;gt;adapter = $adapter; } } class MysqlAdapter {code...}  这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。
-控制反转 顾名思义，一个系统通过组织控制和对象的完全分离来实现”控制反转”。对于依赖注入，这就意味着通过在系统的其他地方控制和实例化依赖对象，从而实现了解耦。
-依赖反转准则 依赖反转准则是面向对象设计准则 S.O.L.I.D 中的 “D” ，倡导 &amp;ldquo;依赖于抽象而不是具体&amp;rdquo;，依赖应该是接口或着抽象类，不是固定具体的实现。
-&amp;lt;?php namespace Database; class Database { protected $adapter; public function __construct(AdapterInterface $adapter) { $this-&amp;gt;adapter = $adapter; } } interface AdapterInterface {} class MysqlAdapter implements AdapterInterface {code." />
+  <meta name="description" content="" />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="PHP 依赖注入" />
-    <meta name="twitter:description" content="依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。 下面是一个简单的实例化类：
-&amp;lt;?php namespace Databases; class Databases { protected $adapter; public function __construct() { $this-&amp;gt;adapter = new MysqlAdapter; } } class MysqlAdapter {code...}  使用依赖注入重构，实现解耦：
-&amp;lt;?php namespace Database; class Database { protected $adapter; public function __construct(MySqlAdapter $adapter) { $this-&amp;gt;adapter = $adapter; } } class MysqlAdapter {code...}  这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。
-控制反转 顾名思义，一个系统通过组织控制和对象的完全分离来实现”控制反转”。对于依赖注入，这就意味着通过在系统的其他地方控制和实例化依赖对象，从而实现了解耦。
-依赖反转准则 依赖反转准则是面向对象设计准则 S.O.L.I.D 中的 “D” ，倡导 &amp;ldquo;依赖于抽象而不是具体&amp;rdquo;，依赖应该是接口或着抽象类，不是固定具体的实现。
-&amp;lt;?php namespace Database; class Database { protected $adapter; public function __construct(AdapterInterface $adapter) { $this-&amp;gt;adapter = $adapter; } } interface AdapterInterface {} class MysqlAdapter implements AdapterInterface {code." />
+    <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="PHP 依赖注入" />
-  <meta property="og:description" content="依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。 下面是一个简单的实例化类：
-&amp;lt;?php namespace Databases; class Databases { protected $adapter; public function __construct() { $this-&amp;gt;adapter = new MysqlAdapter; } } class MysqlAdapter {code...}  使用依赖注入重构，实现解耦：
-&amp;lt;?php namespace Database; class Database { protected $adapter; public function __construct(MySqlAdapter $adapter) { $this-&amp;gt;adapter = $adapter; } } class MysqlAdapter {code...}  这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。
-控制反转 顾名思义，一个系统通过组织控制和对象的完全分离来实现”控制反转”。对于依赖注入，这就意味着通过在系统的其他地方控制和实例化依赖对象，从而实现了解耦。
-依赖反转准则 依赖反转准则是面向对象设计准则 S.O.L.I.D 中的 “D” ，倡导 &amp;ldquo;依赖于抽象而不是具体&amp;rdquo;，依赖应该是接口或着抽象类，不是固定具体的实现。
-&amp;lt;?php namespace Database; class Database { protected $adapter; public function __construct(AdapterInterface $adapter) { $this-&amp;gt;adapter = $adapter; } } interface AdapterInterface {} class MysqlAdapter implements AdapterInterface {code." />
+  <meta property="og:description" content="" />
   <meta property="og:url" content="https://qingeekk.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" />
   <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" />
@@ -232,10 +217,9 @@
       <h1 class="post-title">PHP 依赖注入</h1>
       <p class="post-meta">@Internet · Apr 6, 2017 · 1 min read</p>
     </header>
-    <article class="post-content"><h4 id="依赖注入简单说就是通过构造注入-函数调用或者属性的设置来提供组件的赖关系">依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。</h4>
-
+    <article class="post-content"><h4 id="依赖注入简单说就是通过构造注入函数调用或者属性的设置来提供组件的赖关系">依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。</h4>
 <p>下面是一个简单的实例化类：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">Databases</span>;
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Databases</span>
@@ -250,9 +234,9 @@
 
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlAdapter</span> {<span style="color:#a6e22e">code</span><span style="color:#f92672">...</span>}
-</code></pre></div>
-<p>使用依赖注入重构，实现解耦：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php"><span style="color:#75715e">&lt;?php</span>
+
+</code></pre></div><p>使用依赖注入重构，实现解耦：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Php" data-lang="Php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">Database</span>;
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Database</span>
@@ -267,17 +251,12 @@
 
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlAdapter</span> {<span style="color:#a6e22e">code</span><span style="color:#f92672">...</span>}
-</code></pre></div>
-<p>这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。</p>
-
+</code></pre></div><p>这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。</p>
 <h4 id="控制反转">控制反转</h4>
-
 <p>顾名思义，一个系统通过组织控制和对象的完全分离来实现”控制反转”。对于依赖注入，这就意味着通过在系统的其他地方控制和实例化依赖对象，从而实现了解耦。</p>
-
 <h4 id="依赖反转准则">依赖反转准则</h4>
-
 <p>依赖反转准则是面向对象设计准则 S.O.L.I.D 中的 “D” ，倡导 &ldquo;依赖于抽象而不是具体&rdquo;，依赖应该是接口或着抽象类，不是固定具体的实现。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">Database</span>;
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Database</span>
@@ -293,12 +272,11 @@
 <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AdapterInterface</span> {}
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MysqlAdapter</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">AdapterInterface</span> {<span style="color:#a6e22e">code</span><span style="color:#f92672">...</span>}
-</code></pre></div>
-<p>这样方法的一个最大的好处是代码扩展性会变得更高。如果项目中决定要迁移一种不同的数据库，只需要写一个实现相应接口的适配器注入进 Database 这个类，根本不需要重构代码。</p></article>
+</code></pre></div><p>这样方法的一个最大的好处是代码扩展性会变得更高。如果项目中决定要迁移一种不同的数据库，只需要写一个实现相应接口的适配器注入进 Database 这个类，根本不需要重构代码。</p></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>747</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1655</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -306,7 +284,7 @@
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

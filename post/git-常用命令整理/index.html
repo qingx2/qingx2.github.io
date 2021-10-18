@@ -16,28 +16,28 @@
 
   
   <meta name="author" content="Internet" />
-  <meta name="description" content="git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &amp;quot;不使用git add 直接提交&amp;quot;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?" />
+  <meta name="description" content="" />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Git 常用命令整理" />
-    <meta name="twitter:description" content="git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &amp;quot;不使用git add 直接提交&amp;quot;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?" />
+    <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Git 常用命令整理" />
-  <meta property="og:description" content="git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &amp;quot;不使用git add 直接提交&amp;quot;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?" />
+  <meta property="og:description" content="" />
   <meta property="og:url" content="https://qingeekk.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
   <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
@@ -220,93 +220,63 @@
     <article class="post-content"><blockquote>
 <h5 id="git-config-配置文件的三种级别">git config 配置文件的三种级别</h5>
 </blockquote>
-
-<pre><code># 版本库级别:
+<pre tabindex="0"><code># 版本库级别:
 git config -e
 # 全局(用户主目录下):
 git config -e --global
 # 系统级:
 git config -e --system
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="添加修改配置文件参数">添加修改配置文件参数</h5>
 </blockquote>
-
-<pre><code>git config a.b something
-</code></pre>
-
-<blockquote>
-<h5 id="不删除工作目录文件-仅删除暂存区的文件">不删除工作目录文件，仅删除暂存区的文件</h5>
+<pre tabindex="0"><code>git config a.b something
+</code></pre><blockquote>
+<h5 id="不删除工作目录文件仅删除暂存区的文件">不删除工作目录文件，仅删除暂存区的文件</h5>
 </blockquote>
-
-<pre><code>git rm --cached cached.txt
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git rm --cached cached.txt
+</code></pre><blockquote>
 <h5 id="跳过使用暂存区域直接提交">跳过使用暂存区域直接提交</h5>
 </blockquote>
-
-<pre><code>git commit -a -m &quot;不使用git add 直接提交&quot;
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git commit -a -m &quot;不使用git add 直接提交&quot;
+</code></pre><blockquote>
 <h5 id="查找当前工作区的git版本库位置">查找当前工作区的Git版本库位置</h5>
 </blockquote>
-
-<pre><code>$ pwd
+<pre tabindex="0"><code>$ pwd
 /Applications/www/My blog/source
 $ git rev-parse --git-dir
 /Applications/www/My blog/.git
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="显示工作区根目录">显示工作区根目录</h5>
 </blockquote>
-
-<pre><code>git rev-parse --
+<pre tabindex="0"><code>git rev-parse --
 
 /Applications/www/My blog
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="显示工作区根目录的相对目录">显示工作区根目录的相对目录</h5>
 </blockquote>
-
-<pre><code>$ cd source/_posts
+<pre tabindex="0"><code>$ cd source/_posts
 git rev-parse --show-prefix
 source/_posts/
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="重新修改最新的提交-改正作者和提交者的错误信息">重新修改最新的提交, 改正作者和提交者的错误信息</h5>
 </blockquote>
-
-<pre><code>$ git commit --amend --allow-empty --reset-author
+<pre tabindex="0"><code>$ git commit --amend --allow-empty --reset-author
 ## 参数说明:
     # --amend 对刚刚的提交进行修补,不产生新的提交
     # --allow-empty 使空白提交被允许
     # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="精简查看日志">精简查看日志</h5>
 </blockquote>
-
-<pre><code>git log --pretty=oneline
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git log --pretty=oneline
+</code></pre><blockquote>
 <h5 id="精简格式的状态">精简格式的状态</h5>
 </blockquote>
-
-<pre><code>git status -s
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git status -s
+</code></pre><blockquote>
 <h5 id="比较差异">比较差异</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 工作区与提交暂存区(stage)对比:</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 工作区与提交暂存区(stage)对比:</span>
 git diff
 <span style="color:#75715e"># 工作区与HEAD(当前工作分支)对比:</span>
 git diff HEAD
@@ -315,29 +285,25 @@ git diff --cached
 <span style="color:#75715e"># 比较里程碑 A 和里程碑 B</span>
 git diff A B
 <span style="color:#75715e"># 比较工作区和里程碑 A</span>
-git diff A</code></pre></div>
-<blockquote>
+git diff A
+</code></pre></div><blockquote>
 <h5 id="逐词比较">逐词比较</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git diff --word-diff</code></pre></div>
-<blockquote>
-<h5 id="文件追溯-找出谁修改过文件-由谁引入">文件追溯，找出谁修改过文件，由谁引入</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git diff --word-diff
+</code></pre></div><blockquote>
+<h5 id="文件追溯找出谁修改过文件由谁引入">文件追溯，找出谁修改过文件，由谁引入</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git blame README
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git blame README
 <span style="color:#75715e"># 只查看第2行后面的3行</span>
-git blame -L <span style="color:#ae81ff">2</span>,+3 README</code></pre></div>
-<blockquote>
+git blame -L 2,+3 README
+</code></pre></div><blockquote>
 <h5 id="显示暂存区的目录树">显示暂存区的目录树</h5>
 </blockquote>
-
-<pre><code>git ls-file -s
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git ls-file -s
+</code></pre><blockquote>
 <h5 id="通过git日志重置master">通过Git日志重置master</h5>
 </blockquote>
-
-<pre><code>$ git reflog show master| head -5
+<pre tabindex="0"><code>$ git reflog show master| head -5
 9cb12d3 master@{0}: reset: moving to 9cb12d3
 f1fbdca master@{1}: reset: moving to HEAD^
 cba158e master@{2}: commit: does master follow this new commit?
@@ -346,13 +312,10 @@ f1fbdca master@{3}: commit: which version checked in?
 
 # 重置master为两次改变之前的值
 $ git reset --hard master@{2}
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="撤回上一次commit提交-工作区内容不改变">撤回上一次commit提交, 工作区内容不改变</h5>
 </blockquote>
-
-<pre><code>git reset --soft HEAD^
+<pre tabindex="0"><code>git reset --soft HEAD^
 
 # 参数解释:
 --soft  
@@ -362,115 +325,87 @@ $ git reset --hard master@{2}
 这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的
 --hard
 删除工作空间改动代码，撤销commit，撤销git add . 
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="查看当前-head-的指向">查看当前 HEAD 的指向</h5>
 </blockquote>
-
-<pre><code>$ cat .git/HEAD
+<pre tabindex="0"><code>$ cat .git/HEAD
 ref: refs/heads/master
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="挽救分离头指针">挽救分离头指针</h5>
 </blockquote>
-
-<pre><code># 1.在分离头指针的分支上查看并记录下提交 ID
+<pre tabindex="0"><code># 1.在分离头指针的分支上查看并记录下提交 ID
 git:(04f430b) $ cat .git/HEAD
 04f430b1ff24534b9fd8a8ccf0e96b6df1f4179f
 
 # 2.切换回 master 分支进行 merge 将分离的修改内容与 master 进行合并
 $ git checkout master
 $ git merge 04f430b1ff24534b9fd8a8ccf0e96b6df1f4179f
-</code></pre>
-
-<blockquote>
-<h5 id="commit-后-想回到之前的状态-放弃最新的提交">commit 后，想回到之前的状态，放弃最新的提交</h5>
+</code></pre><blockquote>
+<h5 id="commit-后想回到之前的状态放弃最新的提交">commit 后，想回到之前的状态，放弃最新的提交</h5>
 </blockquote>
-
-<pre><code>git reset --soft HEAD^
+<pre tabindex="0"><code>git reset --soft HEAD^
 # 提交日志也被抛弃...
-</code></pre>
-
-<blockquote>
-<h5 id="将暂存区的文件撤出-add-后的文件">将暂存区的文件撤出(add 后的文件)</h5>
+</code></pre><blockquote>
+<h5 id="将暂存区的文件撤出add-后的文件">将暂存区的文件撤出(add 后的文件)</h5>
 </blockquote>
-
-<pre><code># 撤出所有暂存区文件
+<pre tabindex="0"><code># 撤出所有暂存区文件
 $ git reset
 # 撤出指定文件
 $ git reset HEAD path/to/workspace/welcome.txt
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="清除本地修改">清除本地修改</h5>
 </blockquote>
-
-<pre><code>$ git st -s
+<pre tabindex="0"><code>$ git st -s
 M README.md
 ?? abc.html
 
 $ git checkout -- README.md
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="删除本地多余文件或目录">删除本地多余文件或目录</h5>
 </blockquote>
-
-<pre><code># 确保万一，先查询会删除哪些文件
+<pre tabindex="0"><code># 确保万一，先查询会删除哪些文件
 git clean -nd
 # 开始强制删除文件或目录
 git clean -fd
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="创建里程碑">创建里程碑</h5>
 </blockquote>
-
-<pre><code>git tag -m &quot;Say bye-bye to all previous practice.&quot; old_pratice
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git tag -m &quot;Say bye-bye to all previous practice.&quot; old_pratice
+</code></pre><blockquote>
 <h5 id="查看暂存区文件目录">查看暂存区文件目录</h5>
 </blockquote>
-
-<pre><code>git ls-files
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>git ls-files
+</code></pre><blockquote>
 <h5 id="查看历史版本的文件列表">查看历史版本的文件列表</h5>
 </blockquote>
-
-<pre><code>$ git ls-files --with-tree=HEAD^
+<pre tabindex="0"><code>$ git ls-files --with-tree=HEAD^
 README.md
 detacaed-commit.txt
 new-welcome.txt
 welcome.txt
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <h5 id="查看历史版本中尚存的删除文件的内容">查看历史版本中尚存的删除文件的内容</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git cat-file -p HEAD^:welcome.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git cat-file -p HEAD^:welcome.txt
 hello. git
 Nice to meet you
-hello echo</code></pre></div>
-<blockquote>
-<h5 id="将-版本库追踪的-本地文件的变更全部记录到暂存区中">将(版本库追踪的)本地文件的变更全部记录到暂存区中</h5>
+hello echo
+</code></pre></div><blockquote>
+<h5 id="将版本库追踪的本地文件的变更全部记录到暂存区中">将(版本库追踪的)本地文件的变更全部记录到暂存区中</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add -u</code></pre></div>
-<blockquote>
-<h5 id="从历史-head-前一次提交-恢复指定文件">从历史( HEAD^ 前一次提交)恢复指定文件</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add -u
+</code></pre></div><blockquote>
+<h5 id="从历史-head-前一次提交恢复指定文件">从历史( HEAD^ 前一次提交)恢复指定文件</h5>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell"><span style="color:#75715e"># 以下3种命令均可实现</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell"><span style="color:#75715e"># 以下3种命令均可实现</span>
 $ git cat-file -p HEAD~1:welcome.txt &gt; welcome.txt
 $ git show HEAD~1:welcome.txt &gt; welcome.txt
-$ git checkout HEAD~1 --welcome.txt</code></pre></div></article>
+$ git checkout HEAD~1 --welcome.txt
+</code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>742</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1650</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -478,7 +413,7 @@ $ git checkout HEAD~1 --welcome.txt</code></pre></div></article>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

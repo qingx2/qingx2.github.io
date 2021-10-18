@@ -17,8 +17,8 @@
   
   <meta name="author" content="韦小宝" />
   <meta name="description" content=" 转载 原创地址
- ​ 适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。
-​ 适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。适配器模式还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与适配器交互的代码，符合 “减少代码间耦合” 的设计原则。
+ ​	适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。
+​	适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。适配器模式还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与适配器交互的代码，符合 “减少代码间耦合” 的设计原则。
 " />
 
   
@@ -27,8 +27,8 @@
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="PHP 设计模式 适配器模式" />
     <meta name="twitter:description" content=" 转载 原创地址
- ​ 适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。
-​ 适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。适配器模式还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与适配器交互的代码，符合 “减少代码间耦合” 的设计原则。
+ ​	适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。
+​	适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。适配器模式还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与适配器交互的代码，符合 “减少代码间耦合” 的设计原则。
 " />
     <meta name="twitter:image" content="http://img.php.cn//upload/image/460/142/995/1510713869751874.png" />
   
@@ -37,8 +37,8 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="PHP 设计模式 适配器模式" />
   <meta property="og:description" content=" 转载 原创地址
- ​ 适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。
-​ 适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。适配器模式还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与适配器交互的代码，符合 “减少代码间耦合” 的设计原则。
+ ​	适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。
+​	适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。适配器模式还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与适配器交互的代码，符合 “减少代码间耦合” 的设计原则。
 " />
   <meta property="og:url" content="https://qingeekk.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
   <meta property="og:image" content="http://img.php.cn//upload/image/460/142/995/1510713869751874.png" />
@@ -46,7 +46,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
@@ -229,155 +229,155 @@
     <article class="post-content"><blockquote>
 <p>转载 <a href="http://www.php.cn/php-weizijiaocheng-381339.html">原创地址</a></p>
 </blockquote>
-
-<p>​   适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。</p>
-
-<p>​   适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。<strong>适配器模式</strong>还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与<strong>适配器</strong>交互的代码，符合 “减少代码间耦合” 的设计原则。</p>
-
-<p><img src="http://img.php.cn//upload/image/460/142/995/1510713869751874.png" alt="" /></p>
-
+<p>​	适配器模式将现有接口转化为客户类所期望的接口，实现了对现有类的复用，它是一种使用频率非常高的设计模式。</p>
+<p>​	适配器把对某些相似的类的操作转化为一个统一的 “接口”(这里是比喻的说话)，或者比喻为一个 “界面”，统一或屏蔽了那些类的细节。<strong>适配器模式</strong>还构造了一种 “机制”，使 “适配” 的类可以很容易的增减，而不用修改与<strong>适配器</strong>交互的代码，符合 “减少代码间耦合” 的设计原则。</p>
+<p><img src="http://img.php.cn//upload/image/460/142/995/1510713869751874.png" alt=""></p>
 <blockquote>
 <p>内部接口（IPlayer）角色：这是一个抽象角色，此角色给出内部期待的接口规则</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">abstract class Toy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Toy</span>
 {
-    public abstract function openMouth();
-    public abstract function closeMouth();
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">openMouth</span>();
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">closeMouth</span>();
 }
 
-class Dog extends Toy
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Toy</span>
 {
-    public function openMouth()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">openMouth</span>()
     {
-        echo &#34;Dog open Mouth\n&#34;;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Dog open Mouth</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
     }
 
-    public function closeMouth()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">closeMouth</span>()
     {
-        echo &#34;Dog close Mouth\n&#34;;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Dog close Mouth</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
     }
 }
 
-class Cat extends Toy
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Toy</span>
 {
-    public function openMouth()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">openMouth</span>()
     {
-        echo &#34;Cat open Mouth\n&#34;;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Cat open Mouth</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
     }
 
-    public function closeMouth()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">closeMouth</span>()
     {
-        echo &#34;Cat close Mouth\n&#34;;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Cat close Mouth</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
     }
-}</code></pre></div>
-<blockquote>
+}
+
+</code></pre></div><blockquote>
 <p>待适配（ForeignPlayer）角色：此角色的接口规则内部的接口规则不一致，但内部需要调用该角色的方法功能</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
- * 目标角色:红枣遥控公司
- * Interface RedTarget
- */
-interface RedTarget
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * 目标角色:红枣遥控公司
+</span><span style="color:#e6db74"> * Interface RedTarget
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">RedTarget</span>
 {
-    public function doMouthOpen();
-    public function doMouthClose();
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">doMouthOpen</span>();
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">doMouthClose</span>();
 }
 
-/**
- * 目标角色:绿枣遥控公司及
- * Interface GreenTarget
- */
-interface GreenTarget
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * 目标角色:绿枣遥控公司及
+</span><span style="color:#e6db74"> * Interface GreenTarget
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GreenTarget</span>
 {
-    public function operateMouth($type = 0);
-}</code></pre></div>
-<blockquote>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">operateMouth</span>($type <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+}
+
+</code></pre></div><blockquote>
 <p>适配器（Adapter）角色</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
- * 类适配器角色:红枣遥控公司
- * Class RedAdapter
- */
-class RedAdapter implements RedTarget
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * 类适配器角色:红枣遥控公司
+</span><span style="color:#e6db74"> * Class RedAdapter
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RedAdapter</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">RedTarget</span>
 {
-    private $adaptee;
+    <span style="color:#66d9ef">private</span> $adaptee;
 
-    function __construct(Toy $adaptee)
+    <span style="color:#66d9ef">function</span> __construct(<span style="color:#a6e22e">Toy</span> $adaptee)
     {
-        $this-&gt;adaptee = $adaptee;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adaptee</span> <span style="color:#f92672">=</span> $adaptee;
     }
 
-    // 委派调用Adaptee的sampleMethod1方法
-    public function doMouthOpen()
+    <span style="color:#75715e">// 委派调用Adaptee的sampleMethod1方法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">doMouthOpen</span>()
     {
-        $this-&gt;adaptee-&gt;openMouth();
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adaptee</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">openMouth</span>();
     }
 
-    public function doMouthClose()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">doMouthClose</span>()
     {
-        $this-&gt;adaptee-&gt;closeMouth();
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adaptee</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">closeMouth</span>();
     }
 }
 
-/**
- * 类适配器角色:绿枣遥控公司
- * Class GreenAdapter
- */
-class GreenAdapter implements GreenTarget
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * 类适配器角色:绿枣遥控公司
+</span><span style="color:#e6db74"> * Class GreenAdapter
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GreenAdapter</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">GreenTarget</span>
 {
-    private $adaptee;
+    <span style="color:#66d9ef">private</span> $adaptee;
 
-    function __construct(Toy $adaptee)
+    <span style="color:#66d9ef">function</span> __construct(<span style="color:#a6e22e">Toy</span> $adaptee)
     {
-        $this-&gt;adaptee = $adaptee;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adaptee</span> <span style="color:#f92672">=</span> $adaptee;
     }
 
-    // 委派调用Adaptee：GreenTarget的operateMouth方法
-    public function operateMouth($type = 0)
+    <span style="color:#75715e">// 委派调用Adaptee：GreenTarget的operateMouth方法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">operateMouth</span>($type <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
     {
-        if ($type) {
-            $this-&gt;adaptee-&gt;openMouth();
-        } else {
-            $this-&gt;adaptee-&gt;closeMouth();
+        <span style="color:#66d9ef">if</span> ($type) {
+            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adaptee</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">openMouth</span>();
+        } <span style="color:#66d9ef">else</span> {
+            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">adaptee</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">closeMouth</span>();
         }
     }
-}</code></pre></div>
-<blockquote>
+}
+
+</code></pre></div><blockquote>
 <p>运行</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
- * 客户端，客户想要那种就实现那种
- * Class testDriver
- */
-class testDriver
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * 客户端，客户想要那种就实现那种
+</span><span style="color:#e6db74"> * Class testDriver
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">testDriver</span>
 {
-    public function run()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">run</span>()
     {
-        //实例化一只狗玩具
-        $adaptee_dog = new Dog();
-        echo &#34;没有适配器的普通模式&#34;;
+        <span style="color:#75715e">//实例化一只狗玩具
+</span><span style="color:#75715e"></span>        $adaptee_dog <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Dog</span>();
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;没有适配器的普通模式&#34;</span>;
 
-        $adaptee_dog-&gt;openMouth();
-        $adaptee_dog-&gt;closeMouth();
+        $adaptee_dog<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">openMouth</span>();
+        $adaptee_dog<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">closeMouth</span>();
 
-        echo &#34;给狗套上红枣适配器\n&#34;;
-        $adapter_red = new RedAdapter($adaptee_dog);
-        // 张嘴
-        $adapter_red-&gt;doMouthOpen();
-        // 闭嘴
-        $adapter_red-&gt;doMouthClose();
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;给狗套上红枣适配器</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+        $adapter_red <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">RedAdapter</span>($adaptee_dog);
+        <span style="color:#75715e">// 张嘴
+</span><span style="color:#75715e"></span>        $adapter_red<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">doMouthOpen</span>();
+        <span style="color:#75715e">// 闭嘴
+</span><span style="color:#75715e"></span>        $adapter_red<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">doMouthClose</span>();
 
-        echo &#34;给狗套上绿枣适配器\n&#34;;
-        $adapter_green = new GreenAdapter($adaptee_dog);
-        // 张嘴
-        $adapter_green-&gt;operateMouth(1);
-        // 闭嘴
-        $adapter_green-&gt;operateMouth(0);
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;给狗套上绿枣适配器</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+        $adapter_green <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GreenAdapter</span>($adaptee_dog);
+        <span style="color:#75715e">// 张嘴
+</span><span style="color:#75715e"></span>        $adapter_green<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">operateMouth</span>(<span style="color:#ae81ff">1</span>);
+        <span style="color:#75715e">// 闭嘴
+</span><span style="color:#75715e"></span>        $adapter_green<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">operateMouth</span>(<span style="color:#ae81ff">0</span>);
     }
 }
 
-$test = new testDriver();
-$test-&gt;run();</code></pre></div></article>
+$test <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">testDriver</span>();
+$test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>();
+</code></pre></div></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -389,7 +389,7 @@ $test-&gt;run();</code></pre></div></article>
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>189</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1097</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -397,7 +397,7 @@ $test-&gt;run();</code></pre></div></article>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

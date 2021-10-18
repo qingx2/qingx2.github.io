@@ -40,7 +40,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/" />
@@ -222,6 +222,20 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://qingeekk.github.io/post/web%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" class="post-link">Web系统并发设计思路</a></h3>
+    <p class="post-meta">@Internet · Oct 6, 2017 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">电商的秒杀和抢购，对我们来说，都不是一个陌生的东西。然而，从技术的角度来说，这对于Web系统是一个巨大的考验。当一个Web系统，在一秒钟内收到数以万计甚至更多请求时，系统的优化和稳定至关重要。这次我们会关注秒杀和抢购的技术实现和优化，同时，从技术层面揭开，为什么我们总是不容易抢到火车票的原因？
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://qingeekk.github.io/post/web%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://qingeekk.github.io/post/yii-%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" class="post-link">Yii-自动加载</a></h3>
     <p class="post-meta">@Internet · Sep 28, 2017 · 5 min read</p>
   </header>
@@ -288,7 +302,7 @@ IoC容器需要满足2个最基本的功能：
     <p class="post-meta">@Internet · Sep 6, 2017 · 3 min read</p>
   </header>
   
-  <p class="post-summary">​ 项目刚好涉及一小块儿订单部分，需要一个第三方的快递物流信息接口API做一个物流轨迹的跟踪。国内的快递100、快递鸟、快递网、聚合数据，国际快递的话使用 Trackingmore也不错。个人综合比较考虑一下，决定使用 快递鸟 物流数据平台。
+  <p class="post-summary">​	项目刚好涉及一小块儿订单部分，需要一个第三方的快递物流信息接口API做一个物流轨迹的跟踪。国内的快递100、快递鸟、快递网、聚合数据，国际快递的话使用 Trackingmore也不错。个人综合比较考虑一下，决定使用 快递鸟 物流数据平台。
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AFapi%E5%AF%B9%E6%8E%A5/">Read More →</a>
@@ -316,8 +330,8 @@ IoC容器需要满足2个最基本的功能：
   </header>
   
   <p class="post-summary">大致流程 实现微信支付主要分为以下两步：
-​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
-​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+​	一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​	二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
 大致流程图：
 </p>
   <footer class="post-footer">
@@ -335,7 +349,7 @@ IoC容器需要满足2个最基本的功能：
   <p class="post-summary">如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms); } } return $grouped; }</p>
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms); } } return $grouped; } </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/">Read More →</a>
   </footer>
@@ -348,25 +362,11 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     <p class="post-meta">@Internet · Jul 14, 2017 · 1 min read</p>
   </header>
   
-  <p class="post-summary">JSON Web Token Authentication for Laravel &amp; Lumen ​ 现在项目基本全是前后端分离的开发模式，特别是在使用Angular这种前端框架来构建单页面应用程序时会发现配合 angular-locker 实现存储令牌等方面更加得心应手，So 此次项目决定用jwt-auth建立一套API规范来练练手。
-​ jwt-auth使用JSON Web令牌（spec）在Laravel中提供了一种简单的身份验证手段，是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。
+  <p class="post-summary">JSON Web Token Authentication for Laravel &amp; Lumen ​	现在项目基本全是前后端分离的开发模式，特别是在使用Angular这种前端框架来构建单页面应用程序时会发现配合 angular-locker 实现存储令牌等方面更加得心应手，So 此次项目决定用jwt-auth建立一套API规范来练练手。
+​	jwt-auth使用JSON Web令牌（spec）在Laravel中提供了一种简单的身份验证手段，是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/jwtauth%E8%BF%90%E7%94%A8%E5%88%B0laravel5/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://qingeekk.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/" class="post-link">php7新特性学习</a></h3>
-    <p class="post-meta">@Internet · Jul 1, 2017 · 2 min read</p>
-  </header>
-  
-  <p class="post-summary">参考PHP官网个人记录学习
-</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://qingeekk.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/">Read More →</a>
   </footer>
 </article>
 
@@ -387,7 +387,7 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

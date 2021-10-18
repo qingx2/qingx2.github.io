@@ -43,7 +43,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
@@ -224,87 +224,79 @@
       <p class="post-meta">@杰枫 Jeff · Oct 16, 2018 · 1 min read</p>
     </header>
     <article class="post-content"><h3 id="那么何为工厂模式">那么何为工厂模式？</h3>
-
 <p>　　定义一个创建对象的接口，但是让子类去实例化具体类。工厂方法模式让类的实例化延迟到子类中。</p>
-
 <p>　<em>工厂模式有一个关键的构造，根据一般原则命名为 Factory 的静态方法，然而这只是一种原则，虽然工厂方法可以任意命名这个静态还可以接受任意数据的参数，必须返回一个对象。</em></p>
-
 <h3 id="为什么要用工厂模式">为什么要用工厂模式？</h3>
-
 <p>　　很多没接触过工厂模式的人会不禁问，为啥我要费那么大的劲儿去构造工厂类去创建对象呢？不去套用那些易维护，可扩展之类的话，我们可以考虑这样一个简单的问题。如果项目中，我们通过一个类创建对象。在快完成或者已经完成，要扩展功能的时候，发现原来的类类名不是很合适或者发现类需要添加构造函数参数才能实现功能扩展。我都通过这个类创建了一大堆对象实例了啊，难道我还要一个一个去改不成？我们现在才感受到了 “高内聚低耦合” 的博大精深。没问题，工厂方法可以解决这个问题。</p>
-
-<p>​   再考虑一下，我要连接数据库，在 PHP 里面就有好几种方法，mysql 扩展，mysqli 扩展，PDO 扩展。我就是想要一个对象用来以后的操作，具体要哪个，视情况而定喽。既然你们都是连接数据库的操作，你们就应该拥有相同的功能，建立连接，查询，断开连接&hellip;（此处显示接口的重要性）。总而言之，这几种方法应该 “团结一致，一致对外”。如何实现呢？利用工厂模式。</p>
-
+<p>​	再考虑一下，我要连接数据库，在 PHP 里面就有好几种方法，mysql 扩展，mysqli 扩展，PDO 扩展。我就是想要一个对象用来以后的操作，具体要哪个，视情况而定喽。既然你们都是连接数据库的操作，你们就应该拥有相同的功能，建立连接，查询，断开连接&hellip;（此处显示接口的重要性）。总而言之，这几种方法应该 “团结一致，一致对外”。如何实现呢？利用工厂模式。</p>
 <h3 id="工厂模式如何实现">工厂模式如何实现？</h3>
-
-<p>​   相对于单例模式，上面我们提供了足够的信息，工厂类，工厂类里面的静态方法。静态方法里面 new 一下需要创建的对象实例就搞定了。当然至于考虑上面的第二个问题，根据工厂类静态方法的参数，我们简单做个判断就好了。管你用 <code>if..else..</code> 还是 <code>switch..case..</code>，能快速高效完成判断该创建哪个类的工作就好了。最后，一定要记得，<strong>工厂类静态方法只返回一个对象</strong>。不是两个，更不是三个。</p>
-
+<p>​	相对于单例模式，上面我们提供了足够的信息，工厂类，工厂类里面的静态方法。静态方法里面 new 一下需要创建的对象实例就搞定了。当然至于考虑上面的第二个问题，根据工厂类静态方法的参数，我们简单做个判断就好了。管你用 <code>if..else..</code> 还是 <code>switch..case..</code>，能快速高效完成判断该创建哪个类的工作就好了。最后，一定要记得，<strong>工厂类静态方法只返回一个对象</strong>。不是两个，更不是三个。</p>
 <blockquote>
 <p>基本的工厂类</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">//要创建对象实例的类
-class MyObject{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#75715e">//要创建对象实例的类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyObject</span>{
 }
 
- //工厂类
-class MyFactory{
-	public static function factory(){
-        return new MyObject():
+ <span style="color:#75715e">//工厂类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyFactory</span>{
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">factory</span>(){
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyObject</span>()<span style="color:#f92672">:</span>
     }
 }
 
 
-$instance=MyFactory::factory();</code></pre></div>
-<blockquote>
+$instance<span style="color:#f92672">=</span><span style="color:#a6e22e">MyFactory</span><span style="color:#f92672">::</span><span style="color:#a6e22e">factory</span>();
+</code></pre></div><blockquote>
 <p>一个稍微复杂的工厂模式</p>
-
 <p>需要注意同名构造函数的问题，不能是工厂类名为 <code>Factory</code> ，静态方法名为 <code>factory()</code></p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">interface Transport{
-    public function go();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Transport</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">go</span>();
 
 }
 
-class Bus implements Transport{
-    public function go(){
-        echo &#34;bus每一站都要停&#34;;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bus</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Transport</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">go</span>(){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;bus每一站都要停&#34;</span>;
     }
 }
 
-class Car implements Transport{
-    public function go(){
-        echo &#34;car跑的飞快&#34;;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Transport</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">go</span>(){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;car跑的飞快&#34;</span>;
     }
 }
 
-class Bike implements Transport{
-    public function go(){
-        echo &#34;bike比较慢&#34;;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bike</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Transport</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">go</span>(){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;bike比较慢&#34;</span>;
     }
 }
 
-class transFactory{
-    public static function factory($transport)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">transFactory</span>{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">factory</span>($transport)
     {
         
-        switch ($transport) {
-            case &#39;bus&#39;:
-                return new Bus();
-                break;
+        <span style="color:#66d9ef">switch</span> ($transport) {
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;bus&#39;</span><span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Bus</span>();
+                <span style="color:#66d9ef">break</span>;
 
-            case &#39;car&#39;:
-                return new Car();
-                break;
-            case &#39;bike&#39;:
-                return new Bike();
-                break;
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;car&#39;</span><span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Car</span>();
+                <span style="color:#66d9ef">break</span>;
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;bike&#39;</span><span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Bike</span>();
+                <span style="color:#66d9ef">break</span>;
         }
     }
 }
 
 
-$transport=transFactory::factory(&#39;car&#39;);
-$transport-&gt;go();</code></pre></div></article>
+$transport<span style="color:#f92672">=</span><span style="color:#a6e22e">transFactory</span><span style="color:#f92672">::</span><span style="color:#a6e22e">factory</span>(<span style="color:#e6db74">&#39;car&#39;</span>);
+$transport<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">go</span>();
+</code></pre></div></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -316,7 +308,7 @@ $transport-&gt;go();</code></pre></div></article>
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>189</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1097</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -324,7 +316,7 @@ $transport-&gt;go();</code></pre></div></article>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

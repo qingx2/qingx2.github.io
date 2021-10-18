@@ -17,8 +17,8 @@
   
   <meta name="author" content="Internet" />
   <meta name="description" content="参考: [开发环境]Mac 配置 php-fpm
-使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
-ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed" />
+使用 brew 安装好 php 后, 运行 php-fpm 时提示我如下错误信息：
+ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed " />
 
   
   
@@ -26,8 +26,8 @@ ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Mac 配置 PHP_FPM" />
     <meta name="twitter:description" content="参考: [开发环境]Mac 配置 php-fpm
-使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
-ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed" />
+使用 brew 安装好 php 后, 运行 php-fpm 时提示我如下错误信息：
+ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed " />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
@@ -35,15 +35,15 @@ ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Mac 配置 PHP_FPM" />
   <meta property="og:description" content="参考: [开发环境]Mac 配置 php-fpm
-使用 brew 安装好 php 后, 运行php-fpm 时提示我如下错误信息：
-ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed" />
+使用 brew 安装好 php 后, 运行 php-fpm 时提示我如下错误信息：
+ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39;: No such file or directory (2) ERROR: failed to load configuration file &amp;#39;/private/etc/php-fpm.conf&amp;#39; ERROR: FPM initialization failed " />
   <meta property="og:url" content="https://qingeekk.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/" />
   <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/mac-%E9%85%8D%E7%BD%AE-php-fpm/" />
@@ -224,44 +224,36 @@ ERROR: failed to open configuration file &amp;#39;/private/etc/php-fpm.conf&amp;
       <p class="post-meta">@Internet · Apr 28, 2017 · 1 min read</p>
     </header>
     <article class="post-content"><p>参考: <a href="https://github.com/musicode/test/issues/5">[开发环境]Mac 配置 php-fpm</a></p>
-
-<p>使用 brew 安装好 php 后, 运行<code>php-fpm</code> 时提示我如下错误信息：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ERROR: failed to open configuration file <span style="color:#e6db74">&#39;/private/etc/php-fpm.conf&#39;</span>: No such file or directory <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>
+<p>使用 brew 安装好 php 后, 运行<code> php-fpm</code> 时提示我如下错误信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ERROR: failed to open configuration file <span style="color:#e6db74">&#39;/private/etc/php-fpm.conf&#39;</span>: No such file or directory <span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>
 ERROR: failed to load configuration file <span style="color:#e6db74">&#39;/private/etc/php-fpm.conf&#39;</span>
-ERROR: FPM initialization failed</code></pre></div>
-<p>错误信息显示，不能打开配置文件，<code>cd /private/etc</code>，发现没有 <code>php-fpm.conf</code> 文件，但是有 <code>php-fpm.conf.default</code> 文件。这个文件是默认配置，我们可以复制一份，改名为 <code>php-fpm.conf</code>，然后再根据需要改动配置。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">cp /private/etc/php-fpm.conf.default /private/etc/php-fpm.conf</code></pre></div>
-<p>执行 <code>php-fpm</code>，再次报错：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ERROR: failed to open error_log <span style="color:#f92672">(</span>/usr/var/log/php-fpm.log<span style="color:#f92672">)</span>: No such file or directory <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>
+ERROR: FPM initialization failed
+</code></pre></div><p>错误信息显示，不能打开配置文件，<code>cd /private/etc</code>，发现没有 <code>php-fpm.conf</code> 文件，但是有 <code>php-fpm.conf.default</code> 文件。这个文件是默认配置，我们可以复制一份，改名为 <code>php-fpm.conf</code>，然后再根据需要改动配置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">cp /private/etc/php-fpm.conf.default /private/etc/php-fpm.conf
+</code></pre></div><p>执行 <code>php-fpm</code>，再次报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ERROR: failed to open error_log <span style="color:#f92672">(</span>/usr/var/log/php-fpm.log<span style="color:#f92672">)</span>: No such file or directory <span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>
 ERROR: failed to post process the configuration
-ERROR: FPM initialization failed</code></pre></div>
-<p>错误信息显示，不能打开错误日志文件。<code>cd /usr/var/log</code> 发现根本没有这个目录，甚至连 <strong>var</strong> 目录都没有，加上为了避免权限问题，干脆配置到 <strong>/usr/local/var/log</strong> 目录。</p>
-
+ERROR: FPM initialization failed
+</code></pre></div><p>错误信息显示，不能打开错误日志文件。<code>cd /usr/var/log</code> 发现根本没有这个目录，甚至连 <strong>var</strong> 目录都没有，加上为了避免权限问题，干脆配置到 <strong>/usr/local/var/log</strong> 目录。</p>
 <p>修改 <strong>php-fpm.conf</strong> <code>error_log</code> 配置为 <code>/usr/local/var/log/php-fpm.log</code>，并把 <code>user</code> 和 <code>group</code> 改为和当前用户一样。</p>
-
 <p>执行 <code>php-fpm</code>，再次报错：</p>
-
-<pre><code>NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+<pre tabindex="0"><code>NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
 NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
 
-</code></pre>
-
-<p>于是 <code>sudo php-fpm</code>，再次报错：</p>
-
-<pre><code>ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
+</code></pre><p>于是 <code>sudo php-fpm</code>，再次报错：</p>
+<pre tabindex="0"><code>ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)
 ERROR: FPM initialization failed
-</code></pre>
-
-<p>此时意思很明显了, 就是端口被系统自带的 php-fpm 占用了, 执行如下命令, kill 当前所有 php-fpm 进程:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">killall php-fpm</code></pre></div>
-<p>再运行:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">php-fpm -t</code></pre></div>
-<p>提示如下信息, 就说明已经启动成功了</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NOTICE: configuration file /private/etc/php-fpm.conf test is successful</code></pre></div></article>
+</code></pre><p>此时意思很明显了, 就是端口被系统自带的 php-fpm 占用了, 执行如下命令, kill 当前所有 php-fpm 进程:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">killall php-fpm
+</code></pre></div><p>再运行:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">php-fpm -t
+</code></pre></div><p>提示如下信息, 就说明已经启动成功了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NOTICE: configuration file /private/etc/php-fpm.conf test is successful
+</code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>725</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1633</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -269,7 +261,7 @@ ERROR: FPM initialization failed
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

@@ -49,7 +49,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/" />
@@ -229,57 +229,49 @@
       <h1 class="post-title">PHP 扩展安装失败</h1>
       <p class="post-meta">@Paco · Aug 26, 2018 · 1 min read</p>
     </header>
-    <article class="post-content">
-
-<h3 id="1-connection-to-ssl-pecl-php-net-443-fail">1. Connection to ssl://pecl.php.net:443 fail</h3>
-
+    <article class="post-content"><h3 id="1-connection-to-sslpeclphpnet443-fail">1. Connection to ssl://pecl.php.net:443 fail</h3>
 <blockquote>
 <p>安装 pecl install redis,  pecl install mongodb, pecl search redis, pecl install swoole, 提示以下错误</p>
 </blockquote>
-
 <p><code>No releases available for package &quot;pecl.php.net/memcache&quot;</code></p>
-
 <p>导致出现这个错误的原因，可能是网络问题（需要翻墙）或者是 <code>OpenSSL</code> 的问题，这里提供一个简单的办法：</p>
-
 <ul>
 <li>从 <a href="https://pecl.php.net/">pecl.php.net</a> 搜索下载所需要的扩展包（比如下载一个 Redis 的扩展， 会得到 <strong>redis-4.1.1.tgz</strong> 这个压缩包）</li>
 <li>执行 <code>pecl install redis-4.1.1.tgz</code></li>
 </ul>
-
-<h3 id="2-configure-error-cannot-find-openssl-s-evp-h">2. configure: error: Cannot find OpenSSL&rsquo;s &lt;evp.h&gt;</h3>
-
+<h3 id="2-configure-error-cannot-find-openssls-evph">2. configure: error: Cannot find OpenSSL&rsquo;s &lt;evp.h&gt;</h3>
 <blockquote>
 <p>错误信息</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">configure: error: Cannot find OpenSSL<span style="color:#e6db74">&#39;s &lt;evp.h&gt;
-</span><span style="color:#e6db74">ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&#39;</span> failed</code></pre></div>
-<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">configure: error: Cannot find OpenSSL<span style="color:#e6db74">&#39;s &lt;evp.h&gt;
+</span><span style="color:#e6db74">ERROR: `/private/tmp/pear/temp/event/configure --with-php-config=/usr/local/opt/php@7.0/bin/php-config --enable-event-debug=no --enable-event-sockets=yes --with-event-libevent-dir=/usr --with-event-pthreads=no --with-event-extra --with-event-openssl --with-event-ns=no --with-openssl-dir=no&#39;</span> failed
+</code></pre></div><blockquote>
 <p>解决办法</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install openssl
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install openssl
 
 $ ln -s /usr/local/Cellar/openssl/1.0.2m/include/openssl /usr/local/include/openssl
 
 $ export LDFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-L/usr/local/opt/openssl/lib&#34;</span>
 
-$ export CFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-I/usr/local/opt/openssl/include&#34;</span></code></pre></div>
-<h3 id="3-configure-error-please-reinstall-the-mosquitto-distribution">3. configure: error: Please reinstall the mosquitto distribution</h3>
-
+$ export CFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-I/usr/local/opt/openssl/include&#34;</span>
+</code></pre></div><h3 id="3-configure-error-please-reinstall-the-mosquitto-distribution">3. configure: error: Please reinstall the mosquitto distribution</h3>
 <p>在安装 <code>mosquitto</code> 扩展的时候总是 error</p>
-
 <blockquote>
 <p>错误信息如下</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">configure: error: Please reinstall the mosquitto distribution
-ERROR: <span style="color:#e6db74">`</span>/private/tmp/pear/temp/Mosquitto/configure --with-php-config<span style="color:#f92672">=</span>/usr/local/opt/php@7.0/bin/php-config --with-mosquitto<span style="color:#960050;background-color:#1e0010">&#39;</span> failed</code></pre></div>
-<blockquote>
-<p>解决办法: 原来是这个扩展包会依赖本地的 Mosquitto Broke 才能进行安装，MacOS 可用 <code>Homebrew</code> 直接安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+configure: error: Please reinstall the mosquitto distribution
+ERROR: <span style="color:#e6db74">`</span>/private/tmp/pear/temp/Mosquitto/configure --with-php-config<span style="color:#f92672">=</span>/usr/local/opt/php@7.0/bin/php-config --with-mosquitto<span style="color:#960050;background-color:#1e0010">&#39;</span> failed
 
+</code></pre></div><blockquote>
+<p>解决办法: 原来是这个扩展包会依赖本地的 Mosquitto Broke 才能进行安装，MacOS 可用 <code>Homebrew</code> 直接安装</p>
 <p>错误提示信息，类似这种 <code>reinstall</code> <code>distribution</code> 都可以考虑按照以下方法尝试解决</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew install mosquitto
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew install mosquitto
 
-pecl install mosquitto</code></pre></div></article>
+pecl install mosquitto
+</code></pre></div></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -289,7 +281,7 @@ pecl install mosquitto</code></pre></div></article>
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>240</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1148</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -297,7 +289,7 @@ pecl install mosquitto</code></pre></div></article>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

@@ -40,7 +40,7 @@ E325: ATTENTION Found a swap file by the name &amp;#34;.bash_profile.swp&amp;#34
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/linux-vi-%E6%97%A0%E6%B3%95%E7%BC%96%E8%BE%91-base-profile-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" />
@@ -221,31 +221,31 @@ E325: ATTENTION Found a swap file by the name &amp;#34;.bash_profile.swp&amp;#34
       <p class="post-meta">@Internet · Mar 29, 2017 · 1 min read</p>
     </header>
     <article class="post-content"><p>vi编辑 <code>.base_profile</code> 文件时,提示如下信息:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">E325: ATTENTION
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">E325: ATTENTION
 Found a swap file by the name <span style="color:#e6db74">&#34;.bash_profile.swp&#34;</span>
-       owned by: root   dated: Tue Nov <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">17</span>:42:38 <span style="color:#ae81ff">2017</span>
+       owned by: root   dated: Tue Nov <span style="color:#ae81ff">10</span> 17:42:38 <span style="color:#ae81ff">2017</span>
        file name: /etc/proftpd/etc/proftpd.conf
        modified: no
        user name: root   host name: localhost
        process ID: <span style="color:#ae81ff">11195</span>
 While opening file <span style="color:#e6db74">&#34;.bash_profile&#34;</span>
-             dated: Tue Nov <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">18</span>:32:16 <span style="color:#ae81ff">2017</span>
+             dated: Tue Nov <span style="color:#ae81ff">10</span> 18:32:16 <span style="color:#ae81ff">2017</span>
       NEWER than swap file!
-<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> Another program may be editing the same file.
+<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> Another program may be editing the same file.
     If this is the <span style="color:#66d9ef">case</span>, be careful not to end up with two
     different instances of the same file when making changes.
     Quit, or <span style="color:#66d9ef">continue</span> with caution.
-<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> An edit session <span style="color:#66d9ef">for</span> this file crashed.
+<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span> An edit session <span style="color:#66d9ef">for</span> this file crashed.
     If this is the <span style="color:#66d9ef">case</span>, use <span style="color:#e6db74">&#34;:recover&#34;</span> or <span style="color:#e6db74">&#34;vim -r .bash_profile&#34;</span>
     to recover the changes <span style="color:#f92672">(</span>see <span style="color:#e6db74">&#34;:help recovery&#34;</span><span style="color:#f92672">)</span>.
     If you did this already, delete the swap file <span style="color:#e6db74">&#34;.bash_profile.swp&#34;</span>
-    to avoid this message.</code></pre></div>
-<p>提示说明是因为上次在编辑次文件时意外退出, 并生成了一个<code>.bash_profile.swp</code> 文件, 如果已经确定无误, 删除 <code>.bash_profile.swp</code>文件就可以正常打开 <code>.bash_profile</code>了。</p>
+    to avoid this message.
+</code></pre></div><p>提示说明是因为上次在编辑次文件时意外退出, 并生成了一个<code>.bash_profile.swp</code> 文件, 如果已经确定无误, 删除 <code>.bash_profile.swp</code>文件就可以正常打开 <code>.bash_profile</code>了。</p>
 </article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>755</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1663</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -253,7 +253,7 @@ While opening file <span style="color:#e6db74">&#34;.bash_profile&#34;</span>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

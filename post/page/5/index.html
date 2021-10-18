@@ -40,7 +40,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/" />
@@ -222,11 +222,25 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://qingeekk.github.io/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/" class="post-link">Homebrew 安装 PHP、Nginx、MySql</a></h3>
+    <p class="post-meta">@Internet · Apr 19, 2017 · 3 min read</p>
+  </header>
+  
+  <p class="post-summary">参考 全新安装 Mac OS Sierra (10.12) 并使用 HomeBrew 安装 ZSH &#43; MNMP (Mac &#43; Nginx &#43; MySQL &#43; PHP) 开发环境
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://qingeekk.github.io/post/homebrew-%E5%AE%89%E8%A3%85-phpnginxmysql/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://qingeekk.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" class="post-link">Git 常用命令整理</a></h3>
     <p class="post-meta">@Internet · Apr 11, 2017 · 2 min read</p>
   </header>
   
-  <p class="post-summary">git config 配置文件的三种级别  # 版本库级别: git config -e # 全局(用户主目录下): git config -e --global # 系统级: git config -e --system   添加修改配置文件参数  git config a.b something   不删除工作目录文件，仅删除暂存区的文件  git rm --cached cached.txt   跳过使用暂存区域直接提交  git commit -a -m &#34;不使用git add 直接提交&#34;   查找当前工作区的Git版本库位置  $ pwd /Applications/www/My blog/source $ git rev-parse --git-dir /Applications/www/My blog/.git   显示工作区根目录  git rev-parse -- /Applications/www/My blog   显示工作区根目录的相对目录  $ cd source/_posts git rev-parse --show-prefix source/_posts/   重新修改最新的提交, 改正作者和提交者的错误信息  $ git commit --amend --allow-empty --reset-author ## 参数说明: # --amend 对刚刚的提交进行修补,不产生新的提交 # --allow-empty 使空白提交被允许 # --reset-author 将Author提交者的ID同步修改,重置AuthorDate信息   精简查看日志  git log --pretty=oneline   精简格式的状态  git status -s   比较差异  # 工作区与提交暂存区(stage)对比: git diff # 工作区与HEAD(当前工作分支)对比: git diff HEAD # 提交暂存区与版本库文件比较: git diff --cached # 比较里程碑 A 和里程碑 B git diff A B # 比较工作区和里程碑 A git diff A  逐词比较  git diff --word-diff  文件追溯，找出谁修改过文件，由谁引入  git blame README # 只查看第2行后面的3行 git blame -L 2,&#43;3 README  显示暂存区的目录树  git ls-file -s   通过Git日志重置master  $ git reflog show master| head -5 9cb12d3 master@{0}: reset: moving to 9cb12d3 f1fbdca master@{1}: reset: moving to HEAD^ cba158e master@{2}: commit: does master follow this new commit?</p>
+  <p class="post-summary"></p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/">Read More →</a>
   </footer>
@@ -239,12 +253,7 @@
     <p class="post-meta">@Internet · Apr 6, 2017 · 1 min read</p>
   </header>
   
-  <p class="post-summary">依赖注入简单说就是通过构造注入，函数调用或者属性的设置来提供组件的赖关系。 下面是一个简单的实例化类：
-&lt;?php namespace Databases; class Databases { protected $adapter; public function __construct() { $this-&gt;adapter = new MysqlAdapter; } } class MysqlAdapter {code...}  使用依赖注入重构，实现解耦：
-&lt;?php namespace Database; class Database { protected $adapter; public function __construct(MySqlAdapter $adapter) { $this-&gt;adapter = $adapter; } } class MysqlAdapter {code...}  这样就可以通过外界给予 Database 类的依赖，不是让这个类自己产生依赖的对象。
-控制反转 顾名思义，一个系统通过组织控制和对象的完全分离来实现”控制反转”。对于依赖注入，这就意味着通过在系统的其他地方控制和实例化依赖对象，从而实现了解耦。
-依赖反转准则 依赖反转准则是面向对象设计准则 S.O.L.I.D 中的 “D” ，倡导 “依赖于抽象而不是具体”，依赖应该是接口或着抽象类，不是固定具体的实现。
-&lt;?php namespace Database; class Database { protected $adapter; public function __construct(AdapterInterface $adapter) { $this-&gt;adapter = $adapter; } } interface AdapterInterface {} class MysqlAdapter implements AdapterInterface {code.</p>
+  <p class="post-summary"></p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/php-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">Read More →</a>
   </footer>
@@ -273,7 +282,7 @@ E325: ATTENTION Found a swap file by the name &#34;.bash_profile.swp&#34; owned 
   
   <p class="post-summary">进行编译安装PHP-mongodb扩展, 执行 ./configure 时提示如下错误信息:
 configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt; 因为执行的PHP是MAMP里集成的, 缺少OpenSSL，只有编译安装的PHP才有OpenSSL，偷个懒直接使用brew下载一个PHP。执行 configure 时添加如下参数(换成homebrew下载的php-openssl目录)如下命令：
-./configure --with-openssl-dir=/usr/local/Cellar/openssl/1.</p>
+./configure --with-openssl-dir=/usr/local/Cellar/openssl/1.0.2k </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/configure-error-cannot-find-openssl-s-evp-h/">Read More →</a>
   </footer>
@@ -286,7 +295,7 @@ configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt; 因为执行的PHP是M
     <p class="post-meta">@Internet · Mar 24, 2017 · 1 min read</p>
   </header>
   
-  <p class="post-summary">进入到主题文件目录 cd themes 默认主题 landscape 目录结构:
+  <p class="post-summary">进入到主题文件目录 cd themes 默认主题 landscape目录结构:
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/">Read More →</a>
@@ -301,7 +310,7 @@ configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt; 因为执行的PHP是M
   </header>
   
   <p class="post-summary">1、查看电脑是否已经有 SHH key 终端输入:
-➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts  如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
+➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts 如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
 </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/">Read More →</a>
@@ -315,7 +324,12 @@ configure: error: Cannot find OpenSSL&#39;s &lt;evp.h&gt; 因为执行的PHP是M
     <p class="post-meta">@Internet · Mar 23, 2017 · 1 min read</p>
   </header>
   
-  <p class="post-summary"> 打开Mac自带的Automator应用程序   文稿类型选择服务   设置应用程序   将iTerm应用拖到空白区域 Command&#43;Shift&#43;Option&#43;S 保存   系统偏好设置-键盘-快捷键-服务-通用  </p>
+  <p class="post-summary">  打开Mac自带的Automator应用程序
+  文稿类型选择服务
+  设置应用程序
+  将iTerm应用拖到空白区域 Command&#43;Shift&#43;Option&#43;S 保存
+  系统偏好设置-键盘-快捷键-服务-通用
+  </p>
   <footer class="post-footer">
     <a class="read-more" href="https://qingeekk.github.io/post/mac%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">Read More →</a>
   </footer>
@@ -367,7 +381,7 @@ iTerm2官网下载地址
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

@@ -19,7 +19,7 @@
   <meta name="description" content="如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; }" />
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; } " />
 
   
   
@@ -29,7 +29,7 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     <meta name="twitter:description" content="如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; }" />
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; } " />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
 
@@ -39,14 +39,14 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
   <meta property="og:description" content="如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; }" />
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; } " />
   <meta property="og:url" content="https://qingeekk.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/" />
   <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
 
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/" />
@@ -227,36 +227,33 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
       <p class="post-meta">@Internet · Jul 28, 2017 · 1 min read</p>
     </header>
     <article class="post-content"><p><strong>如果你的数据是这样:</strong></p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/WechatIMG13.jpeg" alt="" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/WechatIMG13.jpeg" alt=""></p>
 <p><strong>需要转换为如下格式</strong></p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/WechatIMG14.jpeg" alt="" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/WechatIMG14.jpeg" alt=""></p>
 <p><strong>添加此函数可以进行转为</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">public function array_group_by($arr, $key)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">array_group_by</span>($arr, $key)
 {
-  $grouped = [];
-  foreach ($arr as $value) {
-    $grouped[$value[$key]][] = $value;
+  $grouped <span style="color:#f92672">=</span> [];
+  <span style="color:#66d9ef">foreach</span> ($arr <span style="color:#66d9ef">as</span> $value) {
+    $grouped[$value[$key]][] <span style="color:#f92672">=</span> $value;
   }
 
-  // 递归重组嵌套数组 
-  if (func_num_args() &gt; 2) {
-    $args = func_get_args();
-    foreach ($grouped as $key =&gt; $value) {
-      $parms = array_merge([$value], array_slice($args, 2, func_num_args()));
-      $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms);
+  <span style="color:#75715e">// 递归重组嵌套数组 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">func_num_args</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
+    $args <span style="color:#f92672">=</span> <span style="color:#a6e22e">func_get_args</span>();
+    <span style="color:#66d9ef">foreach</span> ($grouped <span style="color:#66d9ef">as</span> $key <span style="color:#f92672">=&gt;</span> $value) {
+      $parms <span style="color:#f92672">=</span> <span style="color:#a6e22e">array_merge</span>([$value], <span style="color:#a6e22e">array_slice</span>($args, <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">func_num_args</span>()));
+      $grouped[$key] <span style="color:#f92672">=</span> <span style="color:#a6e22e">call_user_func_array</span>(<span style="color:#e6db74">&#39;array_group_by&#39;</span>, $parms);
     }
   }
 
-  return $grouped;
-}</code></pre></div></article>
+  <span style="color:#66d9ef">return</span> $grouped;
+}
+</code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>634</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1542</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -264,7 +261,7 @@ public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $va
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

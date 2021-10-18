@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Qing</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Projects on Qing</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 05 Oct 2015 02:27:08 +0000</lastBuildDate>
-    
-	<atom:link href="https://qingeekk.github.io/project/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 05 Oct 2015 02:27:08 +0000</lastBuildDate><atom:link href="https://qingeekk.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Awesome Collaborative Project</title>
       <link>https://qingeekk.github.io/project/collaborativeproject/</link>

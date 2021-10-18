@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/%E4%BD%BF%E7%94%A8github%E5%86%99blog/" />
@@ -218,53 +218,34 @@
       <p class="post-meta">@Internet · Mar 16, 2017 · 1 min read</p>
     </header>
     <article class="post-content"><h3 id="创建github-pages">创建GitHub Pages</h3>
-
 <ul>
 <li>新建一个GitHub的仓库, 仓库名称必须设置为<code>$username.github.io</code>     (比如我的GitHub用户名为<code>SurprisePeas</code>, Repository填写<code>SurprisePeas.github.io</code>)</li>
 </ul>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884447927307.jpg" alt="" /></p>
-
-<h3 id="环境准备-安装-node-js-git">环境准备( 安装 Node.js Git )</h3>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884447927307.jpg" alt=""></p>
+<h3 id="环境准备-安装-nodejs-git-">环境准备( 安装 Node.js Git )</h3>
 <p><strong>安装Git Node</strong></p>
-
-<pre><code>brew install git
+<pre tabindex="0"><code>brew install git
 brew install node
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>查看已安装的开源软件包、安装位置</p>
 </blockquote>
-
-<pre><code>brew list
+<pre tabindex="0"><code>brew list
 brew list node
-</code></pre>
-
-<p><strong>安装配置Hexo 搭建博客的核心</strong></p>
-
+</code></pre><p><strong>安装配置Hexo 搭建博客的核心</strong></p>
 <p>感兴趣想深入了解Hexo的同学可以查看<a href="https://hexo.io/">Hexo官网</a>解锁更多玩法。</p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884573951837.jpg" alt="" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884573951837.jpg" alt=""></p>
 <blockquote>
 <p>安装Hexo</p>
 </blockquote>
-
-<pre><code>npm install hexo-cli -g
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>npm install hexo-cli -g
+</code></pre><blockquote>
 <p>安装好hexo以后，在终端输入：<code>hexo</code> , 若出现下图，说明安装成功:</p>
 </blockquote>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884573018737.jpg" alt="" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884573018737.jpg" alt=""></p>
 <blockquote>
 <p>初始化创建博客(blog)</p>
 </blockquote>
-
-<pre><code>// 进入目录
+<pre tabindex="0"><code>// 进入目录
 cd &lt;path&gt;
 
 // 执行init初始化并创建blog项目文件
@@ -275,28 +256,19 @@ cd blog
 
 // 根据dependencies配置安装所有的依赖包
 npm install
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>初始化后的目录结构如图:</li>
 </ul>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884586539587.jpg" alt="" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884586539587.jpg" alt=""></p>
 <p><strong>配置Blog项目</strong></p>
-
 <blockquote>
 <p>1.修改_config.yml文件参数信息</p>
 </blockquote>
-
-<pre><code>vi _config.yml
-</code></pre>
-
-<blockquote>
+<pre tabindex="0"><code>vi _config.yml
+</code></pre><blockquote>
 <p>2.修改网站基础相关信息</p>
 </blockquote>
-
-<pre><code>title: Blog Title
+<pre tabindex="0"><code>title: Blog Title
 subtitle: 副标题
 description: 描述
 author: 作者
@@ -304,71 +276,44 @@ language: zh-CN
 timezone: Asia/Shanghai
 
 ## 注意！配置项里的每一个: 后面都有一个空格
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>下拉到底，配置部署与GitHub建立连接</p>
 </blockquote>
-
-<pre><code>deploy:
+<pre tabindex="0"><code>deploy:
   type: git
   repo: https://github.com/SurprisePeas/SurprisePeas.github.io.git
   branch: master
-</code></pre>
-
-<p><code>repo</code> 是之前GitHub创建好的仓库Repository</p>
-
+</code></pre><p><code>repo</code> 是之前GitHub创建好的仓库Repository</p>
 <p><code>branch</code> 填写的是GitHub上默认的master分支</p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884596006556.jpg" alt="" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884596006556.jpg" alt=""></p>
 <blockquote>
 <p>新建一篇文章(.MD格式)</p>
 </blockquote>
-
-<pre><code>hexo n &quot;First Blood&quot;
-</code></pre>
-
-<p>会生成如下图:</p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884598367964.jpg" alt="" /></p>
-
+<pre tabindex="0"><code>hexo n &quot;First Blood&quot;
+</code></pre><p>会生成如下图:</p>
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884598367964.jpg" alt=""></p>
 <p>新建的MD文件都会生成在 <code>source/_posts</code> 下存放，编辑 <code>First-Blood.md</code> 文件：</p>
-
-<pre><code>vi source/_posts/First-Blood.md
-</code></pre>
-
-<p>会看到这样内容，写下“新建一篇文章”:</p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884601339018.jpg" alt="" /></p>
-
+<pre tabindex="0"><code>vi source/_posts/First-Blood.md
+</code></pre><p>会看到这样内容，写下“新建一篇文章”:</p>
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884601339018.jpg" alt=""></p>
 <p>保存退出后，本地发布查看:</p>
-
-<pre><code># 编译生成html
+<pre tabindex="0"><code># 编译生成html
 hexo g
 # 本地
 hexo s
-</code></pre>
-
-<p>如下图:</p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884603397042.jpg" alt="" /></p>
-
+</code></pre><p>如下图:</p>
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884603397042.jpg" alt=""></p>
 <p>在浏览器访问 <code>http://localhost:4000</code></p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/14884604959301.jpg" alt="本地server预览" /></p>
-
+<p><img src="http://omixc2ggv.bkt.clouddn.com/14884604959301.jpg" alt="本地server预览"></p>
 <p>当然也可以将.MD格式的文件直接复制到 <code>source/_posts</code> 这个目录。</p>
-
 <p><strong>接下来生成静态文件,就可以将本地的文章通过GitHub发布到网上了</strong></p>
-
-<pre><code>hexo g
+<pre tabindex="0"><code>hexo g
 hexo d
 </code></pre></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>768</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1676</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -376,7 +321,7 @@ hexo d
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

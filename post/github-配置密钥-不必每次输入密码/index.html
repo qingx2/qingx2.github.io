@@ -17,7 +17,7 @@
   
   <meta name="author" content="Internet" />
   <meta name="description" content="1、查看电脑是否已经有 SHH key 终端输入:
-➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts  如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
+➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts 如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
 " />
 
   
@@ -26,7 +26,7 @@
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="GitHub 配置秘钥SSH" />
     <meta name="twitter:description" content="1、查看电脑是否已经有 SHH key 终端输入:
-➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts  如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
+➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts 如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
 " />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
@@ -35,7 +35,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="GitHub 配置秘钥SSH" />
   <meta property="og:description" content="1、查看电脑是否已经有 SHH key 终端输入:
-➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts  如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
+➜ cd ~/.ssh ➜ ls id_rsa id_rsa.pub known_hosts 如果有 id_rsa.pub 或者 id_dsa.pub 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。
 " />
   <meta property="og:url" content="https://qingeekk.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/" />
   <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
@@ -43,7 +43,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/github-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5-%E4%B8%8D%E5%BF%85%E6%AF%8F%E6%AC%A1%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/" />
@@ -223,49 +223,33 @@
       <h1 class="post-title">GitHub 配置秘钥SSH</h1>
       <p class="post-meta">@Internet · Mar 23, 2017 · 1 min read</p>
     </header>
-    <article class="post-content"><h5 id="1-查看电脑是否已经有-shh-key">1、查看电脑是否已经有 SHH key</h5>
-
+    <article class="post-content"><h5 id="1查看电脑是否已经有-shh-key">1、查看电脑是否已经有 SHH key</h5>
 <p>终端输入:</p>
-
-<pre><code>➜  cd ~/.ssh
+<pre tabindex="0"><code>➜  cd ~/.ssh
 ➜  ls
 id_rsa      id_rsa.pub  known_hosts
-</code></pre>
-
-<p>如果有 <strong>id_rsa.pub</strong> 或者 <strong>id_dsa.pub</strong> 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。</p>
-
-<h5 id="2-创建-ssh-key">2、创建 SSH key</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;your_email@mail.com&#34;</span></code></pre></div>
-<p>代码参数:</p>
-
+</code></pre><p>如果有 <strong>id_rsa.pub</strong> 或者 <strong>id_dsa.pub</strong> 任一文件, 那么就不需要再生成SSH key, 直接进行第3步就行。</p>
+<h5 id="2创建-ssh-key">2、创建 SSH key</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;your_email@mail.com&#34;</span>
+</code></pre></div><p>代码参数:</p>
 <p>-t 密钥类型, 默认rsa</p>
-
 <p>-C 注释</p>
-
 <p>-f 指定密钥文件存储的文件名,不加此参数运行后仍然会让你输入一个文件名,按下enter键使用默认文件名就行。</p>
-
 <p>会提示你输入两次密码(此密码是push文件时输入的密码,不是GitHub的登录密码),也可以直接enter。接下来会将SSH key提示给你：</p>
-
-<pre><code># The key fingerprint is:
+<pre tabindex="0"><code># The key fingerprint is:
 # 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
-</code></pre>
-
-<h5 id="3-登录github在个人中心打开-ssh-and-gpg-keys-页面点击-new-ssh-key-按钮将-ssh-key-粘贴到页面key区域内">3、登录GitHub在个人中心打开 <strong>SSH and GPG keys</strong> 页面点击 <strong>New SSH key</strong> 按钮将 SSH key 粘贴到页面Key区域内</h5>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%2022.08.33.png" alt="" /></p>
-
-<h5 id="4-查看是否已正常使用ssh">4、查看是否已正常使用SSH</h5>
-
+</code></pre><h5 id="3登录github在个人中心打开-ssh-and-gpg-keys-页面点击-new-ssh-key-按钮将-ssh-key-粘贴到页面key区域内">3、登录GitHub在个人中心打开 <strong>SSH and GPG keys</strong> 页面点击 <strong>New SSH key</strong> 按钮将 SSH key 粘贴到页面Key区域内</h5>
+<p><img src="http://omixc2ggv.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%2022.08.33.png" alt=""></p>
+<h5 id="4查看是否已正常使用ssh">4、查看是否已正常使用SSH</h5>
 <p>终端输入:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">➜  .ssh ssh -T git@github.com</code></pre></div>
-<p>enter回车后,会见到字段,就表示已经成功了:</p>
-
-<pre><code>Hi SurprisePeas! You've successfully authenticated, but GitHub does not provide shell access.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">➜  .ssh ssh -T git@github.com
+</code></pre></div><p>enter回车后,会见到字段,就表示已经成功了:</p>
+<pre tabindex="0"><code>Hi SurprisePeas! You've successfully authenticated, but GitHub does not provide shell access.
 </code></pre></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>761</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1669</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -273,7 +257,7 @@ id_rsa      id_rsa.pub  known_hosts
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

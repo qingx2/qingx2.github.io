@@ -43,7 +43,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/yii-%E5%B1%9E%E6%80%A7%E7%AF%87/" />
@@ -224,11 +224,8 @@
       <p class="post-meta">@Internet · Sep 16, 2017 · 1 min read</p>
     </header>
     <article class="post-content"><p>属性用于表征类的状态，从访问的形式上看，属性与成员变量没有区别。</p>
-
 <p>成员变量是就类的结构构成而言的概念，而属性是就类的功能逻辑而言的概念，两者紧密联系又相互区别。</p>
-
 <p>成员变量和属性的区别与联系在于：</p>
-
 <ul>
 <li>成员变量是一个“内”概念，反映的是类的结构构成。属性是一个“外”概念，反映的是类的逻辑意义。</li>
 <li>成员变量没有读写权限控制，而属性可以指定为只读或只写，或可读可写。</li>
@@ -236,16 +233,13 @@
 <li>public成员变量可以视为一个可读可写、没有任何预处理或后处理的属性。 而private成员变量由于外部不可见，与属性“外”的特性不相符，所以不能视为属性。</li>
 <li>虽然大多数情况下，属性会由某个或某些成员变量来表示，但属性与成员变量没有必然的对应关系， 比如与非门的 <code>output</code> 属性，就没有一个所谓的 <code>$output</code> 成员变量与之对应。</li>
 </ul>
-
-<p>Yii通过 <code>yii\base\Object</code> 提供了属性的支持，很多核心基类都继承至它， <code>yii\base\Object</code> 通过PHP的魔术方法 <code>__get()</code>  <code>__set()</code>  进行工作。</p>
-
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fjkqw9w4fqj31eu0r27ae.jpg" alt="" /></p>
-
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fjkqxgj689j31eo10sk1p.jpg" alt="" /></p></article>
+<p>Yii通过 <code>yii\base\Object </code> 提供了属性的支持，很多核心基类都继承至它， <code>yii\base\Object </code> 通过PHP的魔术方法 <code>__get()</code>  <code>__set()</code>  进行工作。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fjkqw9w4fqj31eu0r27ae.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fjkqxgj689j31eo10sk1p.jpg" alt=""></p></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>585</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1493</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -253,7 +247,7 @@
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

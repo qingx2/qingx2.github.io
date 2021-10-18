@@ -49,7 +49,7 @@ IoC容器需要满足2个最基本的功能：
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" />
@@ -230,168 +230,158 @@ IoC容器需要满足2个最基本的功能：
       <p class="post-meta">@Internet · Sep 15, 2017 · 2 min read</p>
     </header>
     <article class="post-content"><h3 id="依赖注入">依赖注入</h3>
-
 <p>“注入”，就是把一个实例传递到另一个实例的内部。</p>
-
-<h3 id="控制反转容器-ioc-container">控制反转容器（Ioc Container）</h3>
-
+<h3 id="控制反转容器ioc-container">控制反转容器（Ioc Container）</h3>
 <p>如果存在如下这样复杂的依赖关系，该如何解决呢？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$a = new A(new B(new D(new F)), new C(new E()));</code></pre></div>
-<p>IoC容器（控制反转）就是为了帮助我们解决因复杂的依赖注入而产生混乱的解决方案。</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">A</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">B</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">D</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">F</span>)), <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">C</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">E</span>()));
+</code></pre></div><p>IoC容器（控制反转）就是为了帮助我们解决因复杂的依赖注入而产生混乱的解决方案。</p>
 <p><strong>IoC容器需要满足2个最基本的功能：</strong></p>
-
 <ol>
 <li><em>存储定义的类</em></li>
 <li><em>实例化类</em></li>
 </ol>
-
 <blockquote>
 <p>大概实现代码如下：</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">Class Container
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">Class</span> <span style="color:#a6e22e">Container</span>
   {
-  	// 保存定义的类
-    private $_definitions;
+  	<span style="color:#75715e">// 保存定义的类
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> $_definitions;
 
-    // 存储到$_definitions属性中, (类名,创建类)
-    public function set($class, $definition)
+    <span style="color:#75715e">// 存储到$_definitions属性中, (类名,创建类)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">set</span>($class, $definition)
     {
-        $this-&gt;_definitions[$class] = $definition;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_definitions</span>[$class] <span style="color:#f92672">=</span> $definition;
     }
 	
-  	// 查找$_definitions属性中的类
-    public function get($class, $params = [])
+  	<span style="color:#75715e">// 查找$_definitions属性中的类
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">get</span>($class, $params <span style="color:#f92672">=</span> [])
     {
-      	if () {
-            $definition = $this-&gt;_definitions[$class];
-            // 调用此类下的定义
-            return call_user_func($definition, $params);
-        }else {
-            echo &#39;Must callable&#39;;die;
+      	<span style="color:#66d9ef">if</span> () {
+            $definition <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_definitions</span>[$class];
+            <span style="color:#75715e">// 调用此类下的定义
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">call_user_func</span>($definition, $params);
+        }<span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Must callable&#39;</span>;<span style="color:#66d9ef">die</span>;
         }
     }
-}</code></pre></div>
-<h4 id="例1-发送邮件">例1. 发送邮件：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">class EmailSenderByGmail
+}
+</code></pre></div><h4 id="例1-发送邮件">例1. 发送邮件：</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmailSenderByGmail</span>
 {
-    private $_name;
-    public function __construct($name = &#39;&#39;)
+    <span style="color:#66d9ef">private</span> $_name;
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>)
     {
-        $this-&gt;_name = $name;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_name</span> <span style="color:#f92672">=</span> $name;
     }
-    public function send()
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">send</span>()
     {
     }
-}</code></pre></div>
-<p>如何借用IoC容器操作呢？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$cont = new Container;
-$cont-&gt;set(&#39;EmailSenderByGmail&#39;, function($name = &#39;&#39;){
-  return new EmailSenderByGmail($name);
+}
+</code></pre></div><p>如何借用IoC容器操作呢？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$cont <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Container</span>;
+$cont<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;EmailSenderByGmail&#39;</span>, <span style="color:#66d9ef">function</span>($name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>){
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">EmailSenderByGmail</span>($name);
 });
 
-// 调用
-$email_send_gmail = $cont-&gt;get(&#39;EmailSendByGmail&#39;,&#39;gmail&#39;);
+<span style="color:#75715e">// 调用
+</span><span style="color:#75715e"></span>$email_send_gmail <span style="color:#f92672">=</span> $cont<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;EmailSendByGmail&#39;</span>,<span style="color:#e6db74">&#39;gmail&#39;</span>);
 
-print_r($email_send_gmail);</code></pre></div>
-<p>步骤注释：</p>
-
+<span style="color:#a6e22e">print_r</span>($email_send_gmail);
+</code></pre></div><p>步骤注释：</p>
 <ol>
 <li>实例化 <code>Container</code> 类，将 <code>EmailSendByGmail</code> 实例化后的类保存至 <code>Container</code> 里的 <code>$_definitions</code> 字段，</li>
 <li>通过 <code>Container</code> 获取 <code>EmailSendByGmail</code> 属性 <code>_name</code></li>
 </ol>
-
 <p>执行得到<code>_name</code> 的值：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">EmailSendByGmail Object
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">EmailSendByGmail</span> <span style="color:#a6e22e">Object</span>
 (
-    [_name:EmailSendByGmail:private] =&gt; gmail
-)</code></pre></div>
-<h4 id="例2-用户注册时-发送邮件场景">例2. 用户注册时，发送邮件场景</h4>
-
+    [<span style="color:#a6e22e">_name</span><span style="color:#f92672">:</span><span style="color:#a6e22e">EmailSendByGmail</span><span style="color:#f92672">:</span><span style="color:#66d9ef">private</span>] <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">gmail</span>
+)
+</code></pre></div><h4 id="例2-用户注册时发送邮件场景">例2. 用户注册时，发送邮件场景</h4>
 <p><em>实例化User,同时注入EmailObject</em></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">class User
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>
 {
-    private $_emailSenderObject;
+    <span style="color:#66d9ef">private</span> $_emailSenderObject;
 
-    public function __construct(EmailSenderByGmail $emailSenderObject)
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct(<span style="color:#a6e22e">EmailSenderByGmail</span> $emailSenderObject)
     {
-        $this-&gt;_emailSenderObject = $emailSenderObject;
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_emailSenderObject</span> <span style="color:#f92672">=</span> $emailSenderObject;
     }
   
-  	// 注册时发送邮件功能
-    public function register()
+  	<span style="color:#75715e">// 注册时发送邮件功能
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">register</span>()
     {        
-        $this-&gt;_emailSenderObject-&gt;send();
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_emailSenderObject</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">send</span>();
     }
-}</code></pre></div>
-<h4 id="使用-container-实例化-emailsenderbygmail-和-user">使用 <code>Container</code> 实例化 <code>EmailSenderByGmail</code> 和 <code>User</code></h4>
-
+}
+</code></pre></div><h4 id="使用-container-实例化-emailsenderbygmail-和-user">使用 <code>Container</code> 实例化 <code>EmailSenderByGmail</code> 和 <code>User</code></h4>
 <blockquote>
 <p>可以简单解决一个类依赖其它对象的问题</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$container = new Container();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$container <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Container</span>();
 
-$container-&gt;set(&#39;EmailSenderByGmail&#39;, function ($container, $name = &#39;&#39;) {
-    return new EmailSenderByGmail($name);
+$container<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;EmailSenderByGmail&#39;</span>, <span style="color:#66d9ef">function</span> ($container, $name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">EmailSenderByGmail</span>($name);
 });
-$container-&gt;set(&#39;User&#39;, function ($container, $params = []) {
-    return new User($container-&gt;get($params[0], $params[1]));
+$container<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;User&#39;</span>, <span style="color:#66d9ef">function</span> ($container, $params <span style="color:#f92672">=</span> []) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>($container<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>($params[<span style="color:#ae81ff">0</span>], $params[<span style="color:#ae81ff">1</span>]));
 });
 
 
-print_r($container-&gt;get(&#39;EmailSenderByGmail&#39;, [&#39;gmail&#39;]));
-print_r($container-&gt;get(&#39;User&#39;, [&#39;EmailSenderByGmail&#39;, &#39;gmail&#39;]));</code></pre></div>
-<p>以上虽然解决了问题，但是又出现另一个令人讨厌的问题：你需要把依赖的全部set进去，再get出来。有什么办法解决吗？用PHP提供的反射API，就可以自动实例化处理。</p>
-
-<h4 id="基于-反射-改造一下-container-类">基于<strong>反射</strong>，改造一下 <code>Container</code> 类。</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">Class Container
+<span style="color:#a6e22e">print_r</span>($container<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;EmailSenderByGmail&#39;</span>, [<span style="color:#e6db74">&#39;gmail&#39;</span>]));
+<span style="color:#a6e22e">print_r</span>($container<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;User&#39;</span>, [<span style="color:#e6db74">&#39;EmailSenderByGmail&#39;</span>, <span style="color:#e6db74">&#39;gmail&#39;</span>]));
+</code></pre></div><p>以上虽然解决了问题，但是又出现另一个令人讨厌的问题：你需要把依赖的全部set进去，再get出来。有什么办法解决吗？用PHP提供的反射API，就可以自动实例化处理。</p>
+<h4 id="基于反射改造一下-container-类">基于<strong>反射</strong>，改造一下 <code>Container</code> 类。</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">Class</span> <span style="color:#a6e22e">Container</span>
 {
-    public function get($class, $params = [])
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">get</span>($class, $params <span style="color:#f92672">=</span> [])
     {
-        return $this-&gt;build($class, $params);
+        <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">build</span>($class, $params);
     }
 
-    public function build($class, $params)
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">build</span>($class, $params)
     {
-        $dependencies = [];
-		// 反射 类信息
-        $reflection = new ReflectionClass($class);
-      	// getConstructor 获取类的构造函数
-        $constructor = $reflection-&gt;getConstructor();
-        if ($constructor !== null) {
-          	// 获取构造函数的参数
-            foreach ($constructor-&gt;getParameters() as $param) {
-                $c = $param-&gt;getClass();
-                if ($c !== null) {
-                    $dependencies[] = $this-&gt;get($c-&gt;getName(), $params);
+        $dependencies <span style="color:#f92672">=</span> [];
+		<span style="color:#75715e">// 反射 类信息
+</span><span style="color:#75715e"></span>        $reflection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ReflectionClass</span>($class);
+      	<span style="color:#75715e">// getConstructor 获取类的构造函数
+</span><span style="color:#75715e"></span>        $constructor <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getConstructor</span>();
+        <span style="color:#66d9ef">if</span> ($constructor <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) {
+          	<span style="color:#75715e">// 获取构造函数的参数
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">foreach</span> ($constructor<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getParameters</span>() <span style="color:#66d9ef">as</span> $param) {
+                $c <span style="color:#f92672">=</span> $param<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getClass</span>();
+                <span style="color:#66d9ef">if</span> ($c <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) {
+                    $dependencies[] <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>($c<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getName</span>(), $params);
                 }
             }
         }
 
-        foreach ($params as $index =&gt; $param) {
-            $dependencies[$index] = $param;
+        <span style="color:#66d9ef">foreach</span> ($params <span style="color:#66d9ef">as</span> $index <span style="color:#f92672">=&gt;</span> $param) {
+            $dependencies[$index] <span style="color:#f92672">=</span> $param;
         }
-		// 从给出的参数创建一个新的类实例
-        return $reflection-&gt;newInstanceArgs($dependencies);
+		<span style="color:#75715e">// 从给出的参数创建一个新的类实例
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">newInstanceArgs</span>($dependencies);
     }
-}</code></pre></div>
-<p>还是 <code>User</code> ，就可以很简单的进行实例化了。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$container = new Containerl();
-$user = $container-&gt;get(&#39;User);
-print_r($user);</code></pre></div>
-<p>输出：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">User Object
+}
+</code></pre></div><p>还是 <code>User</code> ，就可以很简单的进行实例化了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$container <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Containerl</span>();
+$user <span style="color:#f92672">=</span> $container<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>(<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">User</span>);
+<span style="color:#a6e22e">print_r</span>($user);
+</code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">User</span> <span style="color:#a6e22e">Object</span>
 (
-    [_emailSenderObject:User:private] =&gt; EmailSenderByGmail Object
+    [<span style="color:#a6e22e">_emailSenderObject</span><span style="color:#f92672">:</span><span style="color:#a6e22e">User</span><span style="color:#f92672">:</span><span style="color:#66d9ef">private</span>] <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">EmailSenderByGmail</span> <span style="color:#a6e22e">Object</span>
         (
-            [_name:EmailSenderByGmail:private] =&gt; 
+            [<span style="color:#a6e22e">_name</span><span style="color:#f92672">:</span><span style="color:#a6e22e">EmailSenderByGmail</span><span style="color:#f92672">:</span><span style="color:#66d9ef">private</span>] <span style="color:#f92672">=&gt;</span> 
         )
 
-)</code></pre></div></article>
+)
+</code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>586</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1494</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -399,7 +389,7 @@ print_r($user);</code></pre></div>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

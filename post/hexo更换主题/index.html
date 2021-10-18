@@ -16,7 +16,7 @@
 
   
   <meta name="author" content="Internet" />
-  <meta name="description" content="进入到主题文件目录 cd themes 默认主题 landscape 目录结构:
+  <meta name="description" content="进入到主题文件目录 cd themes 默认主题 landscape目录结构:
 " />
 
   
@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Hexo更换主题 (此篇以安装NexT为例)" />
-    <meta name="twitter:description" content="进入到主题文件目录 cd themes 默认主题 landscape 目录结构:
+    <meta name="twitter:description" content="进入到主题文件目录 cd themes 默认主题 landscape目录结构:
 " />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
   
@@ -32,7 +32,7 @@
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Hexo更换主题 (此篇以安装NexT为例)" />
-  <meta property="og:description" content="进入到主题文件目录 cd themes 默认主题 landscape 目录结构:
+  <meta property="og:description" content="进入到主题文件目录 cd themes 默认主题 landscape目录结构:
 " />
   <meta property="og:url" content="https://qingeekk.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" />
   <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
@@ -40,7 +40,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" />
@@ -221,54 +221,49 @@
       <p class="post-meta">@Internet · Mar 24, 2017 · 1 min read</p>
     </header>
     <article class="post-content"><h3 id="进入到主题文件目录">进入到主题文件目录</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">cd themes</code></pre></div>
-<p>默认主题 <u>landscape</u> 目录结构:</p>
-
-<p><img src="http://omixc2ggv.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-24%2009.39.24.png" alt="themes目录结构" /></p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">cd themes
+</code></pre></div><p>默认主题 <!-- raw HTML omitted -->landscape<!-- raw HTML omitted --> 目录结构:</p>
+<p><img src="http://omixc2ggv.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-24%2009.39.24.png" alt="themes目录结构"></p>
 <h3 id="clone-hexo-theme-next-并改名为-next">clone <code>hexo-theme-next</code> 并改名为 <code>next</code></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">git clone https://github.com/iissnan/hexo-theme-next.git next</code></pre></div>
-<p>当然你也可以clone 自己喜欢的Hexo主题Git地址,只需要将主题文件复制到themes这个文件内就可以了:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">git clone theme_url.git</code></pre></div>
-<h3 id="打开hexo根目录下的-config-yml-站点配置文件-tips-注意空格-将-theme-的landscape修改为刚才clone的-next">打开Hexo根目录下的 <code>_config.yml</code> 站点配置文件（tips:注意空格!）,将 <code>theme</code> 的landscape修改为刚才clone的 <code>next</code></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># Extensions</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">git clone https://github.com/iissnan/hexo-theme-next.git next
+</code></pre></div><p>当然你也可以clone 自己喜欢的Hexo主题Git地址,只需要将主题文件复制到themes这个文件内就可以了:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">git clone theme_url.git
+</code></pre></div><h3 id="打开hexo根目录下的-_configyml-站点配置文件tips注意空格将-theme-的landscape修改为刚才clone的-next">打开Hexo根目录下的 <code>_config.yml</code> 站点配置文件（tips:注意空格!）,将 <code>theme</code> 的landscape修改为刚才clone的 <code>next</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># Extensions</span>
 <span style="color:#75715e">## Plugins: https://hexo.io/plugins/</span>
 <span style="color:#75715e">## Themes: https://hexo.io/themes/</span>
-theme: next</code></pre></div>
-<p>同时设置一下站点的语言、时区，其他的配置可根据自己喜好更改：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Yaml" data-lang="Yaml">language: zh-Hans
-timezone: Asia/Urumqi</code></pre></div>
-<p>执行一下 <code>hexo clear</code> 清除缓存。</p>
-
+<span style="color:#f92672">theme</span>: <span style="color:#ae81ff">next</span>
+</code></pre></div><p>同时设置一下站点的语言、时区，其他的配置可根据自己喜好更改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Yaml" data-lang="Yaml"><span style="color:#f92672">language</span>: <span style="color:#ae81ff">zh-Hans</span>
+<span style="color:#f92672">timezone</span>: <span style="color:#ae81ff">Asia/Urumqi</span>
+</code></pre></div><p>执行一下 <code>hexo clear</code> 清除缓存。</p>
 <h3 id="验证主题是否存在异常问题">验证主题是否存在异常问题</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hexo s --debug</code></pre></div>
-<p>会提示如下信息，访问 <code>http://localhost:4000/</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">INFO Hexo is running at http://localhost:4000/. Press Ctrl+C to stop</code></pre></div>
-<h3 id="主题具体配置">主题具体配置</h3>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hexo s --debug
+</code></pre></div><p>会提示如下信息，访问 <code>http://localhost:4000/</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">INFO Hexo is running at http://localhost:4000/. Press Ctrl+C to stop
+</code></pre></div><h3 id="主题具体配置">主题具体配置</h3>
 <p>通过更改 <code>themes/next/_config.yml</code> 文件对next主题进行具体的配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Yaml" data-lang="Yaml"><span style="color:#75715e"># next主题可通过修改Scheme选项获得3中不同的外观，默认使用的是Muse：</span>
-scheme: Mist
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Yaml" data-lang="Yaml"><span style="color:#75715e"># next主题可通过修改Scheme选项获得3中不同的外观，默认使用的是Muse：</span>
+<span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">Mist</span>
 
 <span style="color:#75715e"># 添加个人头像：</span>
-avatar: http://avatar.url
+<span style="color:#f92672">avatar</span>: <span style="color:#ae81ff">http://avatar.url</span>
 
 <span style="color:#75715e"># 菜单栏menu配置，根据自己喜好开启注释:</span>
-menu:
-  home: /
-  categories: /categories
-  about: /about
-  archives: /archives
-  tags: /tags
+<span style="color:#f92672">menu</span>:
+  <span style="color:#f92672">home</span>: <span style="color:#ae81ff">/</span>
+  <span style="color:#f92672">categories</span>: <span style="color:#ae81ff">/categories</span>
+  <span style="color:#f92672">about</span>: <span style="color:#ae81ff">/about</span>
+  <span style="color:#f92672">archives</span>: <span style="color:#ae81ff">/archives</span>
+  <span style="color:#f92672">tags</span>: <span style="color:#ae81ff">/tags</span>
   <span style="color:#75715e">#sitemap: /sitemap.xml</span>
-  commonweal: /<span style="color:#ae81ff">404.</span>html</code></pre></div>
-<p>玩法很多并集成了常用的第三方服务，可以参考<a href="http://theme-next.iissnan.com/getting-started.html#select-scheme">Next主题官网</a></p>
-
+  <span style="color:#f92672">commonweal</span>: <span style="color:#ae81ff">/404.html</span>
+</code></pre></div><p>玩法很多并集成了常用的第三方服务，可以参考<a href="http://theme-next.iissnan.com/getting-started.html#select-scheme">Next主题官网</a></p>
 <p><strong>Enjoy it !</strong></p></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>760</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1668</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -276,7 +271,7 @@ menu:
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

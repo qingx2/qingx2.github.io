@@ -40,7 +40,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/devnull-%E7%9A%84%E7%94%A8%E9%80%94/" />
@@ -221,39 +221,39 @@
       <p class="post-meta">@风 fworld $ 雪狼湖 · Oct 15, 2018 · 1 min read</p>
     </header>
     <article class="post-content"><p><code>/dev/null</code>从名称上可以很显然看出是一个空文件（写入到 <code>/ dev/null</code> 时全部丢失，读取 <code>/ dev/null</code> 时自己返回 <code>EOF</code>），那么你会很疑惑，他到底有什么用途呢，请看下文听我讲解，可能你在很多脚本里看过 <code>/dev/null</code>，具体总结下几种常见用途.</p>
-
 <h3 id="清除文本文件内容">清除文本文件内容</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /dev/null &gt; /var/log/messages
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /dev/null &gt; /var/log/messages
 
 <span style="color:#75715e"># 有同样的效果, 但不会产生新的进程.（因为: 是内建的）</span>
-: &gt; /var/log/messages</code></pre></div>
-<h3 id="禁止标准输出">禁止标准输出</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 文件内容丢失，不会输出到标准输出</span>
-cat $filename &gt;/dev/null</code></pre></div>
-<h3 id="禁止标准错误">禁止标准错误</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 删除文件错误时，不会再有提示到终端，都丢到 / dev/null 里去了</span>
-rm $badname <span style="color:#ae81ff">2</span>&gt;/dev/null</code></pre></div>
-<h3 id="禁止标准输出和标准错误的输出">禁止标准输出和标准错误的输出</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 如果 &#34;$filename&#34; 不存在，将不会有任何错误信息提示</span>
+: &gt; /var/log/messages
+</code></pre></div><h3 id="禁止标准输出">禁止标准输出</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 文件内容丢失，不会输出到标准输出</span>
+cat $filename &gt;/dev/null
+</code></pre></div><h3 id="禁止标准错误">禁止标准错误</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 删除文件错误时，不会再有提示到终端，都丢到 / dev/null 里去了</span>
+rm $badname 2&gt;/dev/null
+</code></pre></div><h3 id="禁止标准输出和标准错误的输出">禁止标准输出和标准错误的输出</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 如果 &#34;$filename&#34; 不存在，将不会有任何错误信息提示</span>
 <span style="color:#75715e"># 如果 &#34;$filename&#34; 存在, 文件的内容不会打印到标准输出</span>
 <span style="color:#75715e"># 因此, 上面的代码根本不会输出任何信息</span>
 <span style="color:#75715e"># 当只想测试命令的退出码而不想有任何输出时非常有用</span>
-cat $filename <span style="color:#ae81ff">2</span>&gt;/dev/null &gt;/dev/null</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#----------- 测试命令的退出 begin ----------------------#</span>  
-ls dddd <span style="color:#ae81ff">2</span>&gt;/dev/null <span style="color:#ae81ff">8</span> 
+cat $filename 2&gt;/dev/null &gt;/dev/null
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#----------- 测试命令的退出 begin ----------------------#  </span>
+ls dddd 2&gt;/dev/null <span style="color:#ae81ff">8</span> 
 echo $?    // 输出命令退出代码：0 为命令正常执行，1-255 为有出错。  
 
-<span style="color:#75715e">#----------- 测试命令的退出 end-----------#</span>    
-cat $filename &amp;&gt;/dev/null     </code></pre></div>
-<h3 id="隐藏-cookie-而不再使用">隐藏 cookie 而不再使用</h3>
-
+<span style="color:#75715e">#----------- 测试命令的退出 end-----------#    </span>
+cat $filename &amp;&gt;/dev/null     
+</code></pre></div><h3 id="隐藏-cookie-而不再使用">隐藏 cookie 而不再使用</h3>
 <blockquote>
 <p>所有的 cookies 都会丢弃, 而不会保存在磁盘上了</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>-f ~/.netscape/cookies<span style="color:#f92672">]</span>  <span style="color:#75715e"># 如果存在则删除</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>-f ~/.netscape/cookies<span style="color:#f92672">]</span>  <span style="color:#75715e"># 如果存在则删除</span>
 <span style="color:#66d9ef">then</span>
   rm -f ~/.netscape/cookies  
 <span style="color:#66d9ef">fi</span>
-  ln -s /dev/null ~/.netscape/cookies </code></pre></div></article>
+  ln -s /dev/null ~/.netscape/cookies 
+</code></pre></div></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -265,7 +265,7 @@ cat $filename &amp;&gt;/dev/null     </code></pre></div>
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>190</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1098</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -273,7 +273,7 @@ cat $filename &amp;&gt;/dev/null     </code></pre></div>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

@@ -52,7 +52,7 @@ Nginx (engine x) 是一款轻量级的 Web 服务器 、反向代理服务器及
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/nginx%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/" />
@@ -235,59 +235,41 @@ Nginx (engine x) 是一款轻量级的 Web 服务器 、反向代理服务器及
     <article class="post-content"><blockquote>
 <p>欢迎 Star 原作者 <a href="https://github.com/dunwu/Nginx">dunwu GitHub</a></p>
 </blockquote>
-
 <h2 id="概述">概述</h2>
-
 <p><strong>什么是 Nginx?</strong></p>
-
 <p><strong>Nginx (engine x)</strong> 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。</p>
-
-<p><img src="https://raw.githubusercontent.com/dunwu/JavaWeb/master/images/tools/nginx/nginx.jpg" alt="" /></p>
-
+<p><img src="https://raw.githubusercontent.com/dunwu/JavaWeb/master/images/tools/nginx/nginx.jpg" alt=""></p>
 <p><strong>什么是反向代理？</strong></p>
-
 <p>反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
-
 <h2 id="安装与使用">安装与使用</h2>
-
 <h3 id="安装">安装</h3>
-
 <p><a href="http://nginx.org/">nginx 官网下载地址</a></p>
-
 <p>发布版本分为 Linux 和 windows 版本。</p>
-
 <p>也可以下载源码，编译后运行。</p>
-
 <h4 id="从源代码编译-nginx">从源代码编译 Nginx</h4>
-
 <p>把源码解压缩之后，在终端里运行如下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./configure
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./configure
 $ make
-$ sudo make install</code></pre></div>
-<p>默认情况下，Nginx 会被安装在 <code>/usr/local/nginx</code>。通过设定<a href="http://tool.oschina.net/uploads/apidocs/nginx-zh/NginxChsInstallOptions.htm">编译选项</a>，你可以改变这个设定。</p>
-
+$ sudo make install
+</code></pre></div><p>默认情况下，Nginx 会被安装在 <code>/usr/local/nginx</code>。通过设定<a href="http://tool.oschina.net/uploads/apidocs/nginx-zh/NginxChsInstallOptions.htm">编译选项</a>，你可以改变这个设定。</p>
 <h4 id="windows-安装">Windows 安装</h4>
-
 <p>为了安装 Nginx / Win32，需先下载它。然后解压之，然后运行即可。下面以 C 盘根目录为例说明下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd C:
-cd C:<span style="color:#ae81ff">\n</span>ginx-0.8.54   start nginx</code></pre></div>
-<p>Nginx / Win32 是运行在一个控制台程序，而非 windows 服务方式的。服务器方式目前还是开发尝试中。</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd C:
+cd C:<span style="color:#ae81ff">\n</span>ginx-0.8.54   start nginx
+</code></pre></div><p>Nginx / Win32 是运行在一个控制台程序，而非 windows 服务方式的。服务器方式目前还是开发尝试中。</p>
 <h3 id="使用">使用</h3>
-
 <p>nginx 的使用比较简单，就是几条命令。</p>
-
 <p>常用到的命令如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nginx -s stop       快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nginx -s stop       快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
 nginx -s quit       平稳关闭Nginx，保存相关信息，有安排的结束web服务。
 nginx -s reload     因改变了Nginx相关配置，需要重新加载配置而重载。
 nginx -s reopen     重新打开日志文件。
 nginx -c filename   为 Nginx 指定一个配置文件，来代替缺省的。
 nginx -t            不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件。
 nginx -v            显示 nginx 的版本。
-nginx -V            显示 nginx 的版本，编译器版本和配置参数。</code></pre></div>
-<p>如果不想每次都敲命令，可以在 nginx 安装目录下新添一个启动批处理文件<strong>startup.bat</strong>，双击即可运行。内容如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">@echo off
+nginx -V            显示 nginx 的版本，编译器版本和配置参数。
+</code></pre></div><p>如果不想每次都敲命令，可以在 nginx 安装目录下新添一个启动批处理文件<strong>startup.bat</strong>，双击即可运行。内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">@echo off
 rem 如果启动前已经启动nginx并记录下pid文件，会kill指定进程
 nginx.exe -s stop
 
@@ -298,19 +280,14 @@ rem 显示版本信息
 nginx.exe -v
 
 rem 按照指定配置去启动nginx
-nginx.exe -c conf/nginx.conf</code></pre></div>
-<p>如果是运行在 Linux 下，写一个 shell 脚本，大同小异。</p>
-
+nginx.exe -c conf/nginx.conf
+</code></pre></div><p>如果是运行在 Linux 下，写一个 shell 脚本，大同小异。</p>
 <h2 id="nginx-配置实战">nginx 配置实战</h2>
-
 <p>我始终认为，各种开发工具的配置还是结合实战来讲述，会让人更易理解。</p>
-
 <h3 id="http-反向代理配置">http 反向代理配置</h3>
-
 <p>我们先实现一个小目标：不考虑复杂的配置，仅仅是完成一个 http 反向代理。</p>
-
 <p>nginx.conf 配置文件如下： <strong>注：conf / nginx.conf 是 nginx 的默认配置文件。你也可以使用 nginx -c 指定你的配置文件</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e">#运行用户
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e">#运行用户
 </span><span style="color:#75715e">#user somebody;
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">#启动进程,通常设置成和cpu的数量相等
@@ -416,34 +393,24 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">#    root   html;
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">#}
 </span><span style="color:#75715e"></span>    }
-}</code></pre></div>
-<p>好了，让我们来试试吧：</p>
-
+}
+</code></pre></div><p>好了，让我们来试试吧：</p>
 <ol>
 <li>启动 webapp，注意启动绑定的端口要和 nginx 中的 <code>upstream</code> 设置的端口保持一致。</li>
 <li>更改 host：在 C:\Windows\System32\drivers\etc 目录下的 host 文件中添加一条 DNS 记录</li>
 </ol>
-
-<pre><code>127.0.0.1 www.helloworld.com
-</code></pre>
-
-<ol>
+<pre tabindex="0"><code>127.0.0.1 www.helloworld.com
+</code></pre><ol>
 <li>启动前文中 startup.bat 的命令</li>
 <li>在浏览器中访问 <a href="http://www.helloworld.xn--com,,-ri1hi2ayve9sgnfr4qtgo7zjr48hrtvb1b8a./">www.helloworld.com，不出意外，已经可以访问了。</a></li>
 </ol>
-
 <h3 id="负载均衡配置">负载均衡配置</h3>
-
 <p>上一个例子中，代理仅仅指向一个服务器。</p>
-
 <p>但是，网站在实际运营过程中，多半都是有多台服务器运行着同样的 app，这时需要使用负载均衡来分流。</p>
-
 <p>nginx 也可以实现简单的负载均衡功能。</p>
-
 <p>假设这样一个应用场景：将应用部署在 192.168.1.11:80、192.168.1.12:80、192.168.1.13:80 三台 linux 环境的服务器上。网站域名叫 <a href="http://www.helloworld.xn--com,-tt8fy44v/">www.helloworld.com，公网</a> IP 为 192.168.1.11。在公网 IP 所在的服务器上部署 nginx，对所有请求做负载均衡处理。</p>
-
 <p>nginx.conf 配置如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">http</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">http</span> {
      <span style="color:#75715e">#设定mime类型,类型由mime.type文件定义
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">include</span>       <span style="color:#e6db74">/etc/nginx/mime.types</span>;
     <span style="color:#f92672">default_type</span>  <span style="color:#e6db74">application/octet-stream</span>;
@@ -490,25 +457,17 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
 </span><span style="color:#75715e"></span>            <span style="color:#f92672">client_body_buffer_size</span> <span style="color:#ae81ff">128k</span>;      <span style="color:#75715e">#缓冲区代理缓冲用户端请求的最大字节数
 </span><span style="color:#75715e"></span>        }
     }
-}</code></pre></div>
-<h3 id="网站有多个-webapp-的配置">网站有多个 webapp 的配置</h3>
-
+}
+</code></pre></div><h3 id="网站有多个-webapp-的配置">网站有多个 webapp 的配置</h3>
 <p>当一个网站功能越来越丰富时，往往需要将一些功能相对独立的模块剥离出来，独立维护。这样的话，通常，会有多个 webapp。</p>
-
 <p>举个例子：假如 <a href="http://www.helloworld.com/">www.helloworld.com</a> 站点有好几个 webapp，finance（金融）、product（产品）、admin（用户中心）。访问这些应用的方式通过上下文(context)来进行区分:</p>
-
 <p><a href="http://www.helloworld.com/finance/">www.helloworld.com/finance/</a></p>
-
 <p><a href="http://www.helloworld.com/product/">www.helloworld.com/product/</a></p>
-
 <p><a href="http://www.helloworld.com/admin/">www.helloworld.com/admin/</a></p>
-
 <p>我们知道，http 的默认端口号是 80，如果在一台服务器上同时启动这 3 个 webapp 应用，都用 80 端口，肯定是不成的。所以，这三个应用需要分别绑定不同的端口号。</p>
-
 <p>那么，问题来了，用户在实际访问 <a href="http://www.helloworld.com/">www.helloworld.com</a> 站点时，访问不同 webapp，总不会还带着对应的端口号去访问吧。所以，你再次需要用到反向代理来做处理。</p>
-
 <p>配置也不难，来看看怎么做吧：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">http</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">http</span> {
 	<span style="color:#75715e">#此处省略一些基本配置
 </span><span style="color:#75715e"></span>
 	<span style="color:#f92672">upstream</span> <span style="color:#e6db74">product_server</span>{
@@ -542,20 +501,16 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
 			<span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://finance_server</span>;
 		}
 	}
-}</code></pre></div>
-<h3 id="https-反向代理配置">https 反向代理配置</h3>
-
+}
+</code></pre></div><h3 id="https-反向代理配置">https 反向代理配置</h3>
 <p>一些对安全性要求比较高的站点，可能会使用 HTTPS（一种使用 ssl 通信标准的安全 HTTP 协议）。</p>
-
 <p>这里不科普 HTTP 协议和 SSL 标准。但是，使用 nginx 配置 https 需要知道几点：</p>
-
 <ul>
 <li>HTTPS 的固定端口号是 443，不同于 HTTP 的 80 端口</li>
 <li>SSL 标准需要引入安全证书，所以在 nginx.conf 中你需要指定证书和它对应的 key</li>
 </ul>
-
 <p>其他和 http 反向代理基本一样，只是在 <code>Server</code> 部分配置有些不同。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx">  <span style="color:#75715e">#HTTP服务器
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx">  <span style="color:#75715e">#HTTP服务器
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">server</span> {
       <span style="color:#75715e">#监听443端口。443为知名端口号，主要用于HTTPS协议
 </span><span style="color:#75715e"></span>      <span style="color:#f92672">listen</span>       <span style="color:#ae81ff">443</span> <span style="color:#e6db74">ssl</span>;
@@ -579,15 +534,12 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
           <span style="color:#f92672">root</span>   <span style="color:#e6db74">/root</span>;
           <span style="color:#f92672">index</span>  <span style="color:#e6db74">index.html</span> <span style="color:#e6db74">index.htm</span>;
       }
-  }</code></pre></div>
-<h3 id="静态站点配置">静态站点配置</h3>
-
+  }
+</code></pre></div><h3 id="静态站点配置">静态站点配置</h3>
 <p>有时候，我们需要配置静态站点(即 html 文件和一堆静态资源)。</p>
-
 <p>举例来说：如果所有的静态资源都放在了 <code>/app/dist</code> 目录下，我们只需要在 <code>nginx.conf</code> 中指定首页以及这个站点的 host 即可。</p>
-
 <p>配置如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">worker_processes</span>  <span style="color:#ae81ff">1</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">worker_processes</span>  <span style="color:#ae81ff">1</span>;
 
 <span style="color:#66d9ef">events</span> {
 	<span style="color:#f92672">worker_connections</span>  <span style="color:#ae81ff">1024</span>;
@@ -613,41 +565,29 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
 			<span style="color:#75715e">#转发任何请求到 index.html
 </span><span style="color:#75715e"></span>		}
 	}
-}</code></pre></div>
-<p>然后，添加 HOST：</p>
-
+}
+</code></pre></div><p>然后，添加 HOST：</p>
 <p>127.0.0.1 static.zp.cn</p>
-
 <p>此时，在本地浏览器访问 static.zp.cn ，就可以访问静态站点了。</p>
-
 <h3 id="跨域解决方案">跨域解决方案</h3>
-
 <p>web 领域开发中，经常采用前后端分离模式。这种模式下，前端和后端分别是独立的 web 应用程序，例如：后端是 Java 程序，前端是 React 或 Vue 应用。</p>
-
 <p>各自独立的 web app 在互相访问时，势必存在跨域问题。解决跨域问题一般有两种思路：</p>
-
 <ol>
-<li><strong>CORS</strong></li>
-</ol>
-
+<li>
+<p><strong>CORS</strong></p>
 <p>在后端服务器设置 HTTP 响应头，把你需要运行访问的域名加入加入 <code>Access-Control-Allow-Origin</code> 中。</p>
-
-<ol>
-<li><strong>jsonp</strong></li>
-</ol>
-
+</li>
+<li>
+<p><strong>jsonp</strong></p>
 <p>把后端根据请求，构造 json 数据，并返回，前端用 jsonp 跨域。</p>
-
+</li>
+</ol>
 <p>以上这两种思路，本文不展开讨论。</p>
-
 <p>需要说明的是，nginx 根据第一种思路，也提供了一种解决跨域的解决方案。</p>
-
 <p>举例：<a href="http://www.helloworld.com/">www.helloworld.com</a> 网站是由一个前端 app ，一个后端 app 组成的。前端端口号为 9000， 后端端口号为 8080。</p>
-
 <p>前端和后端如果使用 http 进行交互时，请求会被拒绝，因为存在跨域问题。来看看，nginx 是怎么解决的吧：</p>
-
 <p>首先，在 enable-cors.conf 文件中设置 cors ：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># allow origin list
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># allow origin list
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">set</span> $ACAO <span style="color:#e6db74">&#39;*&#39;</span>;
 
 <span style="color:#75715e"># set single origin
@@ -672,9 +612,9 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
 
 <span style="color:#66d9ef">if</span> <span style="color:#e6db74">(</span>$request_method = <span style="color:#e6db74">&#39;POST&#39;)</span> {
   <span style="color:#f92672">set</span> $cors <span style="color:#e6db74">&#34;</span>${cors}post&#34;;
-}</code></pre></div>
-<p>接下来，在你的服务器中 <code>include enable-cors.conf</code> 来引入跨域配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># ----------------------------------------------------
+}
+</code></pre></div><p>接下来，在你的服务器中 <code>include enable-cors.conf</code> 来引入跨域配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># ----------------------------------------------------
 </span><span style="color:#75715e"># 此文件为项目 nginx 配置片段
 </span><span style="color:#75715e"># 可以直接在 nginx config 中 include（推荐）
 </span><span style="color:#75715e"># 或者 copy 到现有 nginx 中，自行配置
@@ -701,11 +641,9 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
   <span style="color:#f92672">location</span> ~ <span style="color:#e6db74">^/</span> {
     <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://front_server</span>;
   }
-}</code></pre></div>
-<p>到此，就完成了。</p>
-
+}
+</code></pre></div><p>到此，就完成了。</p>
 <h2 id="参考">参考</h2>
-
 <p><a href="http://tool.oschina.net/apidocs/apidoc?api=nginx-zh">Nginx 的中文维基</a></p></article>
     <footer class="post-footer">
       
@@ -716,7 +654,7 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>262</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1170</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -724,7 +662,7 @@ nginx.exe -c conf/nginx.conf</code></pre></div>
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

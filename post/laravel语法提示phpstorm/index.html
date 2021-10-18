@@ -49,7 +49,7 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/laravel%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BAphpstorm/" />
@@ -229,18 +229,13 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
       <h1 class="post-title">Laravel语法提示PHPStorm </h1>
       <p class="post-meta">@Internet · May 30, 2017 · 1 min read</p>
     </header>
-    <article class="post-content">
-
-<h4 id="添加-composer-依赖包">添加 composer 依赖包</h4>
-
+    <article class="post-content"><h4 id="添加-composer-依赖包">添加 composer 依赖包</h4>
 <p>在 <code>composer.json</code> 文件里添加依赖包信息</p>
-
 <blockquote>
 <p>&ldquo;barryvdh/laravel-ide-helper&rdquo;:&ldquo;dev-master&rdquo;</p>
-
 <p>&ldquo;php artisan ide-helper:generate&rdquo;</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;require&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;require&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
   	<span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">other</span> <span style="color:#960050;background-color:#1e0010">composer</span> <span style="color:#960050;background-color:#1e0010">...</span>
 
 	<span style="color:#f92672">&#34;barryvdh/laravel-ide-helper&#34;</span>:<span style="color:#e6db74">&#34;dev-master&#34;</span>
@@ -251,12 +246,11 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
     <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">以后执行</span> <span style="color:#960050;background-color:#1e0010">composer</span> <span style="color:#960050;background-color:#1e0010">update</span> <span style="color:#960050;background-color:#1e0010">的时候会自动执行此扩展包的任务</span>
     <span style="color:#e6db74">&#34;php artisan ide-helper:generate&#34;</span>
    ]
-}<span style="color:#960050;background-color:#1e0010">,</span></code></pre></div>
-<h4 id="添加service-provider-服务">添加service provider 服务</h4>
-
+}<span style="color:#960050;background-color:#1e0010">,</span>
+</code></pre></div><h4 id="添加service-provider-服务">添加service provider 服务</h4>
 <p>在你的Laravel项目 <code>config/app.php</code> 于 providers 添加如下代码注册为服务提供者，使其在每个环境下都加载进来：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,</code></pre></div>
-<p>保存退出，执行 <code>composer update</code> 下载依赖包并会自动执行扩展包任务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>,
+</code></pre></div><p>保存退出，执行 <code>composer update</code> 下载依赖包并会自动执行扩展包任务</p>
 </article>
     <footer class="post-footer">
       
@@ -269,7 +263,7 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>693</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1601</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -277,7 +271,7 @@ Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 保存退出，执行
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

@@ -17,8 +17,8 @@
   
   <meta name="author" content="Internet" />
   <meta name="description" content="大致流程 实现微信支付主要分为以下两步：
-​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
-​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+​	一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​	二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
 大致流程图：
 " />
 
@@ -28,8 +28,8 @@
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="微信小程序支付功能" />
     <meta name="twitter:description" content="大致流程 实现微信支付主要分为以下两步：
-​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
-​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+​	一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​	二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
 大致流程图：
 " />
     <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
@@ -39,8 +39,8 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="微信小程序支付功能" />
   <meta property="og:description" content="大致流程 实现微信支付主要分为以下两步：
-​ 一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
-​ 二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
+​	一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。
+​	二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 wx.requestPayment(OBJECT)
 大致流程图：
 " />
   <meta property="og:url" content="https://qingeekk.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/" />
@@ -49,7 +49,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/" />
@@ -230,63 +230,54 @@
       <p class="post-meta">@Internet · Aug 17, 2017 · 4 min read</p>
     </header>
     <article class="post-content"><h3 id="大致流程">大致流程</h3>
-
 <p>实现微信支付主要分为以下两步：</p>
-
-<p>​   一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。</p>
-
-<p>​   二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 <code>wx.requestPayment(OBJECT)</code></p>
-
+<p>​	一、服务端携带参数首先向微信支付服务台生成预支付交易单获得prepay_id等参数并返回给客户端。</p>
+<p>​	二、前端获得服务端返回的参数后，携带参数并调用小程序内API方法 <code>wx.requestPayment(OBJECT)</code></p>
 <p>大致流程图：</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fjko1nsls5j31kw16hgr1.jpg" alt="" /></p>
-
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fjko1nsls5j31kw16hgr1.jpg" alt=""></p>
 <h3 id="配置前提">配置前提</h3>
-
 <ul>
 <li>在小程序管理界面，点击 <strong>微信支付</strong> 菜单栏进行申请开通相关操作，获取权限及商户ID（已进行微信认证的账号才会显示）。进行申请时需要缴纳费用并会受到一份包含商户信息、证书的邮件（创建、查询订单不需要用到证书，本文不做介绍）。</li>
 <li>在 <strong>设置 - 开发设置</strong> 里获取AppID、小程序密钥</li>
 </ul>
-
 <blockquote>
 <p>Code Params</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">&#39;open.pay&#39;       =&gt; [
-        // 小程序支付
-        &#39;lite&#39; =&gt; [
-            &#39;appid&#39;      =&gt; &#39;*************&#39;, // 小程序ID
-            &#39;mch_id&#39;     =&gt; &#39;*************&#39;, // 商户ID
-            &#39;key&#39;        =&gt; &#39;*************&#39;, // 密钥
-            &#39;notify_url&#39; =&gt; &#39;*************&#39;, // 回调地址
-        ],
-    ],</code></pre></div>
-<h3 id="业务代码流程-yii2框架">业务代码流程 (Yii2框架)</h3>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#e6db74">&#39;open.pay&#39;</span>       <span style="color:#f92672">=&gt;</span> [
+        <span style="color:#75715e">// 小程序支付
+</span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#39;lite&#39;</span> <span style="color:#f92672">=&gt;</span> [
+            <span style="color:#e6db74">&#39;appid&#39;</span>      <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;*************&#39;</span>, <span style="color:#75715e">// 小程序ID
+</span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#39;mch_id&#39;</span>     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;*************&#39;</span>, <span style="color:#75715e">// 商户ID
+</span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#39;key&#39;</span>        <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;*************&#39;</span>, <span style="color:#75715e">// 密钥
+</span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#39;notify_url&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;*************&#39;</span>, <span style="color:#75715e">// 回调地址
+</span><span style="color:#75715e"></span>        ],
+    ],
+</code></pre></div><h3 id="业务代码流程-yii2框架">业务代码流程 (Yii2框架)</h3>
 <blockquote>
 <p>客户端请求服务端生成订单，服务端请求微信生成统一下单参数返给前端，代码如下：</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$mch_id = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;mch_id&#39; ];
-$app_id = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;appid&#39; ] = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;appid&#39; ];
-$key = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;key&#39; ];
-$notify_url = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;notify_url&#39; ];
-$timestamp = time();
-// 微信统一下单打包获取调起微信支付参数 (SDK在文章最下方)
-$wx_pay = new WeChatPay($mch_id, $app_id, $key);
-$package = $wx_pay-&gt;createJsBizPackage($open_id, $money_paid, $order_sn, $order_name, $notify_url, $timestamp);
-/**
-&#34;appId&#34;     =&gt; &#39;appid&#39;,
-&#34;timeStamp&#34; =&gt; (string)$unix_timestamp,
-&#34;nonceStr&#34;  =&gt; createNonceStr(),
-&#34;package&#34;   =&gt; &#34;prepay_id=&#34; . $unifiedOrder-&gt;prepay_id,
-&#34;signType&#34;  =&gt; &#39;MD5&#39;,
-&#34;paySign&#34;   =&gt; getSign($arr, $config[ &#39;key&#39; ]),
-**/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$mch_id <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;mch_id&#39;</span> ];
+$app_id <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;appid&#39;</span> ] <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;appid&#39;</span> ];
+$key <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;key&#39;</span> ];
+$notify_url <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;notify_url&#39;</span> ];
+$timestamp <span style="color:#f92672">=</span> <span style="color:#a6e22e">time</span>();
+<span style="color:#75715e">// 微信统一下单打包获取调起微信支付参数 (SDK在文章最下方)
+</span><span style="color:#75715e"></span>$wx_pay <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WeChatPay</span>($mch_id, $app_id, $key);
+$package <span style="color:#f92672">=</span> $wx_pay<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">createJsBizPackage</span>($open_id, $money_paid, $order_sn, $order_name, $notify_url, $timestamp);
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74">&#34;appId&#34;     =&gt; &#39;appid&#39;,
+</span><span style="color:#e6db74">&#34;timeStamp&#34; =&gt; (string)$unix_timestamp,
+</span><span style="color:#e6db74">&#34;nonceStr&#34;  =&gt; createNonceStr(),
+</span><span style="color:#e6db74">&#34;package&#34;   =&gt; &#34;prepay_id=&#34; . $unifiedOrder-&gt;prepay_id,
+</span><span style="color:#e6db74">&#34;signType&#34;  =&gt; &#39;MD5&#39;,
+</span><span style="color:#e6db74">&#34;paySign&#34;   =&gt; getSign($arr, $config[ &#39;key&#39; ]),
+</span><span style="color:#e6db74">**/</span>
 
-return $package;</code></pre></div>
-<blockquote>
+<span style="color:#66d9ef">return</span> $package;
+</code></pre></div><blockquote>
 <p>小程序内调用 wx.requestPayment(OBJECT)   API</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">wx</span>.<span style="color:#a6e22e">requestPayment</span>({
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">wx</span>.<span style="color:#a6e22e">requestPayment</span>({
    <span style="color:#e6db74">&#39;timeStamp&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">timeStamp</span>,
    <span style="color:#e6db74">&#39;nonceStr&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#a6e22e">nonceStr</span>,
    <span style="color:#e6db74">&#39;package&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Data</span>.<span style="color:#66d9ef">package</span>,
@@ -297,77 +288,76 @@ return $package;</code></pre></div>
    <span style="color:#e6db74">&#39;fail&#39;</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>){
    }
 })
-</code></pre></div>
-<blockquote>
+</code></pre></div><blockquote>
 <p>支付成功后，微信后台开始回调服务端地址（外网可访问的URL）</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/**
-     * 小程序支付回调地址
-     * @return string
-     */
-public function actionLiteNotify()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#e6db74">/**
+</span><span style="color:#e6db74">     * 小程序支付回调地址
+</span><span style="color:#e6db74">     * @return string
+</span><span style="color:#e6db74">     */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">actionLiteNotify</span>()
 {
-  // 获取微信回调的xml的数据
-  $postStr = file_get_contents(&#39;php://input&#39;);
-  // xml数据转换为Object
-  $postObj = simplexml_load_string($postStr, &#39;SimpleXMLElement&#39;, LIBXML_NOCDATA);
-  Yii::trace($postObj);
-  if ($postObj === false) {
-    Yii::error(&#39;parse xml error&#39;);
-    die(&#39;parse xml error&#39;);
+  <span style="color:#75715e">// 获取微信回调的xml的数据
+</span><span style="color:#75715e"></span>  $postStr <span style="color:#f92672">=</span> <span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;php://input&#39;</span>);
+  <span style="color:#75715e">// xml数据转换为Object
+</span><span style="color:#75715e"></span>  $postObj <span style="color:#f92672">=</span> <span style="color:#a6e22e">simplexml_load_string</span>($postStr, <span style="color:#e6db74">&#39;SimpleXMLElement&#39;</span>, <span style="color:#a6e22e">LIBXML_NOCDATA</span>);
+  <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">trace</span>($postObj);
+  <span style="color:#66d9ef">if</span> ($postObj <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>) {
+    <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;parse xml error&#39;</span>);
+    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;parse xml error&#39;</span>);
   }
-  if ($postObj-&gt;return_code != &#39;SUCCESS&#39;) {
-    Yii::error($postObj-&gt;return_msg);
-    die($postObj-&gt;return_msg);
+  <span style="color:#66d9ef">if</span> ($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">return_code</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;SUCCESS&#39;</span>) {
+    <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">return_msg</span>);
+    <span style="color:#66d9ef">die</span>($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">return_msg</span>);
   }
-  if ($postObj-&gt;result_code != &#39;SUCCESS&#39;) {
-    Yii::error($postObj-&gt;err_code);
-    die($postObj-&gt;err_code);
-  }
-
-  //微信支付参数
-  $appid = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;appid&#39; ];
-  $mch_id = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;mch_id&#39; ];
-  $key = Yii::$app-&gt;params[ &#39;open.pay&#39; ][ &#39;lite&#39; ][ &#39;key&#39; ];
-  $wx_pay = new WeChatPay($mch_id, $appid, $key);
-
-  //验证签名
-  $arr = (array)$postObj;
-  unset($arr[ &#39;sign&#39; ]);
-  if ($wx_pay-&gt;getSign($arr, $key) != $postObj-&gt;sign) {
-    Yii::error(&#34;签名错误&#34;);
-    die(&#34;签名错误&#34;);
+  <span style="color:#66d9ef">if</span> ($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">result_code</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;SUCCESS&#39;</span>) {
+    <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">err_code</span>);
+    <span style="color:#66d9ef">die</span>($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">err_code</span>);
   }
 
-  /**
-    * 根据自己的产品业务进行相应的支付成功处理...
-  **/
-  $orders_result = OrdersService::getOrderInfoByOrderSN($postObj-&gt;out_trade_no);
-  Yii::trace($orders_result);
-  if ($orders_result-&gt;getCode() == ErrorCode::ERROR_NO) {
-    /** @var Orders $order_model */
-    $order_model = $orders_result-&gt;getData();
-    //支付处理正确-判断是否已处理过支付状态
-    if ($order_model-&gt;pay_status == PayStatusEnum::STATUS_NOT_PAID) {
-      $order_model-&gt;pay_time = Carbon::now()-&gt;format(&#39;Y-m-d H:i:s&#39;);
-      $order_model-&gt;pay_status = PayStatusEnum::STATUS_HAS_PAID;
-      $order_model-&gt;pay_type = PayTypeEnum::STATUS_WEIXIN;
-      $order_model-&gt;pay_trade_sn = $postObj-&gt;transaction_id;
-      $order_model-&gt;update(false);
+  <span style="color:#75715e">//微信支付参数
+</span><span style="color:#75715e"></span>  $appid <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;appid&#39;</span> ];
+  $mch_id <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;mch_id&#39;</span> ];
+  $key <span style="color:#f92672">=</span> <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span>$app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">params</span>[ <span style="color:#e6db74">&#39;open.pay&#39;</span> ][ <span style="color:#e6db74">&#39;lite&#39;</span> ][ <span style="color:#e6db74">&#39;key&#39;</span> ];
+  $wx_pay <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WeChatPay</span>($mch_id, $appid, $key);
 
-      OrdersActionService::addOrderAction($order_model, &#39;微信支付回调：订单支付状态更改&#39;);
+  <span style="color:#75715e">//验证签名
+</span><span style="color:#75715e"></span>  $arr <span style="color:#f92672">=</span> (<span style="color:#66d9ef">array</span>)$postObj;
+  <span style="color:#a6e22e">unset</span>($arr[ <span style="color:#e6db74">&#39;sign&#39;</span> ]);
+  <span style="color:#66d9ef">if</span> ($wx_pay<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getSign</span>($arr, $key) <span style="color:#f92672">!=</span> $postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sign</span>) {
+    <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;签名错误&#34;</span>);
+    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;签名错误&#34;</span>);
+  }
+
+  <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">    * 根据自己的产品业务进行相应的支付成功处理...
+</span><span style="color:#e6db74">  **/</span>
+  $orders_result <span style="color:#f92672">=</span> <span style="color:#a6e22e">OrdersService</span><span style="color:#f92672">::</span><span style="color:#a6e22e">getOrderInfoByOrderSN</span>($postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">out_trade_no</span>);
+  <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">trace</span>($orders_result);
+  <span style="color:#66d9ef">if</span> ($orders_result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getCode</span>() <span style="color:#f92672">==</span> <span style="color:#a6e22e">ErrorCode</span><span style="color:#f92672">::</span><span style="color:#a6e22e">ERROR_NO</span>) {
+    <span style="color:#e6db74">/** @var Orders $order_model */</span>
+    $order_model <span style="color:#f92672">=</span> $orders_result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getData</span>();
+    <span style="color:#75715e">//支付处理正确-判断是否已处理过支付状态
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> ($order_model<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">pay_status</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">PayStatusEnum</span><span style="color:#f92672">::</span><span style="color:#a6e22e">STATUS_NOT_PAID</span>) {
+      $order_model<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">pay_time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Carbon</span><span style="color:#f92672">::</span><span style="color:#a6e22e">now</span>()<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">format</span>(<span style="color:#e6db74">&#39;Y-m-d H:i:s&#39;</span>);
+      $order_model<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">pay_status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">PayStatusEnum</span><span style="color:#f92672">::</span><span style="color:#a6e22e">STATUS_HAS_PAID</span>;
+      $order_model<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">pay_type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">PayTypeEnum</span><span style="color:#f92672">::</span><span style="color:#a6e22e">STATUS_WEIXIN</span>;
+      $order_model<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">pay_trade_sn</span> <span style="color:#f92672">=</span> $postObj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">transaction_id</span>;
+      $order_model<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">update</span>(<span style="color:#66d9ef">false</span>);
+
+      <span style="color:#a6e22e">OrdersActionService</span><span style="color:#f92672">::</span><span style="color:#a6e22e">addOrderAction</span>($order_model, <span style="color:#e6db74">&#39;微信支付回调：订单支付状态更改&#39;</span>);
     }
-  } else {
-    Yii::error($orders_result);
+  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#a6e22e">Yii</span><span style="color:#f92672">::</span><span style="color:#a6e22e">error</span>($orders_result);
   }
 
-  // 返回给微信服务端，不然微信会一直回调此地址（8次）。
-  return &#39;&lt;<span style="color:#f92672">xml</span>&gt;&lt;<span style="color:#f92672">return_code</span>&gt;<span style="color:#75715e">&lt;![CDATA[SUCCESS]]&gt;</span>&lt;/<span style="color:#f92672">return_code</span>&gt;&lt;<span style="color:#f92672">return_msg</span>&gt;<span style="color:#75715e">&lt;![CDATA[OK]]&gt;</span>&lt;/<span style="color:#f92672">return_msg</span>&gt;&lt;/<span style="color:#f92672">xml</span>&gt;&#39;;
-}</code></pre></div>
-<blockquote>
+  <span style="color:#75715e">// 返回给微信服务端，不然微信会一直回调此地址（8次）。
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&lt;xml&gt;&lt;return_code&gt;&lt;![CDATA[SUCCESS]]&gt;&lt;/return_code&gt;&lt;return_msg&gt;&lt;![CDATA[OK]]&gt;&lt;/return_msg&gt;&lt;/xml&gt;&#39;</span>;
+}
+</code></pre></div><blockquote>
 <p>封装的微信支付SDK类</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#e6db74">/**
 </span><span style="color:#e6db74"> * User: Zachary
 </span><span style="color:#e6db74"> */</span>
@@ -543,11 +533,12 @@ public function actionLiteNotify()
         <span style="color:#66d9ef">return</span> $data;
     }
 }
+
 </code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>614</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1522</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -555,7 +546,7 @@ public function actionLiteNotify()
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>

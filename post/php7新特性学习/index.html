@@ -40,7 +40,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
 
 <link rel="canonical" href="https://qingeekk.github.io/post/php7%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0/" />
@@ -221,42 +221,40 @@
       <p class="post-meta">@Internet · Jul 1, 2017 · 2 min read</p>
     </header>
     <article class="post-content"><p><em>参考<a href="http://php.net/manual/zh/migration70.new-features.php">PHP官网</a>个人记录学习</em></p>
-
 <h4 id="null合并运算符">null合并运算符</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// 支持链式语法操作,会返回第一个有值的数据
-$username = $_GET[&#39;user&#39;] ?? $_POST[&#39;user&#39;] ?? &#39;nobody&#39;;</code></pre></div>
-<p><br/></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">// 支持链式语法操作,会返回第一个有值的数据
+</span><span style="color:#75715e"></span>$username <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;user&#39;</span>] <span style="color:#f92672">??</span> $_POST[<span style="color:#e6db74">&#39;user&#39;</span>] <span style="color:#f92672">??</span> <span style="color:#e6db74">&#39;nobody&#39;</span>;
 
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="返回值类型声明">返回值类型声明</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// 返回类型声明指明了函数返回值的类型
-function arraysSum(array ...$arrays): array
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">// 返回类型声明指明了函数返回值的类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">arraysSum</span>(<span style="color:#66d9ef">array</span> <span style="color:#f92672">...</span>$arrays)<span style="color:#f92672">:</span> <span style="color:#66d9ef">array</span>
 {
-    return array_map(function(array $array): int {
-        return array_sum($array);
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">array_map</span>(<span style="color:#66d9ef">function</span>(<span style="color:#66d9ef">array</span> $array)<span style="color:#f92672">:</span> <span style="color:#a6e22e">int</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">array_sum</span>($array);
     }, $arrays);
 }
 
-print_r(arraysSum([1,2,3], [4,5,6], [7,8,9]));
+<span style="color:#a6e22e">print_r</span>(<span style="color:#a6e22e">arraysSum</span>([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>], [<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>]));
 
-// 输出结果
-Array
+<span style="color:#75715e">// 输出结果
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">Array</span>
 (
-    [0] =&gt; 6
-    [1] =&gt; 15
-    [2] =&gt; 24
-)</code></pre></div>
-<h4 id="太空船操作符-组合比较符">太空船操作符（组合比较符）</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">echo &#34;a&#34; <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; &#34;a&#34;; // 0
-echo &#34;a&#34; <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; &#34;b&#34;; // -1
-echo &#34;b&#34; <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; &#34;a&#34;; // 1
-
-echo 1 <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; 1; // 0
-echo 1 <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; 2; // -1
-echo 2 <span style="color:#960050;background-color:#1e0010">&lt;</span>=&gt; 1; // 1</code></pre></div>
-<h4 id="匿名类">匿名类</h4>
-
+    [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">6</span>
+    [<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">15</span>
+    [<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">24</span>
+)
+</code></pre></div><h4 id="太空船操作符组合比较符">太空船操作符（组合比较符）</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">&lt;=&gt;</span> <span style="color:#e6db74">&#34;a&#34;</span>; <span style="color:#75715e">// 0
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">&lt;=&gt;</span> <span style="color:#e6db74">&#34;b&#34;</span>; <span style="color:#75715e">// -1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">&lt;=&gt;</span> <span style="color:#e6db74">&#34;a&#34;</span>; <span style="color:#75715e">// 1
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">echo</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=&gt;</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 0
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=&gt;</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// -1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&lt;=&gt;</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 1
+</span></code></pre></div><h4 id="匿名类">匿名类</h4>
 <p>通过<em>new class</em> 来实例化一个匿名类，传递参数到匿名类的构造器，也可以扩展（extend）其他类、实现接口（implement interface），这可以用来替代一些“用后即焚”的完整类定义。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Logger</span> {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">string</span> $msg);
 }
@@ -282,10 +280,9 @@ $app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogge
 });
 
 <span style="color:#a6e22e">var_dump</span>($app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getLogger</span>());
-<span style="color:#75715e">?&gt;</span>
-</code></pre></div>
-<h4 id="同一-namespace-可使用-use-一次性引进">同一 <code>namespace</code> 可使用 <code>use</code> 一次性引进</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h4 id="同一-namespace-可使用-use-一次性引进">同一 <code>namespace</code> 可使用 <code>use</code> 一次性引进</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#75715e">// PHP 7 之前的代码
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">some\namespace\ClassA</span>;
@@ -304,23 +301,20 @@ $app<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setLogge
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">some\namespace\</span>{<span style="color:#a6e22e">ClassA</span>, <span style="color:#a6e22e">ClassB</span>, <span style="color:#a6e22e">ClassC</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">C</span>};
 <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">some\namespace\</span>{<span style="color:#a6e22e">fn_a</span>, <span style="color:#a6e22e">fn_b</span>, <span style="color:#a6e22e">fn_c</span>};
 <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">some\namespace\</span>{<span style="color:#a6e22e">ConstA</span>, <span style="color:#a6e22e">ConstB</span>, <span style="color:#a6e22e">ConstC</span>};
-<span style="color:#75715e">?&gt;</span>
-</code></pre></div>
-<h4 id="新增整数除法函数-intdiv">新增整数除法函数 <code>intdiv()</code></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h4 id="新增整数除法函数-intdiv">新增整数除法函数 <code>intdiv()</code></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">intdiv</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">3</span>));
 
 <span style="color:#75715e">// 输出
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">int</span>(<span style="color:#ae81ff">3</span>)
-<span style="color:#75715e">?&gt;</span>
-</code></pre></div>
-<h4 id="新增-preg-replace-callback-array">新增 <code>preg_replace_callback_array</code></h4>
-
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h4 id="新增-preg_replace_callback_array">新增 <code>preg_replace_callback_array</code></h4>
 <p>可在次函数体内使用数组形式执行多个 正则表达式搜索并且使用回调进行替换的功能</p>
-
 <p>类似<a href="http://php.net/manual/zh/function.preg-replace-callback.php">函数</a> <code>preg_replace_callback</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 $subject <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Aaaaaa Bbb&#39;</span>;
 
 <span style="color:#a6e22e">preg_replace_callback_array</span>(
@@ -334,10 +328,10 @@ $subject <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A
     ],
     $subject
 );
-<span style="color:#75715e">?&gt;</span>
-</code></pre></div>
-<h4 id="新增2个高安全级别的生成随机数函数">新增2个高安全级别的生成随机数函数</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h4 id="新增2个高安全级别的生成随机数函数">新增2个高安全级别的生成随机数函数</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 <span style="color:#75715e">// 生成适合加密使用的加密随机字节的任意长度字符串，如生成盐、密钥或初始化向量时的字符串。 random_bytes()
 </span><span style="color:#75715e"></span>$bytes <span style="color:#f92672">=</span> <span style="color:#a6e22e">random_bytes</span>(<span style="color:#ae81ff">5</span>);
 <span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">bin2hex</span>($bytes)); <span style="color:#75715e">// string(10) &#34;385e33f741&#34;
@@ -347,12 +341,12 @@ $subject <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">random_int</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">999</span>)); <span style="color:#75715e">// int(248)
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">random_int</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// int(-898)
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">?&gt;</span>
-</code></pre></div></article>
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>662</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>1570</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -360,7 +354,7 @@ $subject <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A
     
   </section>
   <footer class="site-footer">
-  <p>© 2017-2019 Qing</p>
+  <p>© 2017-2021 Qing</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
   
 </footer>
