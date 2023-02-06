@@ -1,301 +1,292 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="en" dir="auto">
 
-  <meta charset="utf-8" />
-
-  
-  <title>PHP根据特定字段进行分组</title>
-
-  
-  
-
-
-
-
-
-  
-  <meta name="author" content="Internet" />
-  <meta name="description" content="如果你的数据是这样:
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PHP根据特定字段进行分组 | Maverick</title>
+<meta name="keywords" content="">
+<meta name="description" content="如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; } " />
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms); } } return $grouped; } ">
+<meta name="author" content="">
+<link rel="canonical" href="https://qingx2.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css" integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://qingx2.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://qingx2.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://qingx2.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://qingx2.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://qingx2.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-  
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@gohugoio" />
-    <meta name="twitter:title" content="PHP根据特定字段进行分组" />
-    <meta name="twitter:description" content="如果你的数据是这样:
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="PHP根据特定字段进行分组" />
+<meta property="og:description" content="如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; } " />
-    <meta name="twitter:image" content="https://qingeekk.github.io/img/avatar.jpg" />
-  
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms); } } return $grouped; } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qingx2.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2017-07-28T11:46:28+00:00" />
+<meta property="article:modified_time" content="2017-07-28T11:46:28+00:00" />
 
-  
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="PHP根据特定字段进行分组" />
-  <meta property="og:description" content="如果你的数据是这样:
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PHP根据特定字段进行分组"/>
+<meta name="twitter:description" content="如果你的数据是这样:
 需要转换为如下格式
 添加此函数可以进行转为
-public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组  if (func_num_args() &amp;gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&amp;gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&amp;#39;array_group_by&amp;#39;, $parms); } } return $grouped; } " />
-  <meta property="og:url" content="https://qingeekk.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/" />
-  <meta property="og:image" content="https://qingeekk.github.io/img/avatar.jpg" />
+public function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() &gt; 2) { $args = func_get_args(); foreach ($grouped as $key =&gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(&#39;array_group_by&#39;, $parms); } } return $grouped; } "/>
 
 
-
-
-<meta name="generator" content="Hugo 0.88.1" />
-
-
-<link rel="canonical" href="https://qingeekk.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/" />
-<link rel="alternative" href="https://qingeekk.github.io/index.xml" title="Qing" type="application/atom+xml" />
-
-
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-
-
-<meta name="robots" content="index,follow" />
-<meta name="referrer" content="origin-when-cross-origin" />
-
-
-
-
-
-
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Qing" />
-<meta name="msapplication-tooltip" content="Qing" />
-<meta name='msapplication-navbutton-color' content="#5fbf5e" />
-<meta name="msapplication-TileColor" content="#5fbf5e" />
-<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://qingeekk.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://qingeekk.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://qingeekk.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://qingeekk.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://qingeekk.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://qingeekk.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video-js-cdn.min.css" rel="stylesheet">
-
-<link rel="stylesheet" href="https://qingeekk.github.io/css/bundle.ff02473a9a.css" />
-
-
-  
-  <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
-  <![endif]-->
-
-<!--[if lte IE 11]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-  <![endif]-->
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.3/ofi.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
-
-
-</head>
-  <body>
-    
-    <div class="suspension">
-      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
-      
-        
-      
-    </div>
-    
-    
-  <header class="site-header">
-  <img class="avatar" src="https://qingeekk.github.io/img/avatar.jpg" alt="Avatar">
-  
-  <h2 class="title">Qing</h2>
-  
-  <p class="subtitle">行亦禅 坐亦禅 语默动静体安然</p>
-  <button class="menu-toggle" type="button">
-    <span class="icon icon-menu"></span>
-  </button>
-  <nav class="site-menu collapsed">
-    <h2 class="offscreen">Main Menu</h2>
-    <ul class="menu-list">
-      
-      
-      
-      
-        <li class="menu-item
-            
-            
-            
-              is-active
-            ">
-            <a href="https://qingeekk.github.io/">主页</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://qingeekk.github.io/tags/">标签</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://github.com/qingeekk">GitHub</a>
-          </li>
-      
-    </ul>
-  </nav>
-  <nav class="social-menu collapsed">
-    <h2 class="offscreen">Social Networks</h2>
-    <ul class="social-list">
-
-      
-      <li class="social-item">
-        <a href="mailto:qingeekk@qq.com" title="Email"><span class="icon icon-email"></span></a>
-      </li>
-
-      
-      <li class="social-item">
-        <a href="//github.com/qingeekk" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://qingeekk.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://qingeekk.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
-      </li>
-
-    </ul>
-  </nav>
-</header>
-
-  <section class="main post-detail">
-    <header class="post-header">
-      <h1 class="post-title">PHP根据特定字段进行分组</h1>
-      <p class="post-meta">@Internet · Jul 28, 2017 · 1 min read</p>
-    </header>
-    <article class="post-content"><p><strong>如果你的数据是这样:</strong></p>
-<p><img src="http://omixc2ggv.bkt.clouddn.com/WechatIMG13.jpeg" alt=""></p>
-<p><strong>需要转换为如下格式</strong></p>
-<p><img src="http://omixc2ggv.bkt.clouddn.com/WechatIMG14.jpeg" alt=""></p>
-<p><strong>添加此函数可以进行转为</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">array_group_by</span>($arr, $key)
+<script type="application/ld+json">
 {
-  $grouped <span style="color:#f92672">=</span> [];
-  <span style="color:#66d9ef">foreach</span> ($arr <span style="color:#66d9ef">as</span> $value) {
-    $grouped[$value[$key]][] <span style="color:#f92672">=</span> $value;
-  }
-
-  <span style="color:#75715e">// 递归重组嵌套数组 
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">func_num_args</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
-    $args <span style="color:#f92672">=</span> <span style="color:#a6e22e">func_get_args</span>();
-    <span style="color:#66d9ef">foreach</span> ($grouped <span style="color:#66d9ef">as</span> $key <span style="color:#f92672">=&gt;</span> $value) {
-      $parms <span style="color:#f92672">=</span> <span style="color:#a6e22e">array_merge</span>([$value], <span style="color:#a6e22e">array_slice</span>($args, <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">func_num_args</span>()));
-      $grouped[$key] <span style="color:#f92672">=</span> <span style="color:#a6e22e">call_user_func_array</span>(<span style="color:#e6db74">&#39;array_group_by&#39;</span>, $parms);
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://qingx2.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "PHP根据特定字段进行分组",
+      "item": "https://qingx2.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/"
     }
-  }
-
-  <span style="color:#66d9ef">return</span> $grouped;
+  ]
 }
-</code></pre></div></article>
-    <footer class="post-footer">
-      
-      <p class="post-copyright">
-        This post was published <strong>1542</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-      </p>
-    </footer>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PHP根据特定字段进行分组",
+  "name": "PHP根据特定字段进行分组",
+  "description": "如果你的数据是这样:\n需要转换为如下格式\n添加此函数可以进行转为\npublic function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() \u0026gt; 2) { $args = func_get_args(); foreach ($grouped as $key =\u0026gt; $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array(\u0026#39;array_group_by\u0026#39;, $parms); } } return $grouped; } ",
+  "keywords": [
     
-      
-    
-  </section>
-  <footer class="site-footer">
-  <p>© 2017-2021 Qing</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
-  
-</footer>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.2.8/alt/video.novtt.min.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  ],
+  "articleBody": "如果你的数据是这样:\n需要转换为如下格式\n添加此函数可以进行转为\npublic function array_group_by($arr, $key) { $grouped = []; foreach ($arr as $value) { $grouped[$value[$key]][] = $value; } // 递归重组嵌套数组 if (func_num_args() \u003e 2) { $args = func_get_args(); foreach ($grouped as $key =\u003e $value) { $parms = array_merge([$value], array_slice($args, 2, func_num_args())); $grouped[$key] = call_user_func_array('array_group_by', $parms); } } return $grouped; } ",
+  "wordCount" : "52",
+  "inLanguage": "en",
+  "datePublished": "2017-07-28T11:46:28Z",
+  "dateModified": "2017-07-28T11:46:28Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://qingx2.github.io/post/php%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%AE%9A%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Maverick",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://qingx2.github.io/favicon.ico"
     }
-  });
+  }
+}
 </script>
-<script type="text/x-mathjax-config">
-  // Fix <code> tags after MathJax finishes running. This is a
-  // hack to overcome a shortcoming of Markdown. Discussion at
-  // https://github.com/mojombo/jekyll/issues/199
-  MathJax.Hub.Queue(() => {
-    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
-  });
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
 </script>
 
-<script src="https://qingeekk.github.io/js/bundle.d1288006cf.js"></script>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://qingx2.github.io/" accesskey="h" title="Maverick (Alt + H)">Maverick</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      PHP根据特定字段进行分组
+    </h1>
+    <div class="post-meta"><span title='2017-07-28 11:46:28 +0000 UTC'>July 28, 2017</span>
 
+</div>
+  </header> 
+  <div class="post-content"><p><strong>如果你的数据是这样:</strong></p>
+<p><img loading="lazy" src="http://omixc2ggv.bkt.clouddn.com/WechatIMG13.jpeg" alt=""  />
+</p>
+<p><strong>需要转换为如下格式</strong></p>
+<p><img loading="lazy" src="http://omixc2ggv.bkt.clouddn.com/WechatIMG14.jpeg" alt=""  />
+</p>
+<p><strong>添加此函数可以进行转为</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">array_group_by</span>($arr, $key)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  $grouped <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">foreach</span> ($arr <span style="color:#66d9ef">as</span> $value) {
+</span></span><span style="display:flex;"><span>    $grouped[$value[$key]][] <span style="color:#f92672">=</span> $value;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 递归重组嵌套数组 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">func_num_args</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>    $args <span style="color:#f92672">=</span> <span style="color:#a6e22e">func_get_args</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span> ($grouped <span style="color:#66d9ef">as</span> $key <span style="color:#f92672">=&gt;</span> $value) {
+</span></span><span style="display:flex;"><span>      $parms <span style="color:#f92672">=</span> <span style="color:#a6e22e">array_merge</span>([$value], <span style="color:#a6e22e">array_slice</span>($args, <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">func_num_args</span>()));
+</span></span><span style="display:flex;"><span>      $grouped[$key] <span style="color:#f92672">=</span> <span style="color:#a6e22e">call_user_func_array</span>(<span style="color:#e6db74">&#39;array_group_by&#39;</span>, $parms);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> $grouped;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
+  </div>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://qingx2.github.io/">Maverick</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>
